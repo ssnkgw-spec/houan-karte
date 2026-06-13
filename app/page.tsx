@@ -11,7 +11,8 @@ import {
 export default function Home() {
   const clock = getSessionClock();
   const cb = dashboard.cabinetBills;
-  const passedPct = (cb.passed / cb.submitted) * 100;
+  const law = cb.lawTotal;
+  const passedPct = (law.passed / law.submitted) * 100;
 
   return (
     <div className="wrap-lg">
@@ -67,13 +68,10 @@ export default function Home() {
             </div>
           </div>
           <div className="tile">
-            <div className="tl">法案 ／ CABINET BILLS</div>
+            <div className="tl">法律案 ／ BILLS</div>
             <div className="big">
-              {cb.passed}
-              <small>
-                {" "}
-                ／ {cb.submitted} 件 成立
-              </small>
+              {law.passed}
+              <small> 件成立</small>
             </div>
             <div className="mbar">
               <i
@@ -87,16 +85,35 @@ export default function Home() {
               />
             </div>
             <div className="legendrow">
-              <span>■ 成立 {cb.passed}</span>
-              <span>□ 審議中など {cb.submitted - cb.passed}</span>
+              <span>■ 成立 {law.passed}</span>
+              <span>□ 審議中など {law.submitted - law.passed}</span>
+            </div>
+            <div className="breakdown">
+              <div>
+                <span>内閣提出（閣法）</span>
+                <b>
+                  {cb.passed} / {cb.submitted}
+                </b>
+              </div>
+              <div>
+                <span>議員立法（衆法・参法）</span>
+                <b>
+                  {cb.member.passed} / {cb.member.submitted}
+                </b>
+              </div>
             </div>
             <div className="cap">
-              内閣提出法律案の件数（{formatYmdJa(cb.asOf)}時点・
+              今国会に提出された法律案の成立件数（{formatYmdJa(cb.asOf)}時点・
               <a href={cb.sourceUrl} target="_blank" rel="noopener noreferrer">
                 {cb.sourceName}
               </a>
-              ）。議員立法はこれとは別に提出されます。
+              ）。予算・条約・決算は別枠。参法（参院議員立法）は衆院に送付された分の集計です。
             </div>
+            <p className="tilelink">
+              <Link href="/bills/">
+                → 法律案{law.submitted}件すべての内訳を見る
+              </Link>
+            </p>
           </div>
         </div>
         {/* 数値の鮮度を常時表示（pre-mortemシナリオ2対策） */}

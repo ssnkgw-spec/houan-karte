@@ -47,7 +47,7 @@ export default function RootLayout({
             </Link>
             <span className="tag">試作 / PROTOTYPE</span>
             <nav aria-label="サイト共通">
-              <Link href="/#bills">法案一覧</Link>
+              <Link href="/bills/">法案一覧</Link>
               <Link href="/participate/">参加の経路</Link>
               <Link href="/about/limits/">方針と限界</Link>
             </nav>
@@ -61,7 +61,8 @@ export default function RootLayout({
               重要法案を一次情報ベースで中立に整理する構想の試作です。記載は各ページ明記の時点の要約であり、審議の進行により内容は変わります。正確・最新の情報は必ず各リンク先の一次資料でご確認ください。誤りが見つかれば訂正し、更新履歴を残します。
             </p>
             <nav aria-label="フッター">
-              <Link href="/">トップ（法案一覧）</Link>
+              <Link href="/">トップ</Link>
+              <Link href="/bills/">法案一覧</Link>
               <Link href="/about/limits/">このサイトの方針と限界</Link>
               <Link href="/participate/">参加の経路</Link>
             </nav>

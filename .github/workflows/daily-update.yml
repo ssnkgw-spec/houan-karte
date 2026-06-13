@@ -26,7 +26,7 @@ jobs:
 
       - run: npm ci
 
-      - name: L1データ取得（議案DB → dashboard.json / bills-status.json）
+      - name: L1データ取得（議案DB → dashboard.json / bills-status.json / cabinet-bills.json）
         run: npm run fetch:dashboard
 
       - name: 中立リント（コンテンツ整合の機械検査）

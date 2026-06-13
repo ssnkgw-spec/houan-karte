@@ -12,7 +12,7 @@
                                       ↑ git push で自動再ビルド
 GitHub Actions（毎日 06:30 JST）
   └ scripts/fetch-dashboard.ts
-      スマートニュース議案DB(MIT) → 閣法成立数・各法案の審議状況を取得
+      スマートニュース議案DB(MIT) → 法律案の成立数（閣法/衆法/参法）・各法案の審議状況・全件リストを取得
       → content/data/*.json を自動コミット → Vercel 再ビルド
       → 会期クロック（残り日数）もビルド時計算で同時に最新化
 ```

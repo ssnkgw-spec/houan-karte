@@ -386,7 +386,42 @@ ol.srclist a{word-break:break-all;}
 .ch .lim2 b{color:var(--ochre);}
 .ch .links{margin-top:9px; font-size:12.5px;}
 
+/* ---- bills index: 内閣提出法案リスト ---- */
+.bgroup{margin:0;}
+.bgrouphead{display:flex; align-items:baseline; gap:10px; margin:26px 0 8px;}
+.bgrouphead h3{font-size:17px; font-weight:700; margin:0;}
+.bgrouphead .cnt{font-family:var(--font-mono),monospace; font-size:12px; color:var(--muted); margin-left:auto;}
+.sbadge{font-family:var(--font-mono),monospace; font-size:11px; font-weight:700; padding:2px 9px; border-radius:2px; white-space:nowrap;}
+.sbadge.live{color:var(--indigo); background:var(--indigo-soft); border:1px solid var(--indigo-line);}
+.sbadge.done{color:var(--slate); background:var(--slate-soft); border:1px solid var(--slate-line);}
+.blist{border:1px solid var(--line); border-radius:4px; background:var(--panel); overflow:hidden;}
+.brow{display:grid; grid-template-columns:30px 1fr auto; gap:14px; align-items:center;
+  padding:11px 16px; border-top:1px solid var(--line-soft);}
+.brow:first-child{border-top:none;}
+.brow.haskarte{background:var(--indigo-soft);}
+.bno{font-size:11.5px; color:var(--muted); text-align:right;}
+.bmain{min-width:0;}
+.btitle{display:block; font-size:13.5px; font-weight:500; line-height:1.55;}
+.bmeta{display:block; font-size:11px; color:var(--muted); margin-top:2px;}
+.bkarte{white-space:nowrap; font-size:12.5px; font-weight:700; color:var(--indigo); text-decoration:none;
+  border:1px solid var(--indigo-line); background:#fff; padding:5px 11px; border-radius:2px;}
+.bkarte:hover{background:#dde6f4;}
+.bkeika{white-space:nowrap; font-size:12px; color:var(--muted); text-decoration:none;}
+.bkeika:hover{color:var(--indigo); text-decoration:underline;}
+.tilelink{font-size:12.5px; margin:9px 0 0;}
+.tilelink a{font-weight:700;}
+.breakdown{margin:11px 0 0;}
+.breakdown div{display:flex; justify-content:space-between; align-items:baseline; gap:10px;
+  padding:5px 0; border-top:1px solid var(--line-soft); font-size:12.5px;}
+.breakdown div:first-child{border-top:none;}
+.breakdown span{color:var(--muted);}
+.breakdown b{font-family:var(--font-mono),monospace; font-weight:700; color:var(--ink); white-space:nowrap;}
+
 /* ---- responsive ---- */
+@media(max-width:560px){
+  .brow{grid-template-columns:24px 1fr; row-gap:6px;}
+  .bkarte,.bkeika{grid-column:2; justify-self:start;}
+}
 @media(max-width:640px){
   .dash{grid-template-columns:1fr;}
   .notes{grid-template-columns:1fr;}

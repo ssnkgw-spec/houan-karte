@@ -249,8 +249,18 @@ export const DashboardData = z.object({
     note: Text,
   }),
   cabinetBills: z.object({
-    submitted: z.number().int(),
-    passed: z.number().int(),
+    submitted: z.number().int(), // 閣法 提出
+    passed: z.number().int(), // 閣法 成立
+    member: z.object({
+      // 議員立法（衆法＋参法）。参法は衆院DBのため衆院到達分のみ＝過小の可能性
+      submitted: z.number().int(),
+      passed: z.number().int(),
+    }),
+    lawTotal: z.object({
+      // 法律案 合計（閣法＋衆法＋参法）。予算・条約・決算等は含まない
+      submitted: z.number().int(),
+      passed: z.number().int(),
+    }),
     asOf: z.string(),
     sourceUrl: z.url(),
     sourceName: Text,
@@ -281,3 +291,26 @@ export const BillStatusAuto = z.record(
   })
 );
 export type BillStatusAuto = z.infer<typeof BillStatusAuto>;
+
+/* ---------- 今国会の法律案 全件リスト（scripts/fetch-dashboard.ts が更新） ---------- */
+/** /bills/ の内訳。すべて議案DB由来の機械的事実（L1）。法案名は著作権対象外 */
+const LedgerBill = z.object({
+  no: z.number().int(), // 議案番号
+  title: Text, // 議案件名（正式名・著作権対象外）
+  status: Text, // 審議状況（例: "成立"）
+  kind: z.string().optional(), // 議案種類（議員立法ledgerで "衆法"/"参法" を区別）
+  keikaUrl: z.url().optional(), // 衆議院 経過情報
+  promulgated: z.string().optional(), // 公布日（成立済みのみ・例: "令和 8年 6月 3日"）
+  karteId: z.string().optional(), // カルテがある場合の bill.id（gianTitle 一致で自動付与）
+});
+const BillsLedger = z.object({
+  counts: z.record(z.string(), z.number().int()), // 審議状況ごとの件数
+  bills: z.array(LedgerBill),
+});
+export const CabinetBillsList = z.object({
+  asOf: z.string(),
+  session: z.number().int(),
+  cabinet: BillsLedger, // 閣法（内閣提出法案）
+  member: BillsLedger, // 議員立法（衆法＋参法）。参法は衆院到達分のみ
+});
+export type CabinetBillsList = z.infer<typeof CabinetBillsList>;
