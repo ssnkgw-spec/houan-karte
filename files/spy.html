@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>法案カルテ｜スパイ防止法案・インテリジェンス態勢整備推進法案（第221回国会）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBFAF6; --panel:#FFFFFF; --ink:#191A1C; --muted:#5C5E64;
+    --line:#E4E0D6; --line-soft:#EFECE4;
+    --indigo:#28406E; --indigo-soft:#EAEEF6; --indigo-line:#C3CFE4;
+    --ochre:#8F6310; --ochre-soft:#F7EFDC; --ochre-line:#E4D2A8;
+    --slate:#525C68; --slate-soft:#EEF0F2; --slate-line:#D7DBE0;
+    --maxw:880px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Noto Sans JP",system-ui,sans-serif;
+    font-size:16px; line-height:1.85; -webkit-font-smoothing:antialiased;
+    font-feature-settings:"palt" 1;
+  }
+  .serif{font-family:"Noto Serif JP",serif;}
+  .mono{font-family:"Roboto Mono",monospace;}
+  a{color:var(--indigo); text-underline-offset:2px;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 22px;}
+
+  /* ---- prototype bar ---- */
+  .protobar{
+    background:var(--ink); color:#EDEBE4; font-size:12.5px; line-height:1.6;
+    padding:9px 0; letter-spacing:.02em;
+  }
+  .protobar .wrap{display:flex; gap:10px; align-items:baseline; flex-wrap:wrap;}
+  .protobar .tag{
+    font-family:"Roboto Mono",monospace; font-size:11px; font-weight:500;
+    background:#EDEBE4; color:var(--ink); padding:1px 7px; border-radius:2px;
+    white-space:nowrap;
+  }
+  .protobar span{color:#B9B6AC;}
+
+  /* ---- masthead ---- */
+  header.mast{padding:46px 0 8px;}
+  .eyebrow{
+    font-family:"Roboto Mono",monospace; font-size:12px; letter-spacing:.16em;
+    color:var(--indigo); text-transform:uppercase; margin:0 0 14px;
+  }
+  h1.title{
+    font-family:"Noto Serif JP",serif; font-weight:700;
+    font-size:clamp(26px,5.4vw,40px); line-height:1.3; letter-spacing:.01em;
+    margin:0 0 6px;
+  }
+  .subtitle{font-size:14.5px; color:var(--muted); margin:0 0 26px;}
+
+  /* ---- registry card (signature) ---- */
+  .card{
+    background:var(--panel); border:1px solid var(--line);
+    border-top:3px solid var(--indigo); border-radius:3px;
+    padding:22px 24px; margin:0 0 14px;
+    box-shadow:0 1px 0 rgba(25,26,28,.02);
+  }
+  .reg{
+    display:grid; grid-template-columns:repeat(2,1fr); gap:0;
+    border-top:1px solid var(--line-soft);
+  }
+  .reg div{
+    padding:12px 4px; border-bottom:1px solid var(--line-soft);
+  }
+  .reg div:nth-child(odd){padding-right:18px;}
+  .reg dt, .reg .k{
+    display:block; font-family:"Roboto Mono",monospace; font-size:11px;
+    letter-spacing:.08em; color:var(--muted); margin-bottom:3px;
+  }
+  .reg .v{font-size:15px; font-weight:500;}
+  .status{
+    display:inline-block; font-size:12.5px; font-weight:700; color:var(--indigo);
+    background:var(--indigo-soft); border:1px solid var(--indigo-line);
+    padding:2px 9px; border-radius:2px;
+  }
+  .srcrow{
+    display:flex; flex-wrap:wrap; gap:8px; margin-top:4px;
+  }
+  .srcrow a{
+    font-size:12.5px; text-decoration:none; color:var(--indigo);
+    border:1px solid var(--indigo-line); background:var(--indigo-soft);
+    padding:4px 10px; border-radius:2px; font-weight:500;
+  }
+  .srcrow a:hover{background:#dde6f4;}
+  .srcrow a::before{content:"\2197  "; font-family:"Roboto Mono",monospace; font-size:11px;}
+
+  /* ---- neutrality note ---- */
+  .neutral{
+    font-size:13px; line-height:1.75; color:var(--muted);
+    border-left:2px solid var(--ochre); background:var(--ochre-soft);
+    padding:13px 16px; border-radius:0 3px 3px 0; margin:18px 0 4px;
+  }
+  .neutral b{color:var(--ochre); font-weight:700;}
+
+  /* ---- section nav ---- */
+  nav.toc{
+    position:sticky; top:0; z-index:20; background:rgba(251,250,246,.93);
+    backdrop-filter:blur(6px); border-bottom:1px solid var(--line);
+    margin-top:30px;
+  }
+  nav.toc .wrap{display:flex; gap:4px; overflow-x:auto; padding:9px 22px;}
+  nav.toc a{
+    flex:0 0 auto; font-size:13px; text-decoration:none; color:var(--muted);
+    padding:6px 11px; border-radius:3px; white-space:nowrap; font-weight:500;
+  }
+  nav.toc a .n{font-family:"Roboto Mono",monospace; color:var(--indigo); margin-right:5px;}
+  nav.toc a:hover{background:var(--indigo-soft); color:var(--ink);}
+
+  /* ---- sections ---- */
+  section{padding:38px 0 4px; scroll-margin-top:54px;}
+  .shead{display:flex; align-items:baseline; gap:12px; margin-bottom:6px;}
+  .shead .num{
+    font-family:"Roboto Mono",monospace; font-size:14px; font-weight:500;
+    color:#fff; background:var(--indigo); width:30px; height:30px; flex:0 0 30px;
+    display:flex; align-items:center; justify-content:center; border-radius:3px;
+    transform:translateY(3px);
+  }
+  h2{font-family:"Noto Serif JP",serif; font-weight:600; font-size:22px; margin:0; line-height:1.4;}
+  .lead{color:var(--muted); font-size:14.5px; margin:2px 0 18px;}
+  p{margin:0 0 14px;}
+  .ref{
+    font-family:"Roboto Mono",monospace; font-size:10.5px; vertical-align:super;
+    color:var(--indigo); text-decoration:none; font-weight:500; padding:0 1px;
+  }
+  .ref:hover{text-decoration:underline;}
+
+  /* ---- timeline (①) ---- */
+  .tl{list-style:none; margin:6px 0 8px; padding:0; border-left:2px solid var(--line);}
+  .tl li{position:relative; padding:0 0 20px 22px;}
+  .tl li::before{
+    content:""; position:absolute; left:-7px; top:6px; width:11px; height:11px;
+    background:var(--paper); border:2px solid var(--indigo); border-radius:50%;
+  }
+  .tl li.open::before{border-color:var(--ochre); background:var(--ochre-soft);}
+  .tl .yr{font-family:"Roboto Mono",monospace; font-size:12.5px; color:var(--indigo); font-weight:500;}
+  .tl li.open .yr{color:var(--ochre);}
+  .tl .ev{display:block; font-size:14.5px; margin-top:1px;}
+
+  /* ---- issue blocks (②) ---- */
+  .issue{
+    border:1px solid var(--line); border-radius:3px; padding:15px 17px; margin:0 0 12px;
+    background:var(--panel);
+  }
+  .issue .lab{
+    font-size:12px; font-family:"Roboto Mono",monospace; letter-spacing:.06em;
+    color:var(--muted); margin-bottom:4px;
+  }
+  .issue h3{font-size:15.5px; margin:0 0 6px; font-weight:700;}
+  .issue p{font-size:14px; margin:0; color:#33353a;}
+
+  /* ---- ledger (③) signature ---- */
+  .ledger{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:6px 0 8px;}
+  .col{border-radius:3px; padding:16px 16px 6px; border:1px solid;}
+  .col.change{background:var(--indigo-soft); border-color:var(--indigo-line);}
+  .col.keep{background:var(--slate-soft); border-color:var(--slate-line);}
+  .col h3{
+    font-size:14px; margin:0 0 10px; display:flex; align-items:center; gap:7px;
+    font-family:"Roboto Mono",monospace; letter-spacing:.04em;
+  }
+  .col.change h3{color:var(--indigo);}
+  .col.keep h3{color:var(--slate);}
+  .col h3 .dot{width:9px; height:9px; border-radius:2px; display:inline-block;}
+  .col.change .dot{background:var(--indigo);}
+  .col.keep .dot{background:var(--slate);}
+  .col ul{margin:0; padding:0; list-style:none;}
+  .col li{font-size:13.5px; line-height:1.7; padding:0 0 11px 16px; position:relative;}
+  .col li::before{content:""; position:absolute; left:0; top:9px; width:6px; height:6px; border-radius:50%;}
+  .col.change li::before{background:var(--indigo);}
+  .col.keep li::before{background:var(--slate); }
+  .col li b{font-weight:700;}
+  .col li span{display:block; color:var(--muted); font-size:12.5px; margin-top:1px;}
+
+  /* ---- glossary ---- */
+  .gloss{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:6px 0 22px;}
+  .gloss .g{border:1px solid var(--line); border-radius:3px; padding:12px 14px; background:#FCFBF8;}
+  .gloss .gt{font-weight:700; font-size:13.5px; margin-bottom:3px;}
+  .gloss .gd{font-size:12.5px; color:var(--muted); line-height:1.65;}
+
+  /* ---- old/new comparison + impact (signature, detailed) ---- */
+  .item{border:1px solid var(--line); border-radius:3px; margin:0 0 16px; background:var(--panel); overflow:hidden;}
+  .item .ihead{padding:13px 16px 12px;}
+  .item .itag{font-family:"Roboto Mono",monospace; font-size:11px; letter-spacing:.06em; color:var(--indigo); display:inline-block; margin-bottom:5px;}
+  .item h3{font-size:16px; margin:0; font-weight:700; line-height:1.4;}
+  .scene{font-size:13px; color:#43454b; background:var(--ochre-soft); padding:10px 16px; border-top:1px solid var(--line-soft); border-bottom:1px solid var(--line-soft);}
+  .scene b{color:var(--ochre);}
+  .oldnew{display:grid; grid-template-columns:1fr 32px 1fr;}
+  .on{padding:13px 16px;}
+  .on-old{background:var(--slate-soft);}
+  .on-new{background:var(--indigo-soft);}
+  .on .lab{font-family:"Roboto Mono",monospace; font-size:10.5px; letter-spacing:.05em; margin-bottom:5px; font-weight:500;}
+  .on-old .lab{color:var(--slate);}
+  .on-new .lab{color:var(--indigo);}
+  .on p{font-size:13px; margin:0; line-height:1.7; color:#2c2e33;}
+  .arrow{display:flex; align-items:center; justify-content:center; color:var(--indigo); font-size:17px;
+    background:linear-gradient(90deg,var(--slate-soft),var(--indigo-soft));}
+  .impact{display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--line-soft);}
+  .impact .ic{padding:11px 16px; border-right:1px solid var(--line-soft);}
+  .impact .ic:last-child{border-right:none;}
+  .impact .il{font-family:"Roboto Mono",monospace; font-size:10px; letter-spacing:.04em; color:var(--muted); margin-bottom:3px;}
+  .impact .iv{font-size:12.5px; line-height:1.6;}
+
+  /* ---- positions (④) ---- */
+  .pos{border:1px solid var(--line); border-radius:3px; margin:0 0 11px; overflow:hidden; background:var(--panel);}
+  .pos .top{display:flex; align-items:center; gap:10px; padding:11px 15px; border-bottom:1px solid var(--line-soft);}
+  .pos .who{font-weight:700; font-size:14.5px;}
+  .pos .stance{
+    margin-left:auto; font-size:11.5px; font-family:"Roboto Mono",monospace; font-weight:500;
+    padding:2px 8px; border-radius:2px; white-space:nowrap;
+  }
+  .pos.for .stance{color:var(--indigo); background:var(--indigo-soft); border:1px solid var(--indigo-line);}
+  .pos.add .stance{color:var(--ochre); background:var(--ochre-soft); border:1px solid var(--ochre-line);}
+  .pos .body{padding:11px 15px; font-size:13.5px; color:#33353a;}
+  .pos .body p{margin:0;}
+
+  /* ---- sources ---- */
+  section.sources{border-top:1px solid var(--line); margin-top:34px;}
+  ol.srclist{font-size:13px; color:var(--muted); padding-left:22px; line-height:1.7;}
+  ol.srclist li{margin-bottom:9px;}
+  ol.srclist a{word-break:break-all;}
+  footer{padding:30px 0 60px; font-size:12px; color:var(--muted); line-height:1.7;}
+  footer .mono{font-size:11px;}
+
+  /* ---- session clock + stepper (A) ---- */
+  .clock{border:1px solid var(--line); border-radius:3px; background:var(--panel); padding:16px 18px 14px; margin:8px 0 18px;}
+  .bar{position:relative; height:8px; background:var(--line-soft); border-radius:5px; margin:10px 0 0;}
+  .bar .fill{position:absolute; left:0; top:0; bottom:0; background:var(--indigo); border-radius:5px; opacity:.85;}
+  .bar .now{position:absolute; top:50%; width:15px; height:15px; background:#fff; border:3px solid var(--indigo); border-radius:50%; transform:translate(-50%,-50%);}
+  .bar .now-lab{position:absolute; top:15px; transform:translateX(-50%); font-family:"Roboto Mono",monospace; font-size:11px; color:var(--indigo); font-weight:700; white-space:nowrap;}
+  .clock .rem{font-size:13px; color:var(--muted);}
+  .clock .rem b{color:var(--indigo); font-size:15px;}
+
+  .steps{position:relative; display:flex; margin:6px 0 4px;}
+  .steps::before{content:""; position:absolute; top:13px; left:10%; right:10%; height:2px; background:var(--slate-line); z-index:0;}
+  .steps .st{flex:1; position:relative; z-index:1; text-align:center; padding:0 4px;}
+  .steps .st .dot{width:26px; height:26px; border-radius:50%; margin:0 auto 7px; display:flex; align-items:center; justify-content:center; font-family:"Roboto Mono",monospace; font-size:12px; font-weight:700; background:#fff; color:var(--slate); border:1.5px solid var(--slate-line);}
+  .steps .st .t{font-size:11px; line-height:1.4; color:var(--muted);}
+  .steps .st.cur .dot{background:var(--indigo); color:#fff; border-color:var(--indigo);}
+  .steps .st.cur .t{color:var(--ink); font-weight:700;}
+
+  .callout{font-size:13px; border-left:3px solid var(--indigo); background:var(--indigo-soft); padding:11px 14px; border-radius:0 3px 3px 0; margin:6px 0 16px; line-height:1.75;}
+  .callout b{color:var(--indigo);}
+  .note-box{border:1px solid var(--ochre-line); background:var(--ochre-soft); border-radius:3px; padding:14px 16px; margin:16px 0 4px;}
+  .note-box h4{margin:0 0 7px; font-size:14px; color:var(--ochre); font-weight:700;}
+  .note-box p{margin:0 0 8px; font-size:13.5px; line-height:1.75;}
+  .note-box p:last-child{margin:0;}
+
+  /* ---- deliberation log (B) ---- */
+  .log{list-style:none; margin:8px 0 4px; padding:0; border-left:2px solid var(--line);}
+  .log li{position:relative; padding:0 0 18px 22px;}
+  .log li::before{content:""; position:absolute; left:-7px; top:5px; width:11px; height:11px; border-radius:50%; background:var(--indigo); border:2px solid var(--indigo);}
+  .log li.future::before{background:#fff; border-color:var(--slate-line);}
+  .log .d{font-family:"Roboto Mono",monospace; font-size:12px; color:var(--indigo); font-weight:500;}
+  .log li.future .d{color:var(--slate);}
+  .log .ev{display:block; font-size:14px; margin-top:2px; line-height:1.7;}
+  .log .badge{font-family:"Roboto Mono",monospace; font-size:10px; padding:1px 6px; border-radius:2px; margin-left:7px;}
+  .log .b-done{background:var(--indigo-soft); color:var(--indigo); border:1px solid var(--indigo-line);}
+  .log .b-next{background:var(--ochre-soft); color:var(--ochre); border:1px solid var(--ochre-line);}
+  .log .b-plan{background:var(--slate-soft); color:var(--slate); border:1px solid var(--slate-line);}
+
+  /* ---- scope map (E) ---- */
+  .scope{border:1px solid var(--line); border-radius:3px; overflow:hidden; margin:10px 0 6px;}
+  .scope .row{display:grid; grid-template-columns:1fr 104px 1.25fr; border-top:1px solid var(--line-soft); background:var(--panel);}
+  .scope .row:first-child{border-top:none;}
+  .scope .row.isin{background:var(--indigo-soft);}
+  .scope .c{padding:12px 14px;}
+  .scope .lab2{font-family:"Roboto Mono",monospace; font-size:9.5px; letter-spacing:.04em; color:var(--muted); display:block; margin-bottom:3px;}
+  .scope .topic{font-weight:700; font-size:13.5px; line-height:1.5;}
+  .scope .mid{display:flex; align-items:center; justify-content:center; padding:12px 6px; border-left:1px solid var(--line-soft); border-right:1px solid var(--line-soft);}
+  .scope .badge2{font-family:"Roboto Mono",monospace; font-size:11px; font-weight:700; padding:3px 6px; border-radius:2px; white-space:normal; text-align:center; line-height:1.3; max-width:100%;}
+  .scope .b-in{color:var(--indigo); background:#fff; border:1px solid var(--indigo);}
+  .scope .b-out{color:var(--slate); background:#fff; border:1px solid var(--slate-line);}
+  .scope .where{font-size:12.5px; color:#33353a; line-height:1.65;}
+
+  @media(max-width:620px){
+    .reg{grid-template-columns:1fr;}
+    .reg div:nth-child(odd){padding-right:4px;}
+    .ledger{grid-template-columns:1fr;}
+    .gloss{grid-template-columns:1fr;}
+    .oldnew{grid-template-columns:1fr;}
+    .arrow{justify-self:center; width:34px; height:28px; min-height:0; margin:7px 0; padding:0;
+      border-radius:4px; border:1px solid var(--indigo-line); background:var(--indigo-soft); transform:rotate(90deg);}
+    .impact{grid-template-columns:1fr;}
+    .impact .ic{border-right:none; border-bottom:1px solid var(--line-soft);}
+    .impact .ic:last-child{border-bottom:none;}
+    .steps{flex-direction:column; gap:12px;}
+    .steps::before{display:none;}
+    .steps .st{display:flex; align-items:center; gap:11px; text-align:left; padding:0;}
+    .steps .st .dot{margin:0; flex:0 0 26px;}
+    .steps .st .t br{display:none;}
+    .bar .now-lab{font-size:10px;}
+    .scope .row{grid-template-columns:1fr;}
+    .scope .mid{justify-content:flex-start; border:none; padding-top:0; padding-bottom:0;}
+    .scope .c{padding:10px 14px;}
+  }
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+</style>
+</head>
+<body>
+
+<div class="protobar">
+  <div class="wrap">
+    <span class="tag">試作 / PROTOTYPE</span>
+    <span>同じテンプレートで作った4本目のサンプルです。記載は2026年6月10日時点の要約。市民的自由に関わる論点が多いテーマです。</span>
+  </div>
+</div>
+
+<header class="mast">
+  <div class="wrap">
+    <p class="eyebrow">法案カルテ ／ Bill Dossier</p>
+    <h1 class="title serif">インテリジェンス態勢整備推進法案</h1>
+    <p class="subtitle">通称「スパイ防止法案」——ただし“スパイ防止法”は複数の案をまとめて指す呼び名で、このページは国民民主党が提出した特定の案を扱います</p>
+
+    <div class="card">
+      <div class="reg">
+        <div><span class="k">正式名称</span><span class="v">インテリジェンスに係る態勢の整備の推進に関する法律案</span></div>
+        <div><span class="k">種別</span><span class="v">議員立法（衆法）</span></div>
+        <div><span class="k">提出</span><span class="v">国民民主党（2026年3月10日 再提出）<a href="#s4" class="ref">[2]</a></span></div>
+        <div><span class="k">国会回次</span><span class="v">第221回国会（特別会）</span></div>
+        <div><span class="k">関連</span><span class="v">参政党も別案を提出／自民・維新は連立合意で別途検討<a href="#s4" class="ref">[4]</a></span></div>
+        <div><span class="k">審議状況</span><span class="status">提出済み（審議入りは未確定）</span></div>
+      </div>
+      <p style="font-size:12px;color:var(--muted);margin:14px 0 8px;font-family:'Roboto Mono',monospace;letter-spacing:.06em;">一次資料へのリンク</p>
+      <div class="srcrow">
+        <a href="https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/menu.htm" target="_blank" rel="noopener">衆議院 議案情報</a>
+        <a href="https://new-kokumin.jp/news/diet/20260310_2" target="_blank" rel="noopener">国民民主党（提出・要旨）</a>
+        <a href="https://www.cas.go.jp/jp/tokuteihimitsu/point.pdf" target="_blank" rel="noopener">特定秘密保護法（現行）</a>
+        <a href="https://kokkai.ndl.go.jp/" target="_blank" rel="noopener">国会会議録</a>
+      </div>
+    </div>
+
+    <div class="neutral">
+      <b>このページの方針</b>　「スパイ防止法」は、罰則で取り締まる型から届出・体制整備型まで、複数の異なる案をまとめて指す通称です。混同を避けるため、このページは<b>国民民主党が提出した案の中身</b>を事実として記し、賛否や懸念は「誰がそう述べたか」を明示して並べます。市民的自由に関わるため、推進・慎重の双方の論拠を等しく扱います。
+    </div>
+  </div>
+</header>
+
+<nav class="toc">
+  <div class="wrap">
+    <a href="#s1"><span class="n">①</span>前提となる現行法</a>
+    <a href="#s2"><span class="n">②</span>何が課題か</a>
+    <a href="#s3"><span class="n">③</span>この案でこう変わる</a>
+    <a href="#s4"><span class="n">④</span>対案・主な論点</a>
+    <a href="#s5"><span class="n">⑤</span>会期と採決</a>
+    <a href="#s6"><span class="n">⑥</span>これまでの経緯</a>
+    <a href="#s7"><span class="n">⑦</span>設計の選択</a>
+    <a href="#s8"><span class="n">⑧</span>よくある声と射程</a>
+    <a href="#sanka"><span class="n">◇</span>参加（任意）</a>
+    <a href="#src"><span class="n">◇</span>出典</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <!-- ① -->
+  <section id="s1">
+    <div class="shead"><span class="num">①</span><h2 class="serif">前提となる現行の法体系</h2></div>
+    <p class="lead">この論点の出発点は「日本には包括的なスパイ防止法が無い」という事実です。まず、いま何が・どこまでカバーされているかを押さえます。</p>
+    <p>現在は、スパイ行為そのものを包括的に処罰する専用法はなく、複数の個別法が部分的に対応しています——<b>特定秘密保護法</b>（指定された安保上の秘密の漏えいに罰則）<a href="#src" class="ref">[3]</a>、自衛隊法（防衛秘密）、不正競争防止法（営業秘密の不正取得）、外為法、国家公務員法（守秘義務）、刑法の外患罪など。<a href="#src" class="ref">[5]</a></p>
+    <p>推進する立場は、これを「情報を盗みに来る行為そのものを罰せない穴」だと位置づけます。慎重な立場は、戦前の治安維持法による言論統制への反省と、憲法21条（表現の自由）を背景に、新法に警戒します。<b>「なぜ作られてこなかったか」自体が、この論点の核</b>です。</p>
+    <ul class="tl">
+      <li><span class="yr">1985年</span><span class="ev">自民党が「国家秘密法案（いわゆるスパイ防止法案）」を国会に提出するも、強い反対で廃案。</span></li>
+      <li><span class="yr">2013年</span><span class="ev">特定秘密保護法を制定。安保上の秘密の「漏えい」に罰則を設けるが、スパイ行為一般を取り締まるものではない。<a href="#src" class="ref">[3]</a></span></li>
+      <li><span class="yr">2024年</span><span class="ev">重要経済安保情報保護法（セキュリティ・クリアランス）を制定。経済安全保障上の情報を対象に。</span></li>
+      <li><span class="yr">2025年</span><span class="ev">国民民主党・参政党がそれぞれ議員立法を提出（解散で廃案）。自民・維新は連立合意に外国代理人登録法の制定を明記。<a href="#src" class="ref">[4]</a></span></li>
+      <li class="open"><span class="yr">2026年3月</span><span class="ev">国民民主党が「インテリジェンス態勢整備推進法案」を再提出。<a href="#src" class="ref">[2]</a></span></li>
+    </ul>
+  </section>
+
+  <!-- ② -->
+  <section id="s2">
+    <div class="shead"><span class="num">②</span><h2 class="serif">何が課題とされているか</h2></div>
+    <p class="lead">「課題」の立て方が、推進と慎重で正反対です。両方を並べます。</p>
+    <div class="issue">
+      <div class="lab">課題 A ／ 推進する立場</div>
+      <h3>盗みに来る行為を罰せず、体制も整っていない</h3>
+      <p>漏らした側は罰せても、外国のために情報を盗みに来る行為そのものを包括的に罰する法や、情報を収集・分析する体制が弱い、という指摘。同盟国との情報共有や抑止の面で不利だとされ、「諜報のブラックホール」と表現されることもあります。<a href="#src" class="ref">[2]</a></p>
+    </div>
+    <div class="issue">
+      <div class="lab">課題 B ／ 慎重な立場</div>
+      <h3>市民的自由・報道の自由が萎縮しかねない</h3>
+      <p>「外国と接点のある活動」の定義が曖昧だと、NGO・研究者・報道を萎縮させる、令状なしの情報収集や監視が強まる、外国代理人登録制度が濫用される——といった懸念。戦前の防諜・治安維持法の歴史を踏まえた警戒です。<a href="#src" class="ref">[4]</a></p>
+    </div>
+  </section>
+
+  <!-- ③ -->
+  <section id="s3">
+    <div class="shead"><span class="num">③</span><h2 class="serif">この案で「こう変わる」</h2></div>
+    <p class="lead">通称から想像される「罰則で市民を取り締まる法律」とは性格が異なります。国民民主案は<b>届出制度と体制整備</b>が中心です。現行と並べます（正確な条文は<a href="https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/menu.htm" target="_blank" rel="noopener">衆院 議案情報</a>で確認できます）。</p>
+
+    <div class="item">
+      <div class="ihead"><span class="itag">この案の柱</span><h3>届出制度の新設と、情報体制の整備</h3></div>
+      <div class="scene"><b>基本理念</b>　法案は理念に「憲法が保障する国民の自由と権利の尊重」「政治的中立・民主的統制」「透明性の確保」を掲げています。<a href="#src" class="ref">[2]</a></div>
+      <div class="oldnew">
+        <div class="on on-old"><div class="lab">今（現行）</div><p>スパイ行為を包括的に扱う専用法はなく、個別法が部分対応。外国の利益を図る活動を把握・公開するしくみや、情報を専門に担う独立した体制は整っていない。</p></div>
+        <div class="arrow">→</div>
+        <div class="on on-new"><div class="lab">この案では</div><p>外国の利益を図る目的の活動について<b>国への届出制度</b>を創設し、国民に周知。インテリジェンスを担う機関と、それを管理する<b>独立行政委員会</b>を設けるなど行政組織を整備し、情報収集手法を拡充する。<a href="#src" class="ref">[2]</a></p></div>
+      </div>
+      <div class="impact">
+        <div class="ic"><div class="il">対象</div><div class="iv">外国の利益を図る目的で活動する者（届出）。線引きが論点。</div></div>
+        <div class="ic"><div class="il">性格</div><div class="iv">届出・透明性＋体制整備が中心。市民を摘発する罰則型ではない。</div></div>
+        <div class="ic"><div class="il">統制</div><div class="iv">独立行政委員会による管理、民主的統制を理念に明記。</div></div>
+      </div>
+    </div>
+
+    <div class="ledger">
+      <div class="col change">
+        <h3><span class="dot"></span>この案で変える（新設）</h3>
+        <ul>
+          <li><b>外国の利益を図る活動の届出制度</b></li>
+          <li><b>インテリジェンス機関＋独立行政委員会</b>の設置</li>
+          <li><b>情報収集手法の拡充</b>、人材確保・処遇</li>
+          <li>理念に<b>自由と権利の尊重・透明性・民主的統制</b>を明記</li>
+        </ul>
+      </div>
+      <div class="col keep">
+        <h3><span class="dot"></span>この案ではしない（と読める）こと</h3>
+        <ul>
+          <li>市民を広く摘発する<b>包括的なスパイ処罰罪</b>の新設</li>
+          <li>特定秘密保護法など<b>既存法の置き換え</b></li>
+          <li><b>憲法改正</b>（これは法律案）</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:12.5px;color:var(--muted);">※ 「スパイ防止法」には、より罰則を重視する案や、自民・維新が連立合意に掲げる外国代理人登録法の構想など、別の提案もあります。性格が異なるため、混同しないよう注意が必要です。<a href="#src" class="ref">[4]</a></p>
+  </section>
+
+  <!-- ④ -->
+  <section id="s4">
+    <div class="shead"><span class="num">④</span><h2 class="serif">対案・主な論点</h2></div>
+    <p class="lead">対立軸は<b>安全保障の強化と、市民的自由の保護をどう両立させるか</b>です。各立場を発信元のまま並べます。</p>
+
+    <div class="pos for">
+      <div class="top"><span class="who">推進する側（国民民主・参政、与党も別途）</span><span class="stance">体制を整えるべき</span></div>
+      <div class="body"><p>包括法が無く体制も弱いため、外国の影響力工作に対応する届出・組織整備が必要だとする。国民民主は「バランスのとれた体系立った態勢強化」を掲げ、罰則一辺倒ではない設計を強調する。<a href="#src" class="ref">[2]</a></p></div>
+    </div>
+
+    <div class="pos add">
+      <div class="top"><span class="who">慎重・反対の側（弁護士会、共産 ほか）</span><span class="stance">自由への配慮を</span></div>
+      <div class="body"><p>対象の定義が曖昧だと市民活動・研究・報道を萎縮させる、令状なし監視や外国代理人登録の濫用につながりうる、と懸念。作るなら定義の限定・司法令状・第三者監視・公益通報や報道の保護を同時に制度化すべきだとする。共産党はスパイ防止法に反対している。<a href="#src" class="ref">[4]</a></p></div>
+    </div>
+
+    <p style="font-size:12.5px;color:var(--muted);margin-top:6px;">※ 同じ「スパイ防止法」でも案ごとに中身が大きく異なります。最新の提出・審議は衆院 議案情報・会議録で確認できます。<a href="#src" class="ref">[1][6]</a></p>
+  </section>
+
+  <!-- ⑤ -->
+  <section id="s5">
+    <div class="shead"><span class="num">⑤</span><h2 class="serif">会期と採決までの道のり</h2></div>
+    <p class="lead">この案は提出済みですが、議員立法は政府提出案より審議の機会が限られがちで、会期内に採決される保証はありません。</p>
+
+    <div class="clock">
+      <div style="display:flex;justify-content:space-between;font-family:'Roboto Mono',monospace;font-size:11.5px;color:var(--muted);">
+        <span><b style="color:var(--ink)">開会</b> 2026/2/18</span>
+        <span><b style="color:var(--ink)">会期末</b> 2026/7/17</span>
+      </div>
+      <div class="bar">
+        <div class="fill" style="width:75%"></div>
+        <div class="now" style="left:75%"></div>
+        <div class="now-lab" style="left:75%">今 6/10</div>
+      </div>
+      <p class="rem" style="margin-top:28px;">第221回国会（特別会）。会期末まで <b>残り約37日</b>。<a href="#src" class="ref">[7]</a></p>
+    </div>
+
+    <p class="lead" style="margin-bottom:12px;">成立までに残る段階（現在地＝提出済み・委員会での審議入りは未確定）</p>
+    <div class="steps">
+      <div class="st cur"><div class="dot">1</div><div class="t">提出<br>委員会付託</div></div>
+      <div class="st"><div class="dot">2</div><div class="t">委員会<br>質疑・採決</div></div>
+      <div class="st"><div class="dot">3</div><div class="t">衆院<br>本会議</div></div>
+      <div class="st"><div class="dot">4</div><div class="t">参院<br>委員会・本会議</div></div>
+      <div class="st"><div class="dot">5</div><div class="t">成立</div></div>
+    </div>
+
+    <div class="note-box">
+      <h4>この案の置かれた状況</h4>
+      <p>議員立法は、政府提出法案が優先されがちな中で、審議に至らず継続審議や廃案になることが少なくありません。この案も前回（2025年）は衆院解散で廃案になり、今回再提出された経緯があります。<a href="#src" class="ref">[2]</a></p>
+      <p>一方で、与党が連立合意に関連の法整備を掲げているため、政府・与党側からどんな案が出てくるかも、今後の焦点になります。<a href="#src" class="ref">[4]</a></p>
+    </div>
+  </section>
+
+  <!-- ⑥ -->
+  <section id="s6">
+    <div class="shead"><span class="num">⑥</span><h2 class="serif">これまでの経緯</h2></div>
+    <p class="lead">いつ何があったかの記録です。</p>
+    <ul class="log">
+      <li><span class="d">1985年</span><span class="badge b-done">史実</span><span class="ev">自民党が「国家秘密法案（スパイ防止法案）」を提出するも、反対により廃案。</span></li>
+      <li><span class="d">2025/11</span><span class="badge b-done">済</span><span class="ev">国民民主党・参政党がそれぞれ独自の法案を衆院に提出。<a href="#src" class="ref">[4]</a></span></li>
+      <li><span class="d">2025/12〜</span><span class="badge b-done">済</span><span class="ev">衆院解散に伴い、提出された各案は廃案に。</span></li>
+      <li><span class="d">2026/3/10</span><span class="badge b-done">済</span><span class="ev">国民民主党が「インテリジェンス態勢整備推進法案」を再提出。<a href="#src" class="ref">[2]</a></span></li>
+      <li class="future"><span class="d">以降</span><span class="badge b-plan">これから</span><span class="ev">委員会付託・審議の有無が焦点。動きは<a href="https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/menu.htm" target="_blank" rel="noopener">議案情報</a>・<a href="https://kokkai.ndl.go.jp/" target="_blank" rel="noopener">会議録</a>で確認できる。</span></li>
+    </ul>
+  </section>
+
+  <!-- ⑦ -->
+  <section id="s7">
+    <div class="shead"><span class="num">⑦</span><h2 class="serif">「どこまで・どう作るか」の設計の選択</h2></div>
+    <p class="lead">論点は「作るか作らないか」だけでなく、<b>罰則型か届出・体制型か</b>、そして<b>自由をどう守りながら作るか</b>にあります。</p>
+
+    <div class="issue">
+      <div class="lab">設計の分かれ目</div>
+      <h3>包括的な処罰法か、届出・体制整備か</h3>
+      <p>国民民主案は届出・体制整備を中心に置き、罰則で市民を広く取り締まる包括法とは距離を取っています。一方で、より強い処罰や外国代理人登録を求める案・構想もあり、どこまで踏み込むかが分かれています。<a href="#src" class="ref">[2][4]</a></p>
+    </div>
+
+    <div class="pos add">
+      <div class="top"><span class="who">慎重派が求める「同時に作るべきこと」</span><span class="stance">歯止めの設計</span></div>
+      <div class="body"><p>対象の定義の限定、司法令状の要件、独立した第三者・議会による監視、公益通報者や報道の保護——こうした歯止めを同時に制度化しなければ、安全保障の名目で自由が損なわれかねない、という指摘です。<a href="#src" class="ref">[4]</a></p></div>
+    </div>
+
+    <p style="font-size:12.5px;color:var(--muted);margin-top:8px;">このページは是非を判断しません。設計の選択肢と、各立場が重視する点を並べるにとどめます。</p>
+  </section>
+
+  <!-- ⑧ -->
+  <section id="s8">
+    <div class="shead"><span class="num">⑧</span><h2 class="serif">よく挙がる声と、この案の射程</h2></div>
+    <p class="lead">「スパイ防止法」という言葉に対して挙がる疑問・不安を、「<b>この国民民主案</b>の射程か／別の案や別制度の話か」に整理した表です。話題の選び方には編集が入りますし、所在を示すための地図で、声の当否は判定しません。</p>
+
+    <div class="scope">
+      <div class="row">
+        <div class="c"><span class="lab2">よく挙がる声</span><span class="topic">令状なしで市民が監視・摘発されるようになる？</span></div>
+        <div class="c mid"><span class="badge2 b-out">この案では中心でない</span></div>
+        <div class="c where"><span class="lab2">どこで扱われるか</span>国民民主案は届出・体制整備が中心で、市民を広く摘発する罰則型ではない。理念に「自由と権利の尊重」を明記。ただし定義次第で萎縮を懸念する指摘や、より強い罰則を求める別の案は存在する。<a href="#src" class="ref">[2][4]</a></div>
+      </div>
+      <div class="row isin">
+        <div class="c"><span class="lab2">よく挙がる声</span><span class="topic">外国とつながる活動の「届出」は、NGOや研究者も対象？</span></div>
+        <div class="c mid"><span class="badge2 b-in">この案の核・論点</span></div>
+        <div class="c where"><span class="lab2">どこで扱われるか</span>届出制度の対象（外国の利益を図る目的の活動）の線引きが、まさに法案の中心であり最大の論点。弁護士会は萎縮を懸念している。<a href="#src" class="ref">[4]</a></div>
+      </div>
+      <div class="row">
+        <div class="c"><span class="lab2">よく挙がる声</span><span class="topic">報道の自由は大丈夫？</span></div>
+        <div class="c mid"><span class="badge2 b-in">論点</span></div>
+        <div class="c where"><span class="lab2">どこで扱われるか</span>この案は取材・報道を直接規制するものを中心には置かないが、「スパイ防止法」一般では報道の萎縮が長く懸念されてきた。公益通報・報道の保護を同時に設けるべきだという主張がある。<a href="#src" class="ref">[4]</a></div>
+      </div>
+      <div class="row isin">
+        <div class="c"><span class="lab2">よく挙がる声</span><span class="topic">特定秘密保護法があるのに、なぜ必要？</span></div>
+        <div class="c mid"><span class="badge2 b-in">争点の核</span></div>
+        <div class="c where"><span class="lab2">どこで扱われるか</span>漏えいは罰せても「盗みに来る行為」の包括処罰や情報体制が無い、というのが推進論。不要・拙速だとする反論もある。両者がこの審議の中心。<a href="#src" class="ref">[3][2]</a></div>
+      </div>
+      <div class="row">
+        <div class="c"><span class="lab2">よく挙がる声</span><span class="topic">9条や憲法を変えるの？</span></div>
+        <div class="c mid"><span class="badge2 b-out">別物</span></div>
+        <div class="c where"><span class="lab2">どこで扱われるか</span>これは法律案で、憲法改正ではない。法案は現行憲法が保障する権利の尊重を理念に掲げている。<a href="#src" class="ref">[2]</a></div>
+      </div>
+      <div class="row">
+        <div class="c"><span class="lab2">よく挙がる声</span><span class="topic">中国・ロシアの工作に対応できるの？</span></div>
+        <div class="c mid"><span class="badge2 b-in">推進の目的・論点</span></div>
+        <div class="c where"><span class="lab2">どこで扱われるか</span>推進派の主目的。届出・体制整備で足りるのか、より強い権限が要るのかは論点で、効果は審議で問われる。<a href="#src" class="ref">[2][4]</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 参加 -->
+  <section id="sanka">
+    <div class="shead"><span class="num" style="background:var(--slate)">◇</span><h2 class="serif">意見を伝えたい場合の経路（任意）</h2></div>
+    <p class="lead">読んだうえで意見を伝えたい人のための参照です。賛成・反対・保留のいずれでも経路は同じで、<b>伝えないことも同じく正当な選択</b>です。呼びかけではありません。</p>
+    <div class="issue">
+      <div class="lab">この法案に固有の事情</div>
+      <p>これは<b>議員立法</b>のため、府省が行う意見公募（パブリックコメント）の対象ではありません。現実的な経路は、議員の紹介による請願、各党・各議員の公式窓口、（開かれた場合の）公聴会での意見陳述などに限られます。市民的自由に関わる重要案件では公聴会が開かれることもあります。動きは<a href="https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/menu.htm" target="_blank" rel="noopener">議案情報</a>で確認できます。</p>
+    </div>
+    <p style="font-size:13px;color:var(--muted);">請願・会派窓口・公聴会など、法案を問わず共通の仕組みは <a href="sanka.html">参加の経路</a> にまとめています。窓口は制度的なもので、効果が保証されるものではありません。</p>
+  </section>
+
+  <!-- sources -->
+  <section id="src" class="sources">
+    <div class="shead"><span class="num" style="background:var(--ochre)">◇</span><h2 class="serif">出典（一次情報）</h2></div>
+    <ol class="srclist">
+      <li>衆議院 議案情報（第221回国会 議案一覧・経過）— <a href="https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/menu.htm" target="_blank" rel="noopener">shugiin.go.jp</a></li>
+      <li>国民民主党「インテリジェンス態勢整備推進法案を再提出」（基本理念・基本的施策）— <a href="https://new-kokumin.jp/news/diet/20260310_2" target="_blank" rel="noopener">new-kokumin.jp</a></li>
+      <li>内閣官房「特定秘密の保護に関する法律のポイント」（現行法）— <a href="https://www.cas.go.jp/jp/tokuteihimitsu/point.pdf" target="_blank" rel="noopener">cas.go.jp</a></li>
+      <li>日本弁護士連合会「意見書」（2026/2/20・各案／外国代理人登録制度の論点。弁護士会の立場による発信）— <a href="https://www.nichibenren.or.jp/library/pdf/document/opinion/2026/260220.pdf" target="_blank" rel="noopener">nichibenren.or.jp</a></li>
+      <li>e-Gov 法令検索（不正競争防止法・外為法・自衛隊法など現行の関連法）— <a href="https://laws.e-gov.go.jp/" target="_blank" rel="noopener">laws.e-gov.go.jp</a></li>
+      <li>国会会議録検索システム（質疑の全文）— <a href="https://kokkai.ndl.go.jp/" target="_blank" rel="noopener">kokkai.ndl.go.jp</a></li>
+      <li>衆議院インターネット審議中継（会期・審議中継）— <a href="https://www.shugiintv.go.jp/jp/" target="_blank" rel="noopener">shugiintv.go.jp</a></li>
+    </ol>
+  </section>
+
+  <p style="max-width:880px;margin:0 auto;padding:18px 22px 0;font-size:13px;color:var(--muted);line-height:1.7;">市民的自由に関わるため、特に出典の原典に当たることをおすすめします。中立性の限界は <a href="genkai.html">「このサイトの限界」</a>、ほかの法案は <a href="index.html">トップ</a> を参照してください。</p>
+
+</main>
+
+<script>
+  var REF = {
+    1:"https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/menu.htm",
+    2:"https://new-kokumin.jp/news/diet/20260310_2",
+    3:"https://www.cas.go.jp/jp/tokuteihimitsu/point.pdf",
+    4:"https://www.nichibenren.or.jp/library/pdf/document/opinion/2026/260220.pdf",
+    5:"https://laws.e-gov.go.jp/",
+    6:"https://kokkai.ndl.go.jp/",
+    7:"https://www.shugiintv.go.jp/jp/"
+  };
+  document.querySelectorAll('a.ref').forEach(function(a){
+    var nums = a.textContent.match(/\d+/g) || [];
+    if(!nums.length) return;
+    var frag = document.createDocumentFragment();
+    nums.forEach(function(n){
+      var url = REF[n];
+      var el = document.createElement('a');
+      el.className='ref'; el.textContent='['+n+']';
+      if(url){ el.href=url; el.target='_blank'; el.rel='noopener'; el.title='出典を別タブで開く'; }
+      else { el.href='#src'; }
+      frag.appendChild(el);
+    });
+    a.replaceWith(frag);
+  });
+</script>
+
+</body>
+</html>

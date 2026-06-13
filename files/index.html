@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>法案カルテ｜重要法案を一次情報で中立に</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@600;700&family=Noto+Sans+JP:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBFAF6; --panel:#FFFFFF; --ink:#191A1C; --muted:#5C5E64;
+    --line:#E4E0D6; --line-soft:#EFECE4;
+    --indigo:#28406E; --indigo-soft:#EAEEF6; --indigo-line:#C3CFE4;
+    --ochre:#8F6310; --ochre-soft:#F7EFDC; --ochre-line:#E4D2A8;
+    --slate:#525C68; --slate-soft:#EEF0F2; --slate-line:#D7DBE0;
+    --maxw:940px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Noto Sans JP",system-ui,sans-serif; font-size:16px; line-height:1.8;
+    -webkit-font-smoothing:antialiased; font-feature-settings:"palt" 1;}
+  .serif{font-family:"Noto Serif JP",serif;}
+  .mono{font-family:"Roboto Mono",monospace;}
+  a{color:var(--indigo); text-underline-offset:2px;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 22px;}
+  .protobar{background:var(--ink); color:#EDEBE4; font-size:12.5px; padding:9px 0;}
+  .protobar .wrap{display:flex; gap:10px; align-items:baseline; flex-wrap:wrap;}
+  .protobar .tag{font-family:"Roboto Mono",monospace; font-size:11px; font-weight:500;
+    background:#EDEBE4; color:var(--ink); padding:1px 7px; border-radius:2px;}
+
+  header.hero{padding:50px 0 24px; border-bottom:1px solid var(--line);}
+  .eyebrow{font-family:"Roboto Mono",monospace; font-size:12px; letter-spacing:.18em;
+    color:var(--indigo); text-transform:uppercase; margin:0 0 14px;}
+  h1{font-family:"Noto Serif JP",serif; font-weight:700; font-size:clamp(28px,5.6vw,46px);
+    line-height:1.25; margin:0 0 14px; letter-spacing:.01em;}
+  .tagline{font-size:15.5px; color:#33353a; margin:0 0 20px; max-width:640px;}
+  .principles{display:flex; gap:8px; flex-wrap:wrap;}
+  .principles span{font-size:12.5px; font-weight:500; color:var(--indigo);
+    background:var(--indigo-soft); border:1px solid var(--indigo-line); padding:4px 11px; border-radius:20px;}
+
+  .seclabel{font-family:"Roboto Mono",monospace; font-size:12px; letter-spacing:.1em;
+    color:var(--muted); margin:40px 0 4px; text-transform:uppercase;}
+  h2{font-family:"Noto Serif JP",serif; font-weight:600; font-size:22px; margin:0 0 4px;}
+  .h2sub{font-size:13.5px; color:var(--muted); margin:0 0 16px;}
+
+  /* dashboard */
+  .dash{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  .tile{border:1px solid var(--line); border-radius:4px; background:var(--panel); padding:17px 19px;}
+  .tile .tl{font-family:"Roboto Mono",monospace; font-size:11px; letter-spacing:.06em; color:var(--muted); margin-bottom:9px;}
+  .tile .big{font-family:"Noto Serif JP",serif; font-weight:700; font-size:30px; line-height:1; margin-bottom:3px;}
+  .tile .big small{font-size:15px; color:var(--muted); font-weight:600;}
+  .tile .cap{font-size:12.5px; color:var(--muted); margin-top:8px; line-height:1.6;}
+  .mbar{height:10px; border-radius:5px; background:var(--slate-soft); overflow:hidden; display:flex; margin-top:11px;}
+  .mbar i{display:block; height:100%;}
+  .sbar{position:relative; height:9px; background:var(--line-soft); border-radius:5px; margin:14px 0 4px;}
+  .sbar .fill{position:absolute; left:0; top:0; bottom:0; background:var(--indigo); border-radius:5px; opacity:.85;}
+  .sbar .now{position:absolute; top:50%; width:13px; height:13px; background:#fff; border:3px solid var(--indigo);
+    border-radius:50%; transform:translate(-50%,-50%);}
+  .legendrow{display:flex; gap:6px; font-family:"Roboto Mono",monospace; font-size:10.5px; color:var(--muted); justify-content:space-between; margin-top:9px;}
+
+  /* seat composition */
+  .seatpanel{border:1px solid var(--line); border-radius:4px; background:var(--panel); padding:18px 20px; margin-top:14px;}
+  .seatpanel .ttl{font-weight:700; font-size:14.5px; margin-bottom:3px;}
+  .seatpanel .sc{font-size:12.5px; color:var(--muted); margin-bottom:16px;}
+  .seatwrap{position:relative; padding-top:18px;}
+  .seatbar{display:flex; height:30px; border-radius:3px; overflow:hidden; border:1px solid rgba(0,0,0,.05);}
+  .seatbar i{display:block; height:100%;}
+  .mk{position:absolute; top:0; transform:translateX(-50%); font-family:"Roboto Mono",monospace; font-size:10px; color:var(--ink); white-space:nowrap;}
+  .mk::after{content:""; position:absolute; left:50%; top:16px; width:1px; height:34px; background:rgba(25,26,28,.55);}
+  .legend{display:flex; flex-wrap:wrap; gap:10px 16px; margin-top:20px;}
+  .legend div{display:flex; align-items:center; gap:6px; font-size:12.5px;}
+  .legend .sw{width:11px; height:11px; border-radius:2px; flex:0 0 11px;}
+  .legend b{font-weight:700;}
+  .legend span{color:var(--muted);}
+
+  /* primer */
+  .primer{border:1px solid var(--line); border-left:3px solid var(--indigo); background:var(--panel);
+    border-radius:0 4px 4px 0; padding:18px 20px;}
+  .flow{display:flex; align-items:center; flex-wrap:wrap; gap:7px; margin:4px 0 16px;}
+  .flow .st{font-size:12.5px; font-weight:700; color:var(--indigo); background:var(--indigo-soft);
+    border:1px solid var(--indigo-line); border-radius:3px; padding:5px 10px;}
+  .flow .ar{color:var(--slate); font-size:13px;}
+  .notes{display:grid; grid-template-columns:repeat(3,1fr); gap:12px;}
+  .notes .nt{font-size:13px; line-height:1.7;}
+  .notes .nh{font-weight:700; display:block; margin-bottom:2px;}
+  .notes .nt span{color:var(--muted);}
+
+  /* bill cards */
+  .grid{display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:8px;}
+  .billcard{border:1px solid var(--line); border-radius:4px; background:var(--panel);
+    padding:20px 20px 16px; display:flex; flex-direction:column; transition:box-shadow .15s, transform .15s;}
+  a.billcard{text-decoration:none; color:inherit;}
+  a.billcard:hover{box-shadow:0 4px 18px rgba(25,26,28,.08); transform:translateY(-2px); border-color:var(--indigo-line);}
+  .billcard .meta{display:flex; align-items:center; gap:8px; margin-bottom:12px; flex-wrap:wrap;}
+  .badge{font-family:"Roboto Mono",monospace; font-size:11px; font-weight:700; padding:2px 9px; border-radius:2px;}
+  .b-live{color:var(--indigo); background:var(--indigo-soft); border:1px solid var(--indigo-line);}
+  .b-soon{color:var(--slate); background:var(--slate-soft); border:1px solid var(--slate-line);}
+  .kind{font-family:"Roboto Mono",monospace; font-size:11px; color:var(--muted);}
+  .billcard h3{font-family:"Noto Serif JP",serif; font-size:18.5px; font-weight:700; margin:0 0 4px; line-height:1.4;}
+  .billcard .nick{font-size:13px; color:var(--muted); margin:0 0 11px;}
+  .billcard .desc{font-size:13.5px; color:#33353a; line-height:1.7; margin:0 0 14px; flex:1;}
+  .billcard .foot{display:flex; align-items:center; justify-content:space-between; font-size:12px; color:var(--muted);
+    border-top:1px solid var(--line-soft); padding-top:11px;}
+  .billcard .go{font-weight:700; color:var(--indigo);}
+  .billcard.soon{opacity:.92; background:#FCFBF8;}
+  .billcard.soon .go{color:var(--slate);}
+
+  .about{margin:40px 0 0; border:1px solid var(--line); border-left:3px solid var(--ochre);
+    background:var(--ochre-soft); border-radius:0 4px 4px 0; padding:18px 20px;}
+  .about h2{font-size:18px; margin:0 0 8px;}
+  .about p{font-size:14px; margin:0 0 8px; line-height:1.8;}
+  .about a{font-weight:700;}
+
+  footer{padding:34px 0 60px; font-size:12.5px; color:var(--muted); line-height:1.7; margin-top:38px;
+    border-top:1px solid var(--line);}
+  footer .mono{font-size:11px;}
+  /* two houses */
+  .houses{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:12px 0 4px;}
+  .houses .hh{border:1px solid var(--line); border-radius:3px; padding:12px 14px; background:#FCFBF8;}
+  .houses .hh .hn{font-weight:700; font-size:14px; margin-bottom:3px;}
+  .houses .hh .hs{font-size:12.5px; color:var(--muted); line-height:1.6;}
+  .factlist{list-style:none; padding:0; margin:10px 0 0;}
+  .factlist li{position:relative; padding:7px 0 7px 18px; font-size:13px; line-height:1.7; border-top:1px solid var(--line-soft);}
+  .factlist li::before{content:"\2013"; position:absolute; left:2px; top:7px; color:var(--indigo); font-weight:700;}
+  .factlist b{font-weight:700;}
+
+  /* source directory */
+  .srcdir{display:grid; grid-template-columns:repeat(2,1fr); gap:14px;}
+  .srcgroup{border:1px solid var(--line); border-radius:4px; background:var(--panel); padding:16px 18px;}
+  .srcgroup .gl{font-family:"Roboto Mono",monospace; font-size:11px; letter-spacing:.06em; color:var(--indigo); margin-bottom:9px; text-transform:uppercase;}
+  .srcgroup a.si{display:block; text-decoration:none; color:inherit; padding:9px 0; border-top:1px solid var(--line-soft);}
+  .srcgroup a.si:first-of-type{border-top:none;}
+  .srcgroup a.si .sn{display:block; font-weight:700; font-size:13.5px; color:var(--indigo);}
+  .srcgroup a.si .sn::after{content:" \2197"; font-size:10px; font-family:"Roboto Mono",monospace;}
+  .srcgroup a.si.internal .sn::after{content:" \2192";}
+  .srcgroup a.si .sd{display:block; font-size:12px; color:var(--muted); line-height:1.55; margin-top:1px;}
+  .srcgroup a.si:hover .sn{text-decoration:underline;}
+
+  @media(max-width:640px){
+    .dash{grid-template-columns:1fr;}
+    .notes{grid-template-columns:1fr;}
+    .grid{grid-template-columns:1fr;}
+    .houses{grid-template-columns:1fr;}
+    .srcdir{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<div class="protobar"><div class="wrap"><span class="tag">試作 / PROTOTYPE</span><span>重要法案を一次情報ベースで中立に整理する構想の試作です（2026年6月10日時点）。</span></div></div>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">法案カルテ ／ Bill Dossier</p>
+    <h1 class="serif">いま国会で<br>何が変わろうとしているか</h1>
+    <p class="tagline">重要な法案を、ニュースの論調ではなく、国会・各党・省庁の<b>一次情報だけ</b>を材料に、前提の現行法から課題・改正点・対案・審議の段取りまで中立に整理します。判断はあなたに委ねます。</p>
+    <div class="principles"><span>一次情報だけ</span><span>所在を示す・結論は出さない</span><span>すべてに出典リンク</span></div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <p class="seclabel">Overview — 今国会の全体像</p>
+  <h2 class="serif">第221回国会（特別会）のいま</h2>
+  <p class="h2sub">会期は2026年2月18日〜7月17日。2月8日の第51回衆院選を受けて召集され、高市内閣のもとで審議が続いています。</p>
+
+  <div class="dash">
+    <div class="tile">
+      <div class="tl">会期 ／ SESSION</div>
+      <div class="big">残り約37<small> 日</small></div>
+      <div class="sbar"><div class="fill" style="width:75%"></div><div class="now" style="left:75%"></div></div>
+      <div class="legendrow"><span>開会 2/18</span><span>今 6/10</span><span>会期末 7/17</span></div>
+      <div class="cap">会期内に成立しない法案は、原則として廃案になります。</div>
+    </div>
+    <div class="tile">
+      <div class="tl">法案 ／ CABINET BILLS</div>
+      <div class="big">32<small> ／ 63 件 成立</small></div>
+      <div class="mbar"><i style="width:50.8%;background:var(--indigo)"></i><i style="width:49.2%;background:var(--slate-line)"></i></div>
+      <div class="legendrow"><span>■ 成立 32</span><span>□ 審議中など 31</span></div>
+      <div class="cap">内閣提出法律案の件数（令和8年6月10日現在・内閣法制局）。議員立法はこれとは別に提出されます。</div>
+    </div>
+  </div>
+
+  <div class="seatpanel">
+    <div class="ttl">衆議院の会派構成（第51回衆院選 確定議席・465）</div>
+    <div class="sc">自民党が単独で3分の2（310）を超える316議席。法案の通りやすさを左右する前提です。</div>
+    <div class="seatwrap">
+      <div class="mk" style="left:50.1%">過半数 233</div>
+      <div class="mk" style="left:66.7%">3分の2 310</div>
+      <div class="seatbar" style="margin-top:14px;">
+        <i style="width:67.96%;background:#28406E" title="自民 316"></i>
+        <i style="width:10.54%;background:#6E7BA6" title="中道改革連合 49"></i>
+        <i style="width:7.74%;background:#8FA36B" title="維新 36"></i>
+        <i style="width:6.02%;background:#C8A24C" title="国民民主 28"></i>
+        <i style="width:3.23%;background:#B5743A" title="参政 15"></i>
+        <i style="width:2.37%;background:#6FA0A8" title="チームみらい 11"></i>
+        <i style="width:0.86%;background:#9A5B5B" title="共産 4"></i>
+        <i style="width:1.29%;background:#B9B3A6" title="その他 6"></i>
+      </div>
+    </div>
+    <div class="legend">
+      <div><span class="sw" style="background:#28406E"></span><b>自民</b><span>316</span></div>
+      <div><span class="sw" style="background:#6E7BA6"></span><b>中道改革連合</b><span>49</span></div>
+      <div><span class="sw" style="background:#8FA36B"></span><b>維新</b><span>36</span></div>
+      <div><span class="sw" style="background:#C8A24C"></span><b>国民民主</b><span>28</span></div>
+      <div><span class="sw" style="background:#B5743A"></span><b>参政</b><span>15</span></div>
+      <div><span class="sw" style="background:#6FA0A8"></span><b>チームみらい</b><span>11</span></div>
+      <div><span class="sw" style="background:#9A5B5B"></span><b>共産</b><span>4</span></div>
+      <div><span class="sw" style="background:#B9B3A6"></span><b>その他</b><span>6</span></div>
+    </div>
+    <p style="font-size:11.5px;color:var(--muted);margin:14px 0 0;">確定議席は第51回衆院選（2026/2/8）の結果。現在の会派別内訳は <a href="https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/kaiha_m.htm" target="_blank" rel="noopener">衆議院 会派別所属議員数</a> で確認できます。</p>
+  </div>
+
+  <div class="seatpanel">
+    <div class="ttl">もうひとつの院 ── 参議院</div>
+    <div class="sc">法律になるには、衆議院と参議院の<b>両方</b>での可決が必要です。いまは二つの院で多数派が逆という、めずらしい状況です。</div>
+    <div class="houses">
+      <div class="hh"><div class="hn">衆議院（定数465）</div><div class="hs">与党が多数。自民が単独で3分の2（316）。法案を通しやすい。</div></div>
+      <div class="hh"><div class="hn">参議院（定数248）</div><div class="hs">与党は過半数（125）を持たない少数与党。法案が止まる関門になりうる。</div></div>
+    </div>
+    <ul class="factlist">
+      <li><b>衆院の優越</b>：法律案は、参院が否決または60日以内に議決しないとき、衆院が出席議員の3分の2で再可決すれば成立できる（憲法59条）。予算は衆院に先に提出。</li>
+      <li>両院で意見が分かれると、<b>両院協議会</b>が開かれることがある。</li>
+      <li>参議院には<b>解散がなく</b>、任期6年・3年ごとに半数改選。衆院とは選ばれ方も時期も違う。</li>
+    </ul>
+    <p style="font-size:11.5px;color:var(--muted);margin:14px 0 0;">注目は主に衆院の議論に集まりますが、成立の可否は参院の動き次第になることもあります。参院側の経過は <a href="https://www.sangiin.go.jp/japanese/joho1/kousei/gian/221/gian.htm" target="_blank" rel="noopener">参議院 議案情報</a>、勢力は <a href="https://www.sangiin.go.jp/japanese/joho1/kousei/giin/current/giinsu.htm" target="_blank" rel="noopener">参議院 会派別所属議員数</a> で追えます。</p>
+  </div>
+
+  <p class="seclabel">Before you read — 読む前に</p>
+  <h2 class="serif">カルテを読むための前提</h2>
+  <p class="h2sub">個別の法案ページを読む前に、これだけ知っておくと迷いません。</p>
+  <div class="primer">
+    <div class="flow">
+      <span class="st">提出</span><span class="ar">→</span>
+      <span class="st">委員会で審査・質疑</span><span class="ar">→</span>
+      <span class="st">本会議で採決</span><span class="ar">→</span>
+      <span class="st">もう一方の院でも同様</span><span class="ar">→</span>
+      <span class="st">成立</span><span class="ar">→</span>
+      <span class="st">公布・施行</span>
+    </div>
+    <div class="notes">
+      <div class="nt"><span class="nh">だれが出すか</span>内閣提出（政府）と、議員立法（議員）がある。<span>出し手で進み方も、意見の窓口も変わります。</span></div>
+      <div class="nt"><span class="nh">会期と時間切れ</span>会期内に成立しないと原則は廃案。<span>継続審査になれば次の国会へ持ち越されます。</span></div>
+      <div class="nt"><span class="nh">「成立」と「施行」は別</span>成立しても、効力が出る（施行）のは後日のことが多い。<span>いつから変わるかは別に確認を。</span></div>
+    </div>
+  </div>
+
+  <p class="seclabel">Now in session — 審議中の法案</p>
+  <h2 class="serif">いま審議されている法案</h2>
+  <p class="h2sub">関心が高く、いずれも第221回国会で審議中の法案です。カードを開くと「カルテ」が読めます。</p>
+  <div class="grid">
+
+    <a class="billcard" href="kokumin-touhyou-kaisei.html">
+      <div class="meta"><span class="badge b-live">6/11 審議入り</span><span class="kind">議員立法・衆法</span></div>
+      <h3>国民投票法改正案</h3>
+      <p class="nick">日本国憲法の改正手続に関する法律の一部改正</p>
+      <p class="desc">公職選挙法に合わせ、開票・投票立会人やFM広報など外形的な3項目を整える案。CM・ネット広告などの「宿題」は今回の対象外。</p>
+      <div class="foot"><span>提出：自民・維新・国民・参政</span><span class="go">カルテを見る →</span></div>
+    </a>
+
+    <a class="billcard" href="seijishikin.html">
+      <div class="meta"><span class="badge b-live">審議中</span><span class="kind">議員立法・複数案</span></div>
+      <h3>政治資金規正法改正案</h3>
+      <p class="nick">企業・団体献金をどうするか</p>
+      <p class="desc">「全面禁止」から「存続＋規制・公開」まで、方向の違う複数案が並行審議中。30年来の論点で、会期末が迫る。</p>
+      <div class="foot"><span>提出：各党（立場ごとに別案）</span><span class="go">カルテを見る →</span></div>
+    </a>
+
+    <a class="billcard" href="bousai.html">
+      <div class="meta"><span class="badge b-live">審議中</span><span class="kind">内閣提出・政府</span></div>
+      <h3>防災庁設置法案</h3>
+      <p class="nick">災害対応の司令塔となる新組織</p>
+      <p class="desc">内閣府防災担当を独立した「庁」に格上げし、専任の防災大臣と勧告権を置く政府案。2026年内の発足を目指す。賛否より組織設計が論点。</p>
+      <div class="foot"><span>提出：政府（内閣官房）</span><span class="go">カルテを見る →</span></div>
+    </a>
+
+    <a class="billcard" href="spy.html">
+      <div class="meta"><span class="badge b-live">提出済み</span><span class="kind">議員立法・衆法</span></div>
+      <h3>スパイ防止法案</h3>
+      <p class="nick">インテリジェンス態勢整備推進法案（国民民主党）</p>
+      <p class="desc">「スパイ防止法」は複数の案の総称。この国民民主案は届出制度＋体制整備が中心で、罰則型ではない。安全保障と市民的自由の両立が論点。</p>
+      <div class="foot"><span>提出：国民民主党</span><span class="go">カルテを見る →</span></div>
+    </a>
+
+  </div>
+
+  <p class="seclabel">Where to look — 一次情報のありか</p>
+  <h2 class="serif">どこに何があるか</h2>
+  <p class="h2sub">各カルテはすべて下記の一次情報をもとにしています。出どころと「正確な立ち位置」を知っておくと、自分で確かめられます。</p>
+  <div class="srcdir">
+    <div class="srcgroup">
+      <div class="gl">法案を追う</div>
+      <a class="si" href="https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/menu.htm" target="_blank" rel="noopener"><span class="sn">衆議院 議案情報</span><span class="sd">各法案の審議経過・本文・修正案。まずここ。</span></a>
+      <a class="si" href="https://www.sangiin.go.jp/japanese/joho1/kousei/gian/221/gian.htm" target="_blank" rel="noopener"><span class="sn">参議院 議案情報</span><span class="sd">参院に送られた後の経過・修正。</span></a>
+      <a class="si" href="https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/housei/html/h-shuhou221.html" target="_blank" rel="noopener"><span class="sn">衆議院 提出法律案一覧</span><span class="sd">その国会に出た議員立法・閣法の一覧。</span></a>
+      <a class="si" href="https://www.clb.go.jp/recent-laws/diet_bill/id=5144" target="_blank" rel="noopener"><span class="sn">内閣法制局 内閣提出法律案</span><span class="sd">政府提出法案の提出・成立の件数と状況。</span></a>
+    </div>
+    <div class="srcgroup">
+      <div class="gl">審議を見る</div>
+      <a class="si" href="https://kokkai.ndl.go.jp/" target="_blank" rel="noopener"><span class="sn">国会会議録検索システム</span><span class="sd">衆参・委員会・本会議の質疑の全文。誰が何を言ったか。</span></a>
+      <a class="si" href="https://www.shugiintv.go.jp/jp/" target="_blank" rel="noopener"><span class="sn">衆議院 インターネット審議中継</span><span class="sd">本会議・委員会の動画。</span></a>
+      <a class="si" href="https://www.webtv.sangiin.go.jp/webtv/" target="_blank" rel="noopener"><span class="sn">参議院 インターネット審議中継</span><span class="sd">参院側の動画。</span></a>
+    </div>
+    <div class="srcgroup">
+      <div class="gl">条文・制度</div>
+      <a class="si" href="https://laws.e-gov.go.jp/" target="_blank" rel="noopener"><span class="sn">e-Gov 法令検索</span><span class="sd">いま効力のある条文。改正の新旧を当たるならここ。</span></a>
+      <a class="si" href="https://public-comment.e-gov.go.jp/" target="_blank" rel="noopener"><span class="sn">e-Gov パブリック・コメント</span><span class="sd">府省の政省令などへの意見募集（法案そのものは原則対象外）。</span></a>
+    </div>
+    <div class="srcgroup">
+      <div class="gl">人と党</div>
+      <a class="si" href="https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/kaiha_m.htm" target="_blank" rel="noopener"><span class="sn">衆議院 会派別所属議員数</span><span class="sd">いまの衆院の勢力。</span></a>
+      <a class="si" href="https://www.sangiin.go.jp/japanese/joho1/kousei/giin/current/giinsu.htm" target="_blank" rel="noopener"><span class="sn">参議院 会派別所属議員数</span><span class="sd">いまの参院の勢力。</span></a>
+      <a class="si internal" href="sanka.html"><span class="sn">意見を伝える経路</span><span class="sd">請願・会派窓口・公聴会など（このサイト内）。</span></a>
+    </div>
+  </div>
+
+  <div class="about">
+    <h2 class="serif">このサイトについて</h2>
+    <p>「事実だけを中立に」と掲げても、何を課題として立て、どの対案を載せ、どう要約するか——そこには判断が入ります。完全な中立は達成できません。だからこそ、その判断が入る場所を隠さず書いておきます。</p>
+    <p><a href="genkai.html">→ 方針と、越えられない限界を読む</a></p>
+    <p style="margin:0;"><a href="sanka.html">→ 意見を伝えたい場合の「参加の経路」</a></p>
+  </div>
+
+</main>
+
+<footer><div class="wrap">
+  <p class="mono">法案カルテ ／ PROTOTYPE</p>
+  <p>これは構想の試作です。全体像の数値は一次資料（内閣法制局・衆議院）に基づく作成時点のもので、審議の進行により変わります。正確・最新の情報は各リンク先でご確認ください。掲載の4法案は、いずれも同じテンプレートで作成しています。</p>
+</div></footer>
+</body>
+</html>

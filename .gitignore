@@ -1,0 +1,17 @@
+# dependencies / build
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+next-env.d.ts
+
+# secrets（このプロジェクトは実行時シークレット0だが、執筆AI用のローカルキーを守る）
+.env
+.env.*
+
+# OS / editor
+.DS_Store
+
+# 執筆パイプラインの中間生成物
+content/bills/*.draft.ts
+review-report*.md

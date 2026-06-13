@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>法案カルテ｜政治資金規正法改正案・企業団体献金（第221回国会）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBFAF6; --panel:#FFFFFF; --ink:#191A1C; --muted:#5C5E64;
+    --line:#E4E0D6; --line-soft:#EFECE4;
+    --indigo:#28406E; --indigo-soft:#EAEEF6; --indigo-line:#C3CFE4;
+    --ochre:#8F6310; --ochre-soft:#F7EFDC; --ochre-line:#E4D2A8;
+    --slate:#525C68; --slate-soft:#EEF0F2; --slate-line:#D7DBE0;
+    --maxw:880px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Noto Sans JP",system-ui,sans-serif;
+    font-size:16px; line-height:1.85; -webkit-font-smoothing:antialiased;
+    font-feature-settings:"palt" 1;
+  }
+  .serif{font-family:"Noto Serif JP",serif;}
+  .mono{font-family:"Roboto Mono",monospace;}
+  a{color:var(--indigo); text-underline-offset:2px;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 22px;}
+
+  /* ---- prototype bar ---- */
+  .protobar{
+    background:var(--ink); color:#EDEBE4; font-size:12.5px; line-height:1.6;
+    padding:9px 0; letter-spacing:.02em;
+  }
+  .protobar .wrap{display:flex; gap:10px; align-items:baseline; flex-wrap:wrap;}
+  .protobar .tag{
+    font-family:"Roboto Mono",monospace; font-size:11px; font-weight:500;
+    background:#EDEBE4; color:var(--ink); padding:1px 7px; border-radius:2px;
+    white-space:nowrap;
+  }
+  .protobar span{color:#B9B6AC;}
+
+  /* ---- masthead ---- */
+  header.mast{padding:46px 0 8px;}
+  .eyebrow{
+    font-family:"Roboto Mono",monospace; font-size:12px; letter-spacing:.16em;
+    color:var(--indigo); text-transform:uppercase; margin:0 0 14px;
+  }
+  h1.title{
+    font-family:"Noto Serif JP",serif; font-weight:700;
+    font-size:clamp(26px,5.4vw,40px); line-height:1.3; letter-spacing:.01em;
+    margin:0 0 6px;
+  }
+  .subtitle{font-size:14.5px; color:var(--muted); margin:0 0 26px;}
+
+  /* ---- registry card (signature) ---- */
+  .card{
+    background:var(--panel); border:1px solid var(--line);
+    border-top:3px solid var(--indigo); border-radius:3px;
+    padding:22px 24px; margin:0 0 14px;
+    box-shadow:0 1px 0 rgba(25,26,28,.02);
+  }
+  .reg{
+    display:grid; grid-template-columns:repeat(2,1fr); gap:0;
+    border-top:1px solid var(--line-soft);
+  }
+  .reg div{
+    padding:12px 4px; border-bottom:1px solid var(--line-soft);
+  }
+  .reg div:nth-child(odd){padding-right:18px;}
+  .reg dt, .reg .k{
+    display:block; font-family:"Roboto Mono",monospace; font-size:11px;
+    letter-spacing:.08em; color:var(--muted); margin-bottom:3px;
+  }
+  .reg .v{font-size:15px; font-weight:500;}
+  .status{
+    display:inline-block; font-size:12.5px; font-weight:700; color:var(--indigo);
+    background:var(--indigo-soft); border:1px solid var(--indigo-line);
+    padding:2px 9px; border-radius:2px;
+  }
+  .srcrow{
+    display:flex; flex-wrap:wrap; gap:8px; margin-top:4px;
+  }
+  .srcrow a{
+    font-size:12.5px; text-decoration:none; color:var(--indigo);
+    border:1px solid var(--indigo-line); background:var(--indigo-soft);
+    padding:4px 10px; border-radius:2px; font-weight:500;
+  }
+  .srcrow a:hover{background:#dde6f4;}
+  .srcrow a::before{content:"\2197  "; font-family:"Roboto Mono",monospace; font-size:11px;}
+
+  /* ---- neutrality note ---- */
+  .neutral{
+    font-size:13px; line-height:1.75; color:var(--muted);
+    border-left:2px solid var(--ochre); background:var(--ochre-soft);
+    padding:13px 16px; border-radius:0 3px 3px 0; margin:18px 0 4px;
+  }
+  .neutral b{color:var(--ochre); font-weight:700;}
+
+  /* ---- section nav ---- */
+  nav.toc{
+    position:sticky; top:0; z-index:20; background:rgba(251,250,246,.93);
+    backdrop-filter:blur(6px); border-bottom:1px solid var(--line);
+    margin-top:30px;
+  }
+  nav.toc .wrap{display:flex; gap:4px; overflow-x:auto; padding:9px 22px;}
+  nav.toc a{
+    flex:0 0 auto; font-size:13px; text-decoration:none; color:var(--muted);
+    padding:6px 11px; border-radius:3px; white-space:nowrap; font-weight:500;
+  }
+  nav.toc a .n{font-family:"Roboto Mono",monospace; color:var(--indigo); margin-right:5px;}
+  nav.toc a:hover{background:var(--indigo-soft); color:var(--ink);}
+
+  /* ---- sections ---- */
+  section{padding:38px 0 4px; scroll-margin-top:54px;}
+  .shead{display:flex; align-items:baseline; gap:12px; margin-bottom:6px;}
+  .shead .num{
+    font-family:"Roboto Mono",monospace; font-size:14px; font-weight:500;
+    color:#fff; background:var(--indigo); width:30px; height:30px; flex:0 0 30px;
+    display:flex; align-items:center; justify-content:center; border-radius:3px;
+    transform:translateY(3px);
+  }
+  h2{font-family:"Noto Serif JP",serif; font-weight:600; font-size:22px; margin:0; line-height:1.4;}
+  .lead{color:var(--muted); font-size:14.5px; margin:2px 0 18px;}
+  p{margin:0 0 14px;}
+  .ref{
+    font-family:"Roboto Mono",monospace; font-size:10.5px; vertical-align:super;
+    color:var(--indigo); text-decoration:none; font-weight:500; padding:0 1px;
+  }
+  .ref:hover{text-decoration:underline;}
+
+  /* ---- timeline (①) ---- */
+  .tl{list-style:none; margin:6px 0 8px; padding:0; border-left:2px solid var(--line);}
+  .tl li{position:relative; padding:0 0 20px 22px;}
+  .tl li::before{
+    content:""; position:absolute; left:-7px; top:6px; width:11px; height:11px;
+    background:var(--paper); border:2px solid var(--indigo); border-radius:50%;
+  }
+  .tl li.open::before{border-color:var(--ochre); background:var(--ochre-soft);}
+  .tl .yr{font-family:"Roboto Mono",monospace; font-size:12.5px; color:var(--indigo); font-weight:500;}
+  .tl li.open .yr{color:var(--ochre);}
+  .tl .ev{display:block; font-size:14.5px; margin-top:1px;}
+
+  /* ---- issue blocks (②) ---- */
+  .issue{
+    border:1px solid var(--line); border-radius:3px; padding:15px 17px; margin:0 0 12px;
+    background:var(--panel);
+  }
+  .issue .lab{
+    font-size:12px; font-family:"Roboto Mono",monospace; letter-spacing:.06em;
+    color:var(--muted); margin-bottom:4px;
+  }
+  .issue h3{font-size:15.5px; margin:0 0 6px; font-weight:700;}
+  .issue p{font-size:14px; margin:0; color:#33353a;}
+
+  /* ---- ledger (③) signature ---- */
+  .ledger{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:6px 0 8px;}
+  .col{border-radius:3px; padding:16px 16px 6px; border:1px solid;}
+  .col.change{background:var(--indigo-soft); border-color:var(--indigo-line);}
+  .col.keep{background:var(--slate-soft); border-color:var(--slate-line);}
+  .col h3{
+    font-size:14px; margin:0 0 10px; display:flex; align-items:center; gap:7px;
+    font-family:"Roboto Mono",monospace; letter-spacing:.04em;
+  }
+  .col.change h3{color:var(--indigo);}
+  .col.keep h3{color:var(--slate);}
+  .col h3 .dot{width:9px; height:9px; border-radius:2px; display:inline-block;}
+  .col.change .dot{background:var(--indigo);}
+  .col.keep .dot{background:var(--slate);}
+  .col ul{margin:0; padding:0; list-style:none;}
+  .col li{font-size:13.5px; line-height:1.7; padding:0 0 11px 16px; position:relative;}
+  .col li::before{content:""; position:absolute; left:0; top:9px; width:6px; height:6px; border-radius:50%;}
+  .col.change li::before{background:var(--indigo);}
+  .col.keep li::before{background:var(--slate); }
+  .col li b{font-weight:700;}
+  .col li span{display:block; color:var(--muted); font-size:12.5px; margin-top:1px;}
+
+  /* ---- glossary ---- */
+  .gloss{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:6px 0 22px;}
+  .gloss .g{border:1px solid var(--line); border-radius:3px; padding:12px 14px; background:#FCFBF8;}
+  .gloss .gt{font-weight:700; font-size:13.5px; margin-bottom:3px;}
+  .gloss .gd{font-size:12.5px; color:var(--muted); line-height:1.65;}
+
+  /* ---- old/new comparison + impact (signature, detailed) ---- */
+  .item{border:1px solid var(--line); border-radius:3px; margin:0 0 16px; background:var(--panel); overflow:hidden;}
+  .item .ihead{padding:13px 16px 12px;}
+  .item .itag{font-family:"Roboto Mono",monospace; font-size:11px; letter-spacing:.06em; color:var(--indigo); display:inline-block; margin-bottom:5px;}
+  .item h3{font-size:16px; margin:0; font-weight:700; line-height:1.4;}
+  .scene{font-size:13px; color:#43454b; background:var(--ochre-soft); padding:10px 16px; border-top:1px solid var(--line-soft); border-bottom:1px solid var(--line-soft);}
+  .scene b{color:var(--ochre);}
+  .oldnew{display:grid; grid-template-columns:1fr 32px 1fr;}
+  .on{padding:13px 16px;}
+  .on-old{background:var(--slate-soft);}
+  .on-new{background:var(--indigo-soft);}
+  .on .lab{font-family:"Roboto Mono",monospace; font-size:10.5px; letter-spacing:.05em; margin-bottom:5px; font-weight:500;}
+  .on-old .lab{color:var(--slate);}
+  .on-new .lab{color:var(--indigo);}
+  .on p{font-size:13px; margin:0; line-height:1.7; color:#2c2e33;}
+  .arrow{display:flex; align-items:center; justify-content:center; color:var(--indigo); font-size:17px;
+    background:linear-gradient(90deg,var(--slate-soft),var(--indigo-soft));}
+  .impact{display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--line-soft);}
+  .impact .ic{padding:11px 16px; border-right:1px solid var(--line-soft);}
+  .impact .ic:last-child{border-right:none;}
+  .impact .il{font-family:"Roboto Mono",monospace; font-size:10px; letter-spacing:.04em; color:var(--muted); margin-bottom:3px;}
+  .impact .iv{font-size:12.5px; line-height:1.6;}
+
+  /* ---- positions (④) ---- */
+  .pos{border:1px solid var(--line); border-radius:3px; margin:0 0 11px; overflow:hidden; background:var(--panel);}
+  .pos .top{display:flex; align-items:center; gap:10px; padding:11px 15px; border-bottom:1px solid var(--line-soft);}
+  .pos .who{font-weight:700; font-size:14.5px;}
+  .pos .stance{
+    margin-left:auto; font-size:11.5px; font-family:"Roboto Mono",monospace; font-weight:500;
+    padding:2px 8px; border-radius:2px; white-space:nowrap;
+  }
+  .pos.for .stance{color:var(--indigo); background:var(--indigo-soft); border:1px solid var(--indigo-line);}
+  .pos.add .stance{color:var(--ochre); background:var(--ochre-soft); border:1px solid var(--ochre-line);}
+  .pos .body{padding:11px 15px; font-size:13.5px; color:#33353a;}
+  .pos .body p{margin:0;}
+
+  /* ---- sources ---- */
+  section.sources{border-top:1px solid var(--line); margin-top:34px;}
+  ol.srclist{font-size:13px; color:var(--muted); padding-left:22px; line-height:1.7;}
+  ol.srclist li{margin-bottom:9px;}
+  ol.srclist a{word-break:break-all;}
+  footer{padding:30px 0 60px; font-size:12px; color:var(--muted); line-height:1.7;}
+  footer .mono{font-size:11px;}
+
+  /* ---- session clock + stepper (A) ---- */
+  .clock{border:1px solid var(--line); border-radius:3px; background:var(--panel); padding:16px 18px 14px; margin:8px 0 18px;}
+  .bar{position:relative; height:8px; background:var(--line-soft); border-radius:5px; margin:10px 0 0;}
+  .bar .fill{position:absolute; left:0; top:0; bottom:0; background:var(--indigo); border-radius:5px; opacity:.85;}
+  .bar .now{position:absolute; top:50%; width:15px; height:15px; background:#fff; border:3px solid var(--indigo); border-radius:50%; transform:translate(-50%,-50%);}
+  .bar .now-lab{position:absolute; top:15px; transform:translateX(-50%); font-family:"Roboto Mono",monospace; font-size:11px; color:var(--indigo); font-weight:700; white-space:nowrap;}
+  .clock .rem{font-size:13px; color:var(--muted);}
+  .clock .rem b{color:var(--indigo); font-size:15px;}
+
+  .steps{position:relative; display:flex; margin:6px 0 4px;}
+  .steps::before{content:""; position:absolute; top:13px; left:10%; right:10%; height:2px; background:var(--slate-line); z-index:0;}
+  .steps .st{flex:1; position:relative; z-index:1; text-align:center; padding:0 4px;}
+  .steps .st .dot{width:26px; height:26px; border-radius:50%; margin:0 auto 7px; display:flex; align-items:center; justify-content:center; font-family:"Roboto Mono",monospace; font-size:12px; font-weight:700; background:#fff; color:var(--slate); border:1.5px solid var(--slate-line);}
+  .steps .st .t{font-size:11px; line-height:1.4; color:var(--muted);}
+  .steps .st.cur .dot{background:var(--indigo); color:#fff; border-color:var(--indigo);}
+  .steps .st.cur .t{color:var(--ink); font-weight:700;}
+
+  .callout{font-size:13px; border-left:3px solid var(--indigo); background:var(--indigo-soft); padding:11px 14px; border-radius:0 3px 3px 0; margin:6px 0 16px; line-height:1.75;}
+  .callout b{color:var(--indigo);}
+  .note-box{border:1px solid var(--ochre-line); background:var(--ochre-soft); border-radius:3px; padding:14px 16px; margin:16px 0 4px;}
+  .note-box h4{margin:0 0 7px; font-size:14px; color:var(--ochre); font-weight:700;}
+  .note-box p{margin:0 0 8px; font-size:13.5px; line-height:1.75;}
+  .note-box p:last-child{margin:0;}
+
+  /* ---- deliberation log (B) ---- */
+  .log{list-style:none; margin:8px 0 4px; padding:0; border-left:2px solid var(--line);}
+  .log li{position:relative; padding:0 0 18px 22px;}
+  .log li::before{content:""; position:absolute; left:-7px; top:5px; width:11px; height:11px; border-radius:50%; background:var(--indigo); border:2px solid var(--indigo);}
+  .log li.future::before{background:#fff; border-color:var(--slate-line);}
+  .log .d{font-family:"Roboto Mono",monospace; font-size:12px; color:var(--indigo); font-weight:500;}
+  .log li.future .d{color:var(--slate);}
+  .log .ev{display:block; font-size:14px; margin-top:2px; line-height:1.7;}
+  .log .badge{font-family:"Roboto Mono",monospace; font-size:10px; padding:1px 6px; border-radius:2px; margin-left:7px;}
+  .log .b-done{background:var(--indigo-soft); color:var(--indigo); border:1px solid var(--indigo-line);}
+  .log .b-next{background:var(--ochre-soft); color:var(--ochre); border:1px solid var(--ochre-line);}
+  .log .b-plan{background:var(--slate-soft); color:var(--slate); border:1px solid var(--slate-line);}
+
+  /* ---- scope map (E) ---- */
+  .scope{border:1px solid var(--line); border-radius:3px; overflow:hidden; margin:10px 0 6px;}
+  .scope .row{display:grid; grid-template-columns:1fr 104px 1.25fr; border-top:1px solid var(--line-soft); background:var(--panel);}
+  .scope .row:first-child{border-top:none;}
+  .scope .row.isin{background:var(--indigo-soft);}
+  .scope .c{padding:12px 14px;}
+  .scope .lab2{font-family:"Roboto Mono",monospace; font-size:9.5px; letter-spacing:.04em; color:var(--muted); display:block; margin-bottom:3px;}
+  .scope .topic{font-weight:700; font-size:13.5px; line-height:1.5;}
+  .scope .mid{display:flex; align-items:center; justify-content:center; padding:12px 6px; border-left:1px solid var(--line-soft); border-right:1px solid var(--line-soft);}
+  .scope .badge2{font-family:"Roboto Mono",monospace; font-size:11px; font-weight:700; padding:3px 6px; border-radius:2px; white-space:normal; text-align:center; line-height:1.3; max-width:100%;}
+  .scope .b-in{color:var(--indigo); background:#fff; border:1px solid var(--indigo);}
+  .scope .b-out{color:var(--slate); background:#fff; border:1px solid var(--slate-line);}
+  .scope .where{font-size:12.5px; color:#33353a; line-height:1.65;}
+
+  @media(max-width:620px){
+    .reg{grid-template-columns:1fr;}
+    .reg div:nth-child(odd){padding-right:4px;}
+    .ledger{grid-template-columns:1fr;}
+    .gloss{grid-template-columns:1fr;}
+    .oldnew{grid-template-columns:1fr;}
+    .arrow{justify-self:center; width:34px; height:28px; min-height:0; margin:7px 0; padding:0;
+      border-radius:4px; border:1px solid var(--indigo-line); background:var(--indigo-soft); transform:rotate(90deg);}
+    .impact{grid-template-columns:1fr;}
+    .impact .ic{border-right:none; border-bottom:1px solid var(--line-soft);}
+    .impact .ic:last-child{border-bottom:none;}
+    .steps{flex-direction:column; gap:12px;}
+    .steps::before{display:none;}
+    .steps .st{display:flex; align-items:center; gap:11px; text-align:left; padding:0;}
+    .steps .st .dot{margin:0; flex:0 0 26px;}
+    .steps .st .t br{display:none;}
+    .bar .now-lab{font-size:10px;}
+    .scope .row{grid-template-columns:1fr;}
+    .scope .mid{justify-content:flex-start; border:none; padding-top:0; padding-bottom:0;}
+    .scope .c{padding:10px 14px;}
+  }
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+</style>
+</head>
+<body>
+
+<div class="protobar">
+  <div class="wrap">
+    <span class="tag">試作 / PROTOTYPE</span>
+    <span>同じテンプレートで作った2本目のサンプルです。記載は2026年6月10日時点の要約。立場の異なる複数の法案が並行して審議されています。</span>
+  </div>
+</div>
+
+<header class="mast">
+  <div class="wrap">
+    <p class="eyebrow">法案カルテ ／ Bill Dossier</p>
+    <h1 class="title serif">政治資金規正法の一部を改正する法律案（企業・団体献金の扱い）</h1>
+    <p class="subtitle">通称「企業・団体献金」をどうするか——立場の異なる複数案が審議中</p>
+
+    <div class="card">
+      <div class="reg">
+        <div><span class="k">国会回次</span><span class="v">第221回国会（特別会）</span></div>
+        <div><span class="k">種別</span><span class="v">議員立法（各党が別々に提出した複数案）</span></div>
+        <div><span class="k">審議の場</span><span class="v">衆院 政治改革に関する特別委員会</span></div>
+        <div><span class="k">論点の古さ</span><span class="v">「30年来の宿題」とされる<a href="#s4" class="ref">[3]</a></span></div>
+        <div><span class="k">主な立場</span><span class="v">全面禁止／存続＋規制（受け皿限定・上限）／存続＋公開強化</span></div>
+        <div><span class="k">審議状況</span><span class="status">審議中（会期末7/17が迫る・継続審議の前歴）</span></div>
+      </div>
+      <p style="font-size:12px;color:var(--muted);margin:14px 0 8px;font-family:'Roboto Mono',monospace;letter-spacing:.06em;">一次資料へのリンク</p>
+      <div class="srcrow">
+        <a href="https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/menu.htm" target="_blank" rel="noopener">衆議院 議案情報</a>
+        <a href="https://kokkai.ndl.go.jp/" target="_blank" rel="noopener">国会会議録</a>
+        <a href="https://www.shugiintv.go.jp/jp/" target="_blank" rel="noopener">審議中継</a>
+        <a href="https://www.soumu.go.jp/senkyo/seiji_s/" target="_blank" rel="noopener">総務省 政治資金</a>
+      </div>
+    </div>
+
+    <div class="neutral">
+      <b>このページの方針</b>　各案の中身や手続の状況は事実として記し、賛否にあたる見解は「どの会派がそう述べたか」を明示して並べます。複数の案が競合しているため、「どれが正しい」ではなく「何がどう違うか」を示します。本文は一次資料の要約で、各記述は末尾の出典からたどれます。
+    </div>
+  </div>
+</header>
+
+<nav class="toc">
+  <div class="wrap">
+    <a href="#s1"><span class="n">①</span>前提となる現行法</a>
+    <a href="#s2"><span class="n">②</span>何が課題か</a>
+    <a href="#s3"><span class="n">③</span>各案でこう変わる</a>
+    <a href="#s4"><span class="n">④</span>対案・主な論点</a>
+    <a href="#s5"><span class="n">⑤</span>会期と採決</a>
+    <a href="#s6"><span class="n">⑥</span>審議の経緯</a>
+    <a href="#s7"><span class="n">⑦</span>なぜ決まらない</a>
+    <a href="#s8"><span class="n">⑧</span>よくある声と射程</a>
+    <a href="#sanka"><span class="n">◇</span>参加（任意）</a>
+    <a href="#src"><span class="n">◇</span>出典</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <!-- ① -->
+  <section id="s1">
+    <div class="shead"><span class="num">①</span><h2 class="serif">前提となる現行法体系</h2></div>
+    <p class="lead">「企業・団体献金」は、いまも全面的に禁止されているわけではありません。まず、誰から誰へのお金が、現行法でどう扱われているかを押さえます。</p>
+    <p>政治資金規正法では、企業・労働組合・業界団体などの団体による献金（寄附）は、政治家個人に直接、また政治家の資金管理団体に対しては禁止されています。一方で、政党本部・政党支部・政治資金団体に対しては、いまも認められています。<a href="#src" class="ref">[2]</a> このため、政党支部が事実上の受け皿になりうる、という指摘があります。</p>
+    <ul class="tl">
+      <li><span class="yr">1994年</span><span class="ev">「平成の政治改革」。政党助成（政党交付金）制度の導入とあわせ、政治家個人への企業・団体献金を制限する方向へ。</span></li>
+      <li><span class="yr">2000年</span><span class="ev">政治家の資金管理団体への企業・団体献金も禁止。ただし政党・政党支部への献金は存続。<a href="#src" class="ref">[3]</a></span></li>
+      <li><span class="yr">2024年</span><span class="ev">派閥のパーティー収入不記載（裏金）問題を受けた改正。政策活動費の全面禁止、監視のための第三者機関設置、外国人のパーティー券購入禁止など。<b>企業・団体献金の是非は結論を先送り</b>。<a href="#src" class="ref">[2]</a></span></li>
+      <li class="open"><span class="yr">2025〜現在</span><span class="ev">先送りされた「企業・団体献金をどうするか」をめぐり、立場の異なる複数案が提出され、衆院 政治改革特別委で審議が続く。<a href="#src" class="ref">[1]</a></span></li>
+    </ul>
+  </section>
+
+  <!-- ② -->
+  <section id="s2">
+    <div class="shead"><span class="num">②</span><h2 class="serif">何が課題とされているか</h2></div>
+    <p class="lead">立場によって「課題」の置き方が大きく異なります。ここが③④の対立につながります。</p>
+    <div class="issue">
+      <div class="lab">課題 A ／ 企業・団体献金そのものの是非</div>
+      <h3>団体からの献金を、そもそも認めてよいか</h3>
+      <p>禁止を求める側は、資金力のある団体のために政策がゆがむ「金権・癒着の温床」だと位置づけます。存続を認める側は、献金は政治参加・表現の自由の一部であり、団体を一律に排除すべきでないとします。30年来の論争です。<a href="#src" class="ref">[3][4]</a></p>
+    </div>
+    <div class="issue">
+      <div class="lab">課題 B ／ 受け皿と抜け道</div>
+      <h3>政党支部やパーティー券が「抜け道」になっていないか</h3>
+      <p>政党支部を通じて事実上個人に流れる、パーティー券購入という別ルートがある、といった指摘があります。禁止しても迂回が起きるだけ、との反論もここに関わります。<a href="#src" class="ref">[3][4]</a></p>
+    </div>
+  </section>
+
+  <!-- ③ -->
+  <section id="s3">
+    <div class="shead"><span class="num">③</span><h2 class="serif">各案で「こう変わる」</h2></div>
+    <p class="lead">この論点は一つの改正案ではなく、方向の違う複数案が並んでいます。「全面禁止」から「存続＋公開強化」まで、到達点が異なります。下表は各案の方向と内容を並べたものです（正確な条文は<a href="https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/menu.htm" target="_blank" rel="noopener">衆院 議案情報</a>で確認できます）。</p>
+
+    <div class="scope">
+      <div class="row">
+        <div class="c"><span class="lab2">案（主な提案）</span><span class="topic">野党5党派案（立憲・維新・参政・社民・有志の会）／ 共産党案</span></div>
+        <div class="c mid"><span class="badge2 b-out">全面禁止</span></div>
+        <div class="c where"><span class="lab2">内容</span>政党・政党支部を含め、企業・団体からの献金を禁止。パーティー券購入やあっせんも対象に含める案がある。<a href="#src" class="ref">[3][4]</a></div>
+      </div>
+      <div class="row">
+        <div class="c"><span class="lab2">案（主な提案）</span><span class="topic">国民民主党・公明党などの案</span></div>
+        <div class="c mid"><span class="badge2 b-in">存続＋規制</span></div>
+        <div class="c where"><span class="lab2">内容</span>企業・団体献金は残しつつ、受け取れる主体（受け皿）を政党本部・都道府県連などに限定し、上限額を設ける。<a href="#src" class="ref">[5]</a></div>
+      </div>
+      <div class="row">
+        <div class="c"><span class="lab2">案（主な提案）</span><span class="topic">自由民主党の案</span></div>
+        <div class="c mid"><span class="badge2 b-in">存続＋公開</span></div>
+        <div class="c where"><span class="lab2">内容</span>企業・団体献金は存続を前提に、受け取り側の公開・透明性を強める方向。禁止には踏み込まない。<a href="#src" class="ref">[6]</a></div>
+      </div>
+    </div>
+
+    <div class="ledger" style="margin-top:18px;">
+      <div class="col change">
+        <h3><span class="dot"></span>案によって変わりうる点</h3>
+        <ul>
+          <li><b>団体献金の可否</b>（禁止するか・残すか）</li>
+          <li><b>受け皿の範囲</b>（政党支部まで／本部・県連に限定）</li>
+          <li><b>上限額・公開基準</b></li>
+          <li><b>パーティー券の扱い</b></li>
+        </ul>
+      </div>
+      <div class="col keep">
+        <h3><span class="dot"></span>どの案も基本は触れない点</h3>
+        <ul>
+          <li><b>個人献金</b>の枠組み自体</li>
+          <li><b>政党交付金（政党助成）</b>の存廃<span>（廃止を別途主張する党はある）</span></li>
+          <li>2024年改正で決着した<b>政策活動費の廃止</b>など</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ④ -->
+  <section id="s4">
+    <div class="shead"><span class="num">④</span><h2 class="serif">対案・主な論点</h2></div>
+    <p class="lead">対立軸は明確で、<b>全面禁止か／存続させて規制・公開で対応するか</b>です。各立場の主張を発信元のまま並べます。</p>
+
+    <div class="pos add">
+      <div class="top"><span class="who">禁止を求める側（立憲・維新・共産・参政・社民 ほか）</span><span class="stance">全面禁止すべき</span></div>
+      <div class="body"><p>企業・団体献金は金権政治の温床で、資金力により政策がゆがむおそれが大きい。個人への禁止だけでは政党支部が抜け道になる。全面禁止こそ30年来の宿題だとする。<a href="#src" class="ref">[3][4]</a></p></div>
+    </div>
+
+    <div class="pos for">
+      <div class="top"><span class="who">存続＋規制・公開とする側（自民・公明・国民民主 ほか）</span><span class="stance">禁止せず規制で</span></div>
+      <div class="body"><p>献金は政治参加・表現の自由の一部で、団体を一律排除すべきでない。禁止しても個人献金や政治団体経由の迂回が起き、実効性に乏しい。受け皿の限定・上限・公開の強化で対応すべきだとする。<a href="#src" class="ref">[5][6]</a></p></div>
+    </div>
+
+    <p style="font-size:12.5px;color:var(--muted);margin-top:6px;">※ 各党は別々の法案や修正案として主張を出しており、修正協議の動きもあります。最新の提出・賛否は衆院 議案情報・会議録で確認できます。<a href="#src" class="ref">[1][7]</a></p>
+  </section>
+
+  <!-- ⑤ -->
+  <section id="s5">
+    <div class="shead"><span class="num">⑤</span><h2 class="serif">会期と採決までの道のり</h2></div>
+    <p class="lead">複数案が同じ委員会にかかっており、「どの案を・いつ採決するか」自体が攻防になっています。</p>
+
+    <div class="clock">
+      <div style="display:flex;justify-content:space-between;font-family:'Roboto Mono',monospace;font-size:11.5px;color:var(--muted);">
+        <span><b style="color:var(--ink)">開会</b> 2026/2/18</span>
+        <span><b style="color:var(--ink)">会期末</b> 2026/7/17</span>
+      </div>
+      <div class="bar">
+        <div class="fill" style="width:75%"></div>
+        <div class="now" style="left:75%"></div>
+        <div class="now-lab" style="left:75%">今 6/10</div>
+      </div>
+      <p class="rem" style="margin-top:28px;">第221回国会（特別会）。会期末まで <b>残り約37日</b>。<a href="#src" class="ref">[8]</a></p>
+    </div>
+
+    <p class="lead" style="margin-bottom:12px;">成立までに残る段階（現在地＝政治改革特別委での質疑）</p>
+    <div class="steps">
+      <div class="st cur"><div class="dot">1</div><div class="t">衆院 特別委<br>質疑</div></div>
+      <div class="st"><div class="dot">2</div><div class="t">特別委<br>採決</div></div>
+      <div class="st"><div class="dot">3</div><div class="t">衆院<br>本会議</div></div>
+      <div class="st"><div class="dot">4</div><div class="t">参院<br>委員会・本会議</div></div>
+      <div class="st"><div class="dot">5</div><div class="t">成立</div></div>
+    </div>
+
+    <div class="note-box">
+      <h4>もし今国会で結論が出なかったら</h4>
+      <p>会期末（7/17）までに採決・成立しなければ、原則は廃案。継続審査の議決があれば次の国会へ持ち越されます。</p>
+      <p>この論点は、2024年改正で結論が先送りされ、その後も採決されず継続審議となった経緯があります。<a href="#src" class="ref">[1]</a> 「先送りが繰り返されてきた」ことが、この案を読むうえでの前提になります。</p>
+    </div>
+  </section>
+
+  <!-- ⑥ -->
+  <section id="s6">
+    <div class="shead"><span class="num">⑥</span><h2 class="serif">審議の経緯</h2></div>
+    <p class="lead">いつ何があったかの記録です。各回の質疑は会議録・審議中継で確認できます。</p>
+    <ul class="log">
+      <li><span class="d">2024年</span><span class="badge b-done">済</span><span class="ev">裏金問題を受けた改正が成立。政策活動費の廃止などを決める一方、企業・団体献金の是非は結論を先送り。<a href="#src" class="ref">[2]</a></span></li>
+      <li><span class="d">2025年 前半</span><span class="badge b-done">済</span><span class="ev">「全面禁止」案（野党側）と「存続＋規制・公開」案（与党側）など、立場の異なる複数案が出そろい、特別委で審議・協議。<a href="#src" class="ref">[3][4]</a></span></li>
+      <li><span class="d">2025年 後半</span><span class="badge b-done">済</span><span class="ev">採決をめぐる攻防の末、結論は持ち越し（継続審議）。<a href="#src" class="ref">[1]</a></span></li>
+      <li class="future"><span class="d">第221回（現在）</span><span class="badge b-next">審議中</span><span class="ev">引き続き政治改革特別委で各案を審議。質疑は<a href="https://www.shugiintv.go.jp/jp/" target="_blank" rel="noopener">審議中継</a>・<a href="https://kokkai.ndl.go.jp/" target="_blank" rel="noopener">会議録</a>で確認できる。</span></li>
+      <li class="future"><span class="d">以降</span><span class="badge b-plan">これから</span><span class="ev">委員会での採決 → 衆院本会議 → 参院へ、と進む見込み。</span></li>
+    </ul>
+  </section>
+
+  <!-- ⑦ -->
+  <section id="s7">
+    <div class="shead"><span class="num">⑦</span><h2 class="serif">なぜ決まらないのか</h2></div>
+    <p class="lead">30年来の論点が決着しない理由を、事実と各立場の説明に分けて並べます。</p>
+
+    <div class="issue">
+      <div class="lab">事実 ／ 経緯</div>
+      <h3>2024年改正は、企業・団体献金の是非を「先送り」した</h3>
+      <p>裏金問題後の2024年改正は政策活動費の廃止などを決めましたが、企業・団体献金そのものの扱いは結論を出さず、後の検討に委ねました。その後も採決に至らず継続審議が続いています。<a href="#src" class="ref">[1][2]</a></p>
+    </div>
+
+    <div class="pos add">
+      <div class="top"><span class="who">禁止を求める側</span><span class="stance">先送りせず禁止を</span></div>
+      <div class="body"><p>与党が採決に応じないために決まらない、と批判し、実現を求めて他党にも協力を呼びかけている。<a href="#src" class="ref">[3][4]</a></p></div>
+    </div>
+
+    <div class="pos for">
+      <div class="top"><span class="who">存続＋規制とする側</span><span class="stance">拙速を避ける</span></div>
+      <div class="body"><p>禁止は迂回を生むだけで実効性に乏しく、政治参加の自由にも関わるとして、規制・公開での対応と十分な議論を求める。<a href="#src" class="ref">[5][6]</a></p></div>
+    </div>
+
+    <p style="font-size:12.5px;color:var(--muted);margin-top:8px;">どちらが妥当かはこのページでは判断しません。「先送りされてきた」という事実と、各立場の理由を記すにとどめます。</p>
+  </section>
+
+  <!-- ⑧ -->
+  <section id="s8">
+    <div class="shead"><span class="num">⑧</span><h2 class="serif">よく挙がる声と、この論点の射程</h2></div>
+    <p class="lead">SNSなどでよく見かける疑問を「いま争われている点か／別制度の話か」に整理した表です。話題の選び方には編集が入りますし、所在を示すための地図で、声の当否は判定しません。</p>
+
+    <div class="scope">
+      <div class="row isin">
+        <div class="c"><span class="lab2">よく挙がる声</span><span class="topic">団体からの献金は実質的に賄賂では</span></div>
+        <div class="c mid"><span class="badge2 b-in">争点の核</span></div>
+        <div class="c where"><span class="lab2">どこで扱われるか</span>現行法では政党・政党支部への団体献金は合法。その是非こそ、各案で争われている中心。<a href="#src" class="ref">[2]</a></div>
+      </div>
+      <div class="row">
+        <div class="c"><span class="lab2">よく挙がる声</span><span class="topic">政党交付金（税金）と献金の二重取りでは</span></div>
+        <div class="c mid"><span class="badge2 b-out">別制度</span></div>
+        <div class="c where"><span class="lab2">どこで扱われるか</span>政党助成（交付金）の話で、別の法律。今回の各案は交付金の存廃までは扱わない（廃止を併せて主張する党はある）。<a href="#src" class="ref">[4]</a></div>
+      </div>
+      <div class="row">
+        <div class="c"><span class="lab2">よく挙がる声</span><span class="topic">労働組合の献金はいいのか（対称性）</span></div>
+        <div class="c mid"><span class="badge2 b-in">対象に含む</span></div>
+        <div class="c where"><span class="lab2">どこで扱われるか</span>「団体」には労組・業界団体なども含まれ、多くの禁止案は労組を含む全団体が対象。<a href="#src" class="ref">[3][4]</a></div>
+      </div>
+      <div class="row">
+        <div class="c"><span class="lab2">よく挙がる声</span><span class="topic">パーティー券が抜け道では</span></div>
+        <div class="c mid"><span class="badge2 b-in">案による</span></div>
+        <div class="c where"><span class="lab2">どこで扱われるか</span>全面禁止案はパーティー券購入も対象に含める。存続＋規制案では公開基準などで対応する立場。<a href="#src" class="ref">[3]</a></div>
+      </div>
+      <div class="row">
+        <div class="c"><span class="lab2">よく挙がる声</span><span class="topic">個人献金だけで政治は回るのか</span></div>
+        <div class="c mid"><span class="badge2 b-in">争点</span></div>
+        <div class="c where"><span class="lab2">どこで扱われるか</span>存続派の主な論拠（資金源の確保・政治参加）。これも審議の対象。<a href="#src" class="ref">[5]</a></div>
+      </div>
+      <div class="row">
+        <div class="c"><span class="lab2">よく挙がる声</span><span class="topic">外国からの献金は</span></div>
+        <div class="c mid"><span class="badge2 b-out">禁止済み</span></div>
+        <div class="c where"><span class="lab2">どこで扱われるか</span>外国人・外国法人からの献金は現行法で禁止。外国人のパーティー券購入も2024年改正で禁止された。<a href="#src" class="ref">[2]</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 参加 -->
+  <section id="sanka">
+    <div class="shead"><span class="num" style="background:var(--slate)">◇</span><h2 class="serif">意見を伝えたい場合の経路（任意）</h2></div>
+    <p class="lead">読んだうえで意見を伝えたい人のための参照です。賛成・反対・保留のいずれでも経路は同じで、<b>伝えないことも同じく正当な選択</b>です。呼びかけではありません。</p>
+    <div class="issue">
+      <div class="lab">この論点に固有の事情</div>
+      <p>これは複数の<b>議員立法</b>が並ぶテーマのため、府省が行う意見公募（パブリックコメント）の対象ではありません。現実的な経路は、議員の紹介による請願、各党・各議員の公式窓口、（開かれた場合の）公聴会での意見陳述などに限られます。質疑は<a href="https://www.shugiintv.go.jp/jp/" target="_blank" rel="noopener">審議中継</a>で確認できます。</p>
+    </div>
+    <p style="font-size:13px;color:var(--muted);">請願・会派窓口・公聴会など、法案を問わず共通の仕組みは <a href="sanka.html">参加の経路</a> にまとめています。窓口は制度的なもので、効果が保証されるものではありません。</p>
+  </section>
+
+  <!-- sources -->
+  <section id="src" class="sources">
+    <div class="shead"><span class="num" style="background:var(--ochre)">◇</span><h2 class="serif">出典（一次情報）</h2></div>
+    <ol class="srclist">
+      <li>衆議院 議案情報（第221回国会 議案一覧・経過）— <a href="https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/menu.htm" target="_blank" rel="noopener">shugiin.go.jp</a></li>
+      <li>総務省「政治資金規正法」関係（現行制度・令和6年改正の概要）— <a href="https://www.soumu.go.jp/senkyo/seiji_s/" target="_blank" rel="noopener">soumu.go.jp</a></li>
+      <li>立憲民主党「企業・団体献金禁止法案を提出」（趣旨・内容）— <a href="https://cdp-japan.jp/article/20250319_8979" target="_blank" rel="noopener">cdp-japan.jp</a></li>
+      <li>日本共産党（企業・団体献金の全面禁止に関する政策）— <a href="https://www.jcp.or.jp/web_policy/12665.html" target="_blank" rel="noopener">jcp.or.jp</a></li>
+      <li>国民民主党（公式サイト・政策／献金規制に関する立場）— <a href="https://new-kokumin.jp/" target="_blank" rel="noopener">new-kokumin.jp</a></li>
+      <li>自由民主党（公式サイト・政治改革に関する立場）— <a href="https://www.jimin.jp/" target="_blank" rel="noopener">jimin.jp</a></li>
+      <li>国会会議録検索システム（質疑の全文）— <a href="https://kokkai.ndl.go.jp/" target="_blank" rel="noopener">kokkai.ndl.go.jp</a></li>
+      <li>衆議院インターネット審議中継（会期・審議中継）— <a href="https://www.shugiintv.go.jp/jp/" target="_blank" rel="noopener">shugiintv.go.jp</a></li>
+    </ol>
+  </section>
+
+  <p style="max-width:880px;margin:0 auto;padding:18px 22px 0;font-size:13px;color:var(--muted);line-height:1.7;">この論点は立場により事実の重みづけが分かれやすいテーマです。中立性の限界については <a href="genkai.html">「このサイトの限界」</a> を参照してください。</p>
+
+</main>
+
+<script>
+  var REF = {
+    1:"https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/menu.htm",
+    2:"https://www.soumu.go.jp/senkyo/seiji_s/",
+    3:"https://cdp-japan.jp/article/20250319_8979",
+    4:"https://www.jcp.or.jp/web_policy/12665.html",
+    5:"https://new-kokumin.jp/",
+    6:"https://www.jimin.jp/",
+    7:"https://kokkai.ndl.go.jp/",
+    8:"https://www.shugiintv.go.jp/jp/"
+  };
+  document.querySelectorAll('a.ref').forEach(function(a){
+    var nums = a.textContent.match(/\d+/g) || [];
+    if(!nums.length) return;
+    var frag = document.createDocumentFragment();
+    nums.forEach(function(n){
+      var url = REF[n];
+      var el = document.createElement('a');
+      el.className = 'ref'; el.textContent = '[' + n + ']';
+      if(url){ el.href = url; el.target = '_blank'; el.rel = 'noopener'; el.title='出典を別タブで開く'; }
+      else { el.href = '#src'; }
+      frag.appendChild(el);
+    });
+    a.replaceWith(frag);
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+# L1データの毎日自動更新（SERVICE_DESIGN.md §6 レーン1: 人を外す）
+#
+# 毎朝 06:30 JST に議案DBから最新の審議状況・成立件数を取得してコミットする。
+# コミット → Vercel が自動再ビルド → 会期クロック残り日数も同時に最新化される。
+# 追加シークレット不要（GITHUB_TOKEN のみ・LLM/APIキーは使わない）。
+name: daily-update
+
+on:
+  schedule:
+    - cron: "30 21 * * *" # 06:30 JST
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: L1データ取得（議案DB → dashboard.json / bills-status.json）
+        run: npm run fetch:dashboard
+
+      - name: 中立リント（コンテンツ整合の機械検査）
+        run: npm run lint:neutrality
+
+      - name: 差分があればコミット（毎日 updatedAt が更新される）
+        run: |
+          git config user.name "houan-karte-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add content/data/
+          if git diff --cached --quiet; then
+            echo "no changes"
+          else
+            git commit -m "feat: L1データ自動更新 $(TZ=Asia/Tokyo date +%Y-%m-%d)"
+            git push
+          fi

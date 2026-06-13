@@ -1,0 +1,30 @@
+{
+  "name": "houan-karte",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "lint:neutrality": "node --import tsx scripts/lint-neutrality.ts",
+    "fetch:dashboard": "node --import tsx scripts/fetch-dashboard.ts",
+    "prebuild": "node --import tsx scripts/lint-neutrality.ts"
+  },
+  "dependencies": {
+    "@fontsource/noto-sans-jp": "^5.2.9",
+    "@fontsource/noto-serif-jp": "^5.2.8",
+    "@fontsource/roboto-mono": "^5.2.9",
+    "next": "16.2.9",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
+    "zod": "4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "tsx": "4.22.4",
+    "typescript": "^5"
+  }
+}

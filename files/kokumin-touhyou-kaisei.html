@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>法案カルテ｜国民投票法改正案（第221回国会）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBFAF6; --panel:#FFFFFF; --ink:#191A1C; --muted:#5C5E64;
+    --line:#E4E0D6; --line-soft:#EFECE4;
+    --indigo:#28406E; --indigo-soft:#EAEEF6; --indigo-line:#C3CFE4;
+    --ochre:#8F6310; --ochre-soft:#F7EFDC; --ochre-line:#E4D2A8;
+    --slate:#525C68; --slate-soft:#EEF0F2; --slate-line:#D7DBE0;
+    --maxw:880px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Noto Sans JP",system-ui,sans-serif;
+    font-size:16px; line-height:1.85; -webkit-font-smoothing:antialiased;
+    font-feature-settings:"palt" 1;
+  }
+  .serif{font-family:"Noto Serif JP",serif;}
+  .mono{font-family:"Roboto Mono",monospace;}
+  a{color:var(--indigo); text-underline-offset:2px;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 22px;}
+
+  /* ---- prototype bar ---- */
+  .protobar{
+    background:var(--ink); color:#EDEBE4; font-size:12.5px; line-height:1.6;
+    padding:9px 0; letter-spacing:.02em;
+  }
+  .protobar .wrap{display:flex; gap:10px; align-items:baseline; flex-wrap:wrap;}
+  .protobar .tag{
+    font-family:"Roboto Mono",monospace; font-size:11px; font-weight:500;
+    background:#EDEBE4; color:var(--ink); padding:1px 7px; border-radius:2px;
+    white-space:nowrap;
+  }
+  .protobar span{color:#B9B6AC;}
+
+  /* ---- masthead ---- */
+  header.mast{padding:46px 0 8px;}
+  .eyebrow{
+    font-family:"Roboto Mono",monospace; font-size:12px; letter-spacing:.16em;
+    color:var(--indigo); text-transform:uppercase; margin:0 0 14px;
+  }
+  h1.title{
+    font-family:"Noto Serif JP",serif; font-weight:700;
+    font-size:clamp(26px,5.4vw,40px); line-height:1.3; letter-spacing:.01em;
+    margin:0 0 6px;
+  }
+  .subtitle{font-size:14.5px; color:var(--muted); margin:0 0 26px;}
+
+  /* ---- registry card (signature) ---- */
+  .card{
+    background:var(--panel); border:1px solid var(--line);
+    border-top:3px solid var(--indigo); border-radius:3px;
+    padding:22px 24px; margin:0 0 14px;
+    box-shadow:0 1px 0 rgba(25,26,28,.02);
+  }
+  .reg{
+    display:grid; grid-template-columns:repeat(2,1fr); gap:0;
+    border-top:1px solid var(--line-soft);
+  }
+  .reg div{
+    padding:12px 4px; border-bottom:1px solid var(--line-soft);
+  }
+  .reg div:nth-child(odd){padding-right:18px;}
+  .reg dt, .reg .k{
+    display:block; font-family:"Roboto Mono",monospace; font-size:11px;
+    letter-spacing:.08em; color:var(--muted); margin-bottom:3px;
+  }
+  .reg .v{font-size:15px; font-weight:500;}
+  .status{
+    display:inline-block; font-size:12.5px; font-weight:700; color:var(--indigo);
+    background:var(--indigo-soft); border:1px solid var(--indigo-line);
+    padding:2px 9px; border-radius:2px;
+  }
+  .srcrow{
+    display:flex; flex-wrap:wrap; gap:8px; margin-top:4px;
+  }
+  .srcrow a{
+    font-size:12.5px; text-decoration:none; color:var(--indigo);
+    border:1px solid var(--indigo-line); background:var(--indigo-soft);
+    padding:4px 10px; border-radius:2px; font-weight:500;
+  }
+  .srcrow a:hover{background:#dde6f4;}
+  .srcrow a::before{content:"\2197  "; font-family:"Roboto Mono",monospace; font-size:11px;}
+
+  /* ---- neutrality note ---- */
+  .neutral{
+    font-size:13px; line-height:1.75; color:var(--muted);
+    border-left:2px solid var(--ochre); background:var(--ochre-soft);
+    padding:13px 16px; border-radius:0 3px 3px 0; margin:18px 0 4px;
+  }
+  .neutral b{color:var(--ochre); font-weight:700;}
+
+  /* ---- section nav ---- */
+  nav.toc{
+    position:sticky; top:0; z-index:20; background:rgba(251,250,246,.93);
+    backdrop-filter:blur(6px); border-bottom:1px solid var(--line);
+    margin-top:30px;
+  }
+  nav.toc .wrap{display:flex; gap:4px; overflow-x:auto; padding:9px 22px;}
+  nav.toc a{
+    flex:0 0 auto; font-size:13px; text-decoration:none; color:var(--muted);
+    padding:6px 11px; border-radius:3px; white-space:nowrap; font-weight:500;
+  }
+  nav.toc a .n{font-family:"Roboto Mono",monospace; color:var(--indigo); margin-right:5px;}
+  nav.toc a:hover{background:var(--indigo-soft); color:var(--ink);}
+
+  /* ---- sections ---- */
+  section{padding:38px 0 4px; scroll-margin-top:54px;}
+  .shead{display:flex; align-items:baseline; gap:12px; margin-bottom:6px;}
+  .shead .num{
+    font-family:"Roboto Mono",monospace; font-size:14px; font-weight:500;
+    color:#fff; background:var(--indigo); width:30px; height:30px; flex:0 0 30px;
+    display:flex; align-items:center; justify-content:center; border-radius:3px;
+    transform:translateY(3px);
+  }
+  h2{font-family:"Noto Serif JP",serif; font-weight:600; font-size:22px; margin:0; line-height:1.4;}
+  .lead{color:var(--muted); font-size:14.5px; margin:2px 0 18px;}
+  p{margin:0 0 14px;}
+  .ref{
+    font-family:"Roboto Mono",monospace; font-size:10.5px; vertical-align:super;
+    color:var(--indigo); text-decoration:none; font-weight:500; padding:0 1px;
+  }
+  .ref:hover{text-decoration:underline;}
+
+  /* ---- timeline (①) ---- */
+  .tl{list-style:none; margin:6px 0 8px; padding:0; border-left:2px solid var(--line);}
+  .tl li{position:relative; padding:0 0 20px 22px;}
+  .tl li::before{
+    content:""; position:absolute; left:-7px; top:6px; width:11px; height:11px;
+    background:var(--paper); border:2px solid var(--indigo); border-radius:50%;
+  }
+  .tl li.open::before{border-color:var(--ochre); background:var(--ochre-soft);}
+  .tl .yr{font-family:"Roboto Mono",monospace; font-size:12.5px; color:var(--indigo); font-weight:500;}
+  .tl li.open .yr{color:var(--ochre);}
+  .tl .ev{display:block; font-size:14.5px; margin-top:1px;}
+
+  /* ---- issue blocks (②) ---- */
+  .issue{
+    border:1px solid var(--line); border-radius:3px; padding:15px 17px; margin:0 0 12px;
+    background:var(--panel);
+  }
+  .issue .lab{
+    font-size:12px; font-family:"Roboto Mono",monospace; letter-spacing:.06em;
+    color:var(--muted); margin-bottom:4px;
+  }
+  .issue h3{font-size:15.5px; margin:0 0 6px; font-weight:700;}
+  .issue p{font-size:14px; margin:0; color:#33353a;}
+
+  /* ---- ledger (③) signature ---- */
+  .ledger{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:6px 0 8px;}
+  .col{border-radius:3px; padding:16px 16px 6px; border:1px solid;}
+  .col.change{background:var(--indigo-soft); border-color:var(--indigo-line);}
+  .col.keep{background:var(--slate-soft); border-color:var(--slate-line);}
+  .col h3{
+    font-size:14px; margin:0 0 10px; display:flex; align-items:center; gap:7px;
+    font-family:"Roboto Mono",monospace; letter-spacing:.04em;
+  }
+  .col.change h3{color:var(--indigo);}
+  .col.keep h3{color:var(--slate);}
+  .col h3 .dot{width:9px; height:9px; border-radius:2px; display:inline-block;}
+  .col.change .dot{background:var(--indigo);}
+  .col.keep .dot{background:var(--slate);}
+  .col ul{margin:0; padding:0; list-style:none;}
+  .col li{font-size:13.5px; line-height:1.7; padding:0 0 11px 16px; position:relative;}
+  .col li::before{content:""; position:absolute; left:0; top:9px; width:6px; height:6px; border-radius:50%;}
+  .col.change li::before{background:var(--indigo);}
+  .col.keep li::before{background:var(--slate); }
+  .col li b{font-weight:700;}
+  .col li span{display:block; color:var(--muted); font-size:12.5px; margin-top:1px;}
+
+  /* ---- glossary ---- */
+  .gloss{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:6px 0 22px;}
+  .gloss .g{border:1px solid var(--line); border-radius:3px; padding:12px 14px; background:#FCFBF8;}
+  .gloss .gt{font-weight:700; font-size:13.5px; margin-bottom:3px;}
+  .gloss .gd{font-size:12.5px; color:var(--muted); line-height:1.65;}
+
+  /* ---- old/new comparison + impact (signature, detailed) ---- */
+  .item{border:1px solid var(--line); border-radius:3px; margin:0 0 16px; background:var(--panel); overflow:hidden;}
+  .item .ihead{padding:13px 16px 12px;}
+  .item .itag{font-family:"Roboto Mono",monospace; font-size:11px; letter-spacing:.06em; color:var(--indigo); display:inline-block; margin-bottom:5px;}
+  .item h3{font-size:16px; margin:0; font-weight:700; line-height:1.4;}
+  .scene{font-size:13px; color:#43454b; background:var(--ochre-soft); padding:10px 16px; border-top:1px solid var(--line-soft); border-bottom:1px solid var(--line-soft);}
+  .scene b{color:var(--ochre);}
+  .oldnew{display:grid; grid-template-columns:1fr 32px 1fr;}
+  .on{padding:13px 16px;}
+  .on-old{background:var(--slate-soft);}
+  .on-new{background:var(--indigo-soft);}
+  .on .lab{font-family:"Roboto Mono",monospace; font-size:10.5px; letter-spacing:.05em; margin-bottom:5px; font-weight:500;}
+  .on-old .lab{color:var(--slate);}
+  .on-new .lab{color:var(--indigo);}
+  .on p{font-size:13px; margin:0; line-height:1.7; color:#2c2e33;}
+  .arrow{display:flex; align-items:center; justify-content:center; color:var(--indigo); font-size:17px;
+    background:linear-gradient(90deg,var(--slate-soft),var(--indigo-soft));}
+  .impact{display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--line-soft);}
+  .impact .ic{padding:11px 16px; border-right:1px solid var(--line-soft);}
+  .impact .ic:last-child{border-right:none;}
+  .impact .il{font-family:"Roboto Mono",monospace; font-size:10px; letter-spacing:.04em; color:var(--muted); margin-bottom:3px;}
+  .impact .iv{font-size:12.5px; line-height:1.6;}
+
+  /* ---- positions (④) ---- */
+  .pos{border:1px solid var(--line); border-radius:3px; margin:0 0 11px; overflow:hidden; background:var(--panel);}
+  .pos .top{display:flex; align-items:center; gap:10px; padding:11px 15px; border-bottom:1px solid var(--line-soft);}
+  .pos .who{font-weight:700; font-size:14.5px;}
+  .pos .stance{
+    margin-left:auto; font-size:11.5px; font-family:"Roboto Mono",monospace; font-weight:500;
+    padding:2px 8px; border-radius:2px; white-space:nowrap;
+  }
+  .pos.for .stance{color:var(--indigo); background:var(--indigo-soft); border:1px solid var(--indigo-line);}
+  .pos.add .stance{color:var(--ochre); background:var(--ochre-soft); border:1px solid var(--ochre-line);}
+  .pos .body{padding:11px 15px; font-size:13.5px; color:#33353a;}
+  .pos .body p{margin:0;}
+
+  /* ---- sources ---- */
+  section.sources{border-top:1px solid var(--line); margin-top:34px;}
+  ol.srclist{font-size:13px; color:var(--muted); padding-left:22px; line-height:1.7;}
+  ol.srclist li{margin-bottom:9px;}
+  ol.srclist a{word-break:break-all;}
+  footer{padding:30px 0 60px; font-size:12px; color:var(--muted); line-height:1.7;}
+  footer .mono{font-size:11px;}
+
+  /* ---- session clock + stepper (A) ---- */
+  .clock{border:1px solid var(--line); border-radius:3px; background:var(--panel); padding:16px 18px 14px; margin:8px 0 18px;}
+  .bar{position:relative; height:8px; background:var(--line-soft); border-radius:5px; margin:10px 0 0;}
+  .bar .fill{position:absolute; left:0; top:0; bottom:0; background:var(--indigo); border-radius:5px; opacity:.85;}
+  .bar .now{position:absolute; top:50%; width:15px; height:15px; background:#fff; border:3px solid var(--indigo); border-radius:50%; transform:translate(-50%,-50%);}
+  .bar .now-lab{position:absolute; top:15px; transform:translateX(-50%); font-family:"Roboto Mono",monospace; font-size:11px; color:var(--indigo); font-weight:700; white-space:nowrap;}
+  .clock .rem{font-size:13px; color:var(--muted);}
+  .clock .rem b{color:var(--indigo); font-size:15px;}
+
+  .steps{position:relative; display:flex; margin:6px 0 4px;}
+  .steps::before{content:""; position:absolute; top:13px; left:10%; right:10%; height:2px; background:var(--slate-line); z-index:0;}
+  .steps .st{flex:1; position:relative; z-index:1; text-align:center; padding:0 4px;}
+  .steps .st .dot{width:26px; height:26px; border-radius:50%; margin:0 auto 7px; display:flex; align-items:center; justify-content:center; font-family:"Roboto Mono",monospace; font-size:12px; font-weight:700; background:#fff; color:var(--slate); border:1.5px solid var(--slate-line);}
+  .steps .st .t{font-size:11px; line-height:1.4; color:var(--muted);}
+  .steps .st.cur .dot{background:var(--indigo); color:#fff; border-color:var(--indigo);}
+  .steps .st.cur .t{color:var(--ink); font-weight:700;}
+
+  .callout{font-size:13px; border-left:3px solid var(--indigo); background:var(--indigo-soft); padding:11px 14px; border-radius:0 3px 3px 0; margin:6px 0 16px; line-height:1.75;}
+  .callout b{color:var(--indigo);}
+  .note-box{border:1px solid var(--ochre-line); background:var(--ochre-soft); border-radius:3px; padding:14px 16px; margin:16px 0 4px;}
+  .note-box h4{margin:0 0 7px; font-size:14px; color:var(--ochre); font-weight:700;}
+  .note-box p{margin:0 0 8px; font-size:13.5px; line-height:1.75;}
+  .note-box p:last-child{margin:0;}
+
+  /* ---- deliberation log (B) ---- */
+  .log{list-style:none; margin:8px 0 4px; padding:0; border-left:2px solid var(--line);}
+  .log li{position:relative; padding:0 0 18px 22px;}
+  .log li::before{content:""; position:absolute; left:-7px; top:5px; width:11px; height:11px; border-radius:50%; background:var(--indigo); border:2px solid var(--indigo);}
+  .log li.future::before{background:#fff; border-color:var(--slate-line);}
+  .log .d{font-family:"Roboto Mono",monospace; font-size:12px; color:var(--indigo); font-weight:500;}
+  .log li.future .d{color:var(--slate);}
+  .log .ev{display:block; font-size:14px; margin-top:2px; line-height:1.7;}
+  .log .badge{font-family:"Roboto Mono",monospace; font-size:10px; padding:1px 6px; border-radius:2px; margin-left:7px;}
+  .log .b-done{background:var(--indigo-soft); color:var(--indigo); border:1px solid var(--indigo-line);}
+  .log .b-next{background:var(--ochre-soft); color:var(--ochre); border:1px solid var(--ochre-line);}
+  .log .b-plan{background:var(--slate-soft); color:var(--slate); border:1px solid var(--slate-line);}
+
+  /* ---- scope map (E) ---- */
+  .scope{border:1px solid var(--line); border-radius:3px; overflow:hidden; margin:10px 0 6px;}
+  .scope .row{display:grid; grid-template-columns:1fr 104px 1.25fr; border-top:1px solid var(--line-soft); background:var(--panel);}
+  .scope .row:first-child{border-top:none;}
+  .scope .row.isin{background:var(--indigo-soft);}
+  .scope .c{padding:12px 14px;}
+  .scope .lab2{font-family:"Roboto Mono",monospace; font-size:9.5px; letter-spacing:.04em; color:var(--muted); display:block; margin-bottom:3px;}
+  .scope .topic{font-weight:700; font-size:13.5px; line-height:1.5;}
+  .scope .mid{display:flex; align-items:center; justify-content:center; padding:12px 6px; border-left:1px solid var(--line-soft); border-right:1px solid var(--line-soft);}
+  .scope .badge2{font-family:"Roboto Mono",monospace; font-size:11px; font-weight:700; padding:3px 6px; border-radius:2px; white-space:normal; text-align:center; line-height:1.3; max-width:100%;}
+  .scope .b-in{color:var(--indigo); background:#fff; border:1px solid var(--indigo);}
+  .scope .b-out{color:var(--slate); background:#fff; border:1px solid var(--slate-line);}
+  .scope .where{font-size:12.5px; color:#33353a; line-height:1.65;}
+
+  @media(max-width:620px){
+    .reg{grid-template-columns:1fr;}
+    .reg div:nth-child(odd){padding-right:4px;}
+    .ledger{grid-template-columns:1fr;}
+    .gloss{grid-template-columns:1fr;}
+    .oldnew{grid-template-columns:1fr;}
+    .arrow{justify-self:center; width:34px; height:28px; min-height:0; margin:7px 0; padding:0;
+      border-radius:4px; border:1px solid var(--indigo-line); background:var(--indigo-soft); transform:rotate(90deg);}
+    .impact{grid-template-columns:1fr;}
+    .impact .ic{border-right:none; border-bottom:1px solid var(--line-soft);}
+    .impact .ic:last-child{border-bottom:none;}
+    .steps{flex-direction:column; gap:12px;}
+    .steps::before{display:none;}
+    .steps .st{display:flex; align-items:center; gap:11px; text-align:left; padding:0;}
+    .steps .st .dot{margin:0; flex:0 0 26px;}
+    .steps .st .t br{display:none;}
+    .bar .now-lab{font-size:10px;}
+    .scope .row{grid-template-columns:1fr;}
+    .scope .mid{justify-content:flex-start; border:none; padding-top:0; padding-bottom:0;}
+    .scope .c{padding:10px 14px;}
+  }
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+</style>
+</head>
+<body>
+
+<div class="protobar">
+  <div class="wrap">
+    <span class="tag">試作 / PROTOTYPE</span>
+    <span>法案を一次情報ベースで中立に整理するページの試作です。記載は2026年6月10日時点の情報を要約したものです。</span>
+  </div>
+</div>
+
+<header class="mast">
+  <div class="wrap">
+    <p class="eyebrow">法案カルテ ／ Bill Dossier</p>
+    <h1 class="title serif">日本国憲法の改正手続に関する法律の一部を改正する法律案</h1>
+    <p class="subtitle">通称「国民投票法」改正案（投票環境に関する外形的事項の整備）</p>
+
+    <div class="card">
+      <div class="reg">
+        <div><span class="k">国会回次</span><span class="v">第221回国会（特別会）</span></div>
+        <div><span class="k">種別</span><span class="v">議員立法（衆法）</span></div>
+        <div><span class="k">提出日</span><span class="v">2026年（令和8年）6月5日</span></div>
+        <div><span class="k">提出先</span><span class="v">衆議院</span></div>
+        <div><span class="k">提出会派</span><span class="v">自由民主党・日本維新の会・国民民主党・参政党<a href="#s4" class="ref">[4][5]</a></span></div>
+        <div><span class="k">審議状況</span><span class="status">6月11日に審議入りで与野党合意（6/10時点）<a href="#s4" class="ref">[11]</a></span></div>
+      </div>
+      <p style="font-size:12px;color:var(--muted);margin:14px 0 8px;font-family:'Roboto Mono',monospace;letter-spacing:.06em;">一次資料へのリンク</p>
+      <div class="srcrow">
+        <a href="https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/menu.htm" target="_blank" rel="noopener">衆議院 議案情報</a>
+        <a href="https://www.shugiin.go.jp/internet/itdb_kenpou.nsf/html/kenpou/index.htm" target="_blank" rel="noopener">衆議院 憲法審査会</a>
+        <a href="https://www.shugiin.go.jp/internet/itdb_kaigiroku.nsf/html/kaigiroku/025022120260528007.htm" target="_blank" rel="noopener">審査会 会議録</a>
+        <a href="https://www.sangiin.go.jp/japanese/joho1/kousei/gian/221/gian.htm" target="_blank" rel="noopener">参議院 議案情報</a>
+      </div>
+    </div>
+
+    <div class="neutral">
+      <b>このページの方針</b>　法案の中身・手続の状況は事実として記し、賛否にあたる見解はすべて「どの会派・主体がそう述べたか」を明示して並べます。本文は一次資料を要約したもので、各記述には末尾の出典番号からたどれます。評価や結論はこのページでは行いません。
+    </div>
+  </div>
+</header>
+
+<nav class="toc">
+  <div class="wrap">
+    <a href="#s1"><span class="n">①</span>前提となる現行法</a>
+    <a href="#s2"><span class="n">②</span>何が課題か</a>
+    <a href="#s3"><span class="n">③</span>変える／変えない</a>
+    <a href="#s4"><span class="n">④</span>対案・主な論点</a>
+    <a href="#s5"><span class="n">⑤</span>会期と採決</a>
+    <a href="#s6"><span class="n">⑥</span>審議の経緯</a>
+    <a href="#s7"><span class="n">⑦</span>なぜこの範囲</a>
+    <a href="#s8"><span class="n">⑧</span>SNSの声と射程</a>
+    <a href="#sanka"><span class="n">◇</span>参加（任意）</a>
+    <a href="#src"><span class="n">◇</span>出典</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <!-- ① -->
+  <section id="s1">
+    <div class="shead"><span class="num">①</span><h2 class="serif">前提となる現行法体系</h2></div>
+    <p class="lead">この改正案は「国民投票法」という既存の法律に手を加えるものです。まず、その法律がどんな経緯で今の形になったかを押さえます。</p>
+    <p>正式名称は「日本国憲法の改正手続に関する法律」（平成19年法律第51号）。憲法改正の発議後、60日以後180日以内に国民投票を行うことなどを定めた、改正手続の枠組みを規律する法律です。<a href="#src" class="ref">[6]</a></p>
+    <ul class="tl">
+      <li><span class="yr">2007年（平成19）</span><span class="ev">制定。国民投票の手続きや、投票期日前14日間はテレビ・ラジオの広告放送を制限する規定などを整備。<a href="#src" class="ref">[6]</a></span></li>
+      <li><span class="yr">2014年（平成26）</span><span class="ev">投票権年齢を18歳以上とするなどの改正。</span></li>
+      <li><span class="yr">2021年（令和3）</span><span class="ev">公職選挙法に合わせ投票環境を向上させる改正。あわせて<b>附則第4条</b>に検討条項を設置——施行後3年をめどに、投票環境整備の追加事項、CM・ネット有料広告の制限、運動資金規制、ネットの適正利用など「公平・公正の確保」を検討し、必要な措置を講じるとした。<a href="#src" class="ref">[8][10]</a></span></li>
+      <li class="open"><span class="yr">その後〜現在</span><span class="ev">附則第4条が挙げた検討事項（とくに広告・資金規制）は、立法措置に至らないまま残されている。<a href="#src" class="ref">[3][9]</a></span></li>
+    </ul>
+  </section>
+
+  <!-- ② -->
+  <section id="s2">
+    <div class="shead"><span class="num">②</span><h2 class="serif">何が課題とされているか</h2></div>
+    <p class="lead">「課題」は立場によって重点が異なります。憲法審査会では、おおむね次の2層に分けて語られています。どちらを優先すべきかが論点④につながります。</p>
+
+    <div class="issue">
+      <div class="lab">課題 A ／ 外形的・技術的な事項</div>
+      <h3>公職選挙法では済んでいる手続きの一部が、国民投票法には反映されていない</h3>
+      <p>悪天候時の離島での開票立会人の規定、投票立会人の選任要件、FM放送による広報——これらは公選法側では2019年・2022年の改正で導入済み。国民投票法にも同様に反映すべきだ、という指摘です。<a href="#src" class="ref">[3]</a></p>
+    </div>
+
+    <div class="issue">
+      <div class="lab">課題 B ／ 公平・公正に関わる事項（附則第4条の宿題）</div>
+      <h3>広告・資金・ネットをめぐるルールが整備されないまま残っている</h3>
+      <p>現行法はテレビ・ラジオ広告を投票期日前の一定期間だけ制限しますが、ネット広告やSNS・動画広告は対象外です。放送業界が2018年に広告量の自主規制を行わないと表明したことで前提が変わった、デマやSNSの影響が深刻だ、といった問題提起が審査会で続いています。<a href="#src" class="ref">[7][8][9]</a></p>
+    </div>
+  </section>
+
+  <!-- ③ -->
+  <section id="s3">
+    <div class="shead"><span class="num">③</span><h2 class="serif">改正案で「こう変わる」</h2></div>
+    <p class="lead">今回の案は、課題 A（外形的事項）だけを対象にした3項目です。いずれも、公職選挙法では先に整備済みのしくみを国民投票法にも合わせるもの。まず前提となる用語と全体像を示し、そのうえで項目ごとに「今 → 改正後」と影響範囲を見ます。</p>
+
+    <div class="gloss">
+      <div class="g"><div class="gt">投票立会人</div><div class="gd">投票所で、投票が公正に行われているかを見守る立場の人。投票所ごとに置かれる。</div></div>
+      <div class="g"><div class="gt">開票立会人</div><div class="gd">開票所で、票の数え方が公正かを見届ける人。開票区ごとに置かれる。</div></div>
+      <div class="g"><div class="gt">広報放送</div><div class="gd">国民投票広報協議会が、憲法改正案の内容を有権者に知らせるために行う放送。</div></div>
+    </div>
+
+    <div class="ledger">
+      <div class="col change">
+        <h3><span class="dot"></span>改正で変える（3項目）</h3>
+        <ul>
+          <li><b>開票立会人の選任規定の整備</b></li>
+          <li><b>投票立会人の選任要件の緩和</b></li>
+          <li><b>FM放送による広報放送の追加</b></li>
+        </ul>
+      </div>
+      <div class="col keep">
+        <h3><span class="dot"></span>今回は変えない（対象外）</h3>
+        <ul>
+          <li><b>CM（放送広告）規制の見直し</b></li>
+          <li><b>ネット・SNS広告のルール</b></li>
+          <li><b>運動資金の規制</b></li>
+          <li><b>投票環境整備の残りの項目</b></li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="lead" style="margin-top:22px;">以下は、現行制度と改正後を分かりやすく言い換えたものです（正確な条文は<a href="https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/menu.htm" target="_blank" rel="noopener">衆議院 議案情報</a>の新旧対照表で確認できます）。</p>
+
+    <!-- item 1 -->
+    <div class="item">
+      <div class="ihead"><span class="itag">変える 01</span><h3>開票立会人の選任規定の整備</h3></div>
+      <div class="scene"><b>こういう場面</b>　離島などで悪天候のため島内で開票できず、投票箱を本土の開票所へ運んで数える。あるいは投票日の直前に開票区を新たに分けたり、まとめたりする——こうした例外的なケース。</div>
+      <div class="oldnew">
+        <div class="on on-old"><div class="lab">今（現行）</div><p>開票立会人は、その開票区の名簿に登録された人から選ぶのが基本。開票の場所や区割りが直前に変わる事態が想定しきれておらず、「誰が・どの選挙管理委員会の手続きで」立会人を選ぶかにすき間が生じうる。</p></div>
+        <div class="arrow">→</div>
+        <div class="on on-new"><div class="lab">改正後</div><p>公選法（令和元年改正で整備済み<a href="#src" class="ref">[14]</a>）に合わせ、投票日直前に開票区を分けた・合わせた場合などに、どの選挙管理委員会が開票立会人を選任するかなどの取扱いを明確にする。</p></div>
+      </div>
+      <div class="impact">
+        <div class="ic"><div class="il">対象</div><div class="iv">離島・悪天候など例外的な開票になる地域</div></div>
+        <div class="ic"><div class="il">規模</div><div class="iv">発生はまれ。ただし起きれば開票手続きの正当性に直結</div></div>
+        <div class="ic"><div class="il">効果</div><div class="iv">非常時でも立会いの担い手と手順が定まる</div></div>
+      </div>
+    </div>
+
+    <!-- item 2 -->
+    <div class="item">
+      <div class="ihead"><span class="itag">変える 02</span><h3>投票立会人の選任要件の緩和</h3></div>
+      <div class="scene"><b>こういう場面</b>　人口の少ない地域や、立会人の担い手が見つかりにくい投票区。各投票所ごとに立会人を確保する必要がある。</div>
+      <div class="oldnew">
+        <div class="on on-old"><div class="lab">今（現行）</div><p>投票立会人は「その投票区の名簿に登録された人」から選ぶ＝その地区の住民に限られる。地区内で人を集めきれず、定員に満たない投票区が出ることがある。</p></div>
+        <div class="arrow">→</div>
+        <div class="on on-new"><div class="lab">改正後</div><p>公選法（令和元年改正<a href="#src" class="ref">[12]</a>）に合わせ、「投票権を有する人」から選べるよう対象を広げる＝同じ市区町村の別の地区の人なども選べる。</p></div>
+      </div>
+      <div class="impact">
+        <div class="ic"><div class="il">対象</div><div class="iv">全国の投票所。特に担い手確保に苦労する小規模自治体</div></div>
+        <div class="ic"><div class="il">規模</div><div class="iv">広い（すべての投票所に関わる）</div></div>
+        <div class="ic"><div class="il">効果</div><div class="iv">立会人を確保しやすく、選管の事務負担も軽減<a href="#src" class="ref">[13]</a></div></div>
+      </div>
+    </div>
+
+    <!-- item 3 -->
+    <div class="item">
+      <div class="ihead"><span class="itag">変える 03</span><h3>FM放送による広報放送の追加</h3></div>
+      <div class="scene"><b>こういう場面</b>　憲法改正案の内容を有権者に知らせる広報放送を、どの放送設備で流せるか。</div>
+      <div class="oldnew">
+        <div class="on on-old"><div class="lab">今（現行）</div><p>広報のための放送は、従来の放送設備（AM＝中波など）を前提とした規定になっている。</p></div>
+        <div class="arrow">→</div>
+        <div class="on on-new"><div class="lab">改正後</div><p>公選法の政見放送がAMに加えFMでも行えるよう整備されたのに合わせ<a href="#src" class="ref">[3]</a>、FM放送の設備でも広報放送を行えるようにする。</p></div>
+      </div>
+      <div class="impact">
+        <div class="ic"><div class="il">対象</div><div class="iv">広報放送を受け取る有権者全般</div></div>
+        <div class="ic"><div class="il">規模</div><div class="iv">広い（全国）</div></div>
+        <div class="ic"><div class="il">効果</div><div class="iv">AM局の整理・FM移行が進む中でも広報が届く手段を確保</div></div>
+      </div>
+    </div>
+
+    <p style="font-size:12.5px;color:var(--muted);">※ 3項目はいずれも、すでに公選法で導入済みのしくみを国民投票法に反映するもの。同内容の案は2022年4月にも提出されたが、2024年10月の衆院解散で廃案となり、今回あらためて提出された。<a href="#src" class="ref">[4]</a></p>
+  </section>
+
+  <!-- ④ -->
+  <section id="s4">
+    <div class="shead"><span class="num">④</span><h2 class="serif">対案・主な論点</h2></div>
+    <p class="lead">対立軸は「賛成か反対か」ではなく、<b>どの範囲を今このタイミングで法制化するか</b>です。各主体の主張を、発信元のままに並べます。</p>
+
+    <div class="pos for">
+      <div class="top"><span class="who">提出4会派（自民・維新・国民民主・参政）</span><span class="stance">早期成立を求める</span></div>
+      <div class="body"><p>外形的事項の整備であり、公選法で既にとられている内容を反映するもの。まず速やかに成立させるべきだとする。国民民主党も「公選法でとられている内容は法制化を進めるべき」として共同提出した。<a href="#src" class="ref">[4][5]</a></p></div>
+    </div>
+
+    <div class="pos add">
+      <div class="top"><span class="who">立憲民主党</span><span class="stance">広告・資金規制も併せて</span></div>
+      <div class="body"><p>附則第4条が挙げたCM・ネット有料広告・運動資金の規制（課題 B）を放置すべきでないと主張。2021年の改正時には検討条項を強める附則修正を求めた経緯があり、近年も放送CMの全面禁止を含む見直しを審査会で提案している。<a href="#src" class="ref">[7][10]</a></p></div>
+    </div>
+
+    <div class="pos add">
+      <div class="top"><span class="who">これまでの審査会で出ている論点</span><span class="stance">公平性・透明性</span></div>
+      <div class="body"><p>共産党・社民党などは、資金力の多寡が投票結果に与える影響を以前から指摘。ネット広告については透明性確保や、SNS上の言論への公権力の関与をどう扱うかも論点として挙がっている。<a href="#src" class="ref">[3][9]</a></p></div>
+    </div>
+
+    <p style="font-size:12.5px;color:var(--muted);margin-top:6px;">※ 各主体が「対案」として独立した法案を出しているとは限らず、附則の修正要求や審査会での発言として表れている点に注意。最新の賛否・修正の動きは衆議院の議案情報・会議録で確認できます。</p>
+  </section>
+
+  <!-- ⑤ -->
+  <section id="s5">
+    <div class="shead"><span class="num">⑤</span><h2 class="serif">会期と採決までの道のり</h2></div>
+    <p class="lead">「今国会で通す／見送る」を考えるには、残り時間・成立に必要な手続き・見送った場合に何が起きるかが要ります。</p>
+
+    <div class="callout">この改正案は<b>通常の法律案</b>です。成立は衆参それぞれの過半数で足り、憲法改正そのものの発議（各院で総議員の3分の2＋国民投票）とは別の手続きです。<a href="#src" class="ref">[19]</a>「国民投票法の改正」と「憲法改正の国民投票」は別物、という点に注意。</div>
+
+    <div class="clock">
+      <div style="display:flex;justify-content:space-between;font-family:'Roboto Mono',monospace;font-size:11.5px;color:var(--muted);">
+        <span><b style="color:var(--ink)">開会</b> 2026/2/18</span>
+        <span><b style="color:var(--ink)">会期末</b> 2026/7/17</span>
+      </div>
+      <div class="bar">
+        <div class="fill" style="width:75%"></div>
+        <div class="now" style="left:75%"></div>
+        <div class="now-lab" style="left:75%">今 6/10</div>
+      </div>
+      <p class="rem" style="margin-top:28px;">第221回国会（特別会）。会期末まで <b>残り約37日</b>。<a href="#src" class="ref">[16]</a></p>
+    </div>
+
+    <p class="lead" style="margin-bottom:12px;">成立までに残る段階（現在地＝衆院 憲法審査会での審議入り）<a href="#src" class="ref">[18]</a></p>
+    <div class="steps">
+      <div class="st cur"><div class="dot">1</div><div class="t">衆院 審査会<br>趣旨説明・質疑</div></div>
+      <div class="st"><div class="dot">2</div><div class="t">審査会<br>採決</div></div>
+      <div class="st"><div class="dot">3</div><div class="t">衆院<br>本会議</div></div>
+      <div class="st"><div class="dot">4</div><div class="t">参院<br>審査会・本会議</div></div>
+      <div class="st"><div class="dot">5</div><div class="t">成立</div></div>
+    </div>
+
+    <div class="note-box">
+      <h4>もし今国会で成立しなかったら</h4>
+      <p>会期末（7/17）までに成立しなければ、原則として審議未了で廃案になります。継続審査の議決があれば、次の国会へ持ち越されます。</p>
+      <p>同じ内容の案は2022年4月にも提出されましたが、2024年10月の衆院解散で廃案になりました。<a href="#src" class="ref">[4]</a> 中断には「振り出しに戻る」コストがある、という前例です。</p>
+    </div>
+  </section>
+
+  <!-- ⑥ -->
+  <section id="s6">
+    <div class="shead"><span class="num">⑥</span><h2 class="serif">審議の経緯</h2></div>
+    <p class="lead">いつ何があったかの記録です。「気になる論点が実際に議論されたか」は各回の会議録・審議中継で確かめられます。質疑の中身は審議入り後に追記されていきます。</p>
+    <ul class="log">
+      <li><span class="d">2026/5/28</span><span class="badge b-done">済</span><span class="ev">衆院 憲法審査会で、この三項目案と、附則第4条の「宿題」（広告・資金規制）について議論された。<a href="#src" class="ref">[3]</a></span></li>
+      <li><span class="d">2026/6/5</span><span class="badge b-done">済</span><span class="ev">4会派（自民・維新・国民民主・参政）が衆院に共同提出。<a href="#src" class="ref">[4][5]</a></span></li>
+      <li><span class="d">2026/6/9</span><span class="badge b-done">済</span><span class="ev">幹事懇談会で、6月11日の審議入りを与野党が合意。<a href="#src" class="ref">[11]</a></span></li>
+      <li class="future"><span class="d">2026/6/11</span><span class="badge b-next">予定</span><span class="ev">衆院 憲法審査会で審議入り（趣旨説明・質疑）。中身は<a href="https://www.shugiintv.go.jp/jp/" target="_blank" rel="noopener">審議中継</a>・<a href="https://kokkai.ndl.go.jp/" target="_blank" rel="noopener">会議録</a>で確認できる。</span></li>
+      <li class="future"><span class="d">以降</span><span class="badge b-plan">これから</span><span class="ev">審査会での採決 → 衆院本会議 → 参院へ、と進む見込み。</span></li>
+    </ul>
+  </section>
+
+  <!-- ⑦ -->
+  <section id="s7">
+    <div class="shead"><span class="num">⑦</span><h2 class="serif">なぜ今この範囲なのか／附則の「宿題」のゆくえ</h2></div>
+    <p class="lead">今回案は外形3項目に絞られ、広告・資金・ネットのルール（②の課題B）は外れています。なぜ分けるのか、その「宿題」は今後どうなるのか——事実と各会派の説明を分けて並べます。</p>
+
+    <div class="issue">
+      <div class="lab">事実 ／ 制度上の宿題</div>
+      <h3>令和3年改正の附則第4条が、見直しを「宿題」として残している</h3>
+      <p>附則第4条は、施行後3年をめどに、CM・ネット有料広告の制限、運動資金の規制、ネットの適正利用、投票環境整備の追加事項などを検討し、必要な措置を講じるとしています。ただし現時点で立法措置はされておらず、期限に強制力もありません。<a href="#src" class="ref">[8][10][3]</a></p>
+    </div>
+
+    <div class="pos for">
+      <div class="top"><span class="who">提出4会派（自民・維新・国民民主・参政）</span><span class="stance">外形を先に</span></div>
+      <div class="body"><p>公選法で既に整備済みの外形的事項をまず反映し、速やかに成立させるべきだとする。広告などの公平性に関わる事項は、引き続き審査会で議論する位置づけ。<a href="#src" class="ref">[4][5]</a></p></div>
+    </div>
+
+    <div class="pos add">
+      <div class="top"><span class="who">立憲民主党など</span><span class="stance">切り離さず併せて</span></div>
+      <div class="body"><p>課題Bを後回しにせず、外形的事項と併せて措置すべきだと主張。放送CMの見直しなどを審査会で提案している。<a href="#src" class="ref">[7][10]</a></p></div>
+    </div>
+
+    <p style="font-size:12.5px;color:var(--muted);margin-top:8px;">「宿題」が動くかどうかは、各会派の優先順位と憲法審査会での合意次第です。このページは賛否には踏み込まず、宿題が残っているという事実と、各会派の位置づけを記すにとどめます。</p>
+  </section>
+
+  <!-- ⑧ -->
+  <section id="s8">
+    <div class="shead"><span class="num">⑧</span><h2 class="serif">SNSでよく挙がる声と、この法案の射程</h2></div>
+    <p class="lead">よく見かける疑問・不安を「この法案の射程内か外か」「実際にどこで扱われるか」に整理した表です。話題の選び方には編集が入りますし、<b>「射程外＝心配ない」という意味ではありません</b>（未措置の宿題や、制度設計上の論点として残るものもあります）。声の当否を判定するのではなく、所在を示すための地図です。</p>
+
+    <div class="scope">
+      <div class="row isin">
+        <div class="c"><span class="lab2">よく挙がる声</span><span class="topic">離島の悪天候時の開票、立会人の確保、FMでの広報</span></div>
+        <div class="c mid"><span class="badge2 b-in">射程内</span></div>
+        <div class="c where"><span class="lab2">どこで扱われるか</span>まさにこの改正案の3項目（→<a href="#s3">③こう変わる</a>）。</div>
+      </div>
+      <div class="row">
+        <div class="c"><span class="lab2">よく挙がる声</span><span class="topic">テレビCMの公平性（資金力のある側が広告を出しやすいのでは）</span></div>
+        <div class="c mid"><span class="badge2 b-out">射程外</span></div>
+        <div class="c where"><span class="lab2">どこで扱われるか</span>現行法に投票期日14日前からの有料広告放送の制限あり。さらなる見直しは附則第4条の「宿題」だが未措置。今回案では扱わない。<a href="#src" class="ref">[6][9]</a></div>
+      </div>
+      <div class="row">
+        <div class="c"><span class="lab2">よく挙がる声</span><span class="topic">ネット広告・SNS上の偽情報やデマ</span></div>
+        <div class="c mid"><span class="badge2 b-out">射程外</span></div>
+        <div class="c where"><span class="lab2">どこで扱われるか</span>国民投票運動に固有のネット・SNS規制はない。附則第4条が「ネットの適正利用」を検討事項に挙げるが未措置。SNS上の権利侵害一般は情プラ法（2025年施行）など一般法の範囲で、国民投票運動を狙ったルールではない。<a href="#src" class="ref">[8][21]</a></div>
+      </div>
+      <div class="row">
+        <div class="c"><span class="lab2">よく挙がる声</span><span class="topic">最低投票率がなく、低投票率でも改正が決まるのでは</span></div>
+        <div class="c mid"><span class="badge2 b-out">射程外</span></div>
+        <div class="c where"><span class="lab2">どこで扱われるか</span>現行の国民投票法は最低投票率を定めておらず、賛否は有効投票総数の過半数で決する。制度設計上の論点として残る。今回案の対象外。<a href="#src" class="ref">[20][19]</a></div>
+      </div>
+      <div class="row">
+        <div class="c"><span class="lab2">よく挙がる声</span><span class="topic">白票・無効票はどう数えるのか</span></div>
+        <div class="c mid"><span class="badge2 b-out">射程外</span></div>
+        <div class="c where"><span class="lab2">どこで扱われるか</span>母数は有効投票（賛成＋反対）の総数で、白票・無効票は分母に入らない（現行法）。今回案の対象外。<a href="#src" class="ref">[20]</a></div>
+      </div>
+      <div class="row">
+        <div class="c"><span class="lab2">よく挙がる声</span><span class="topic">9条や緊急事態条項が変わるのか</span></div>
+        <div class="c mid"><span class="badge2 b-out">射程外</span></div>
+        <div class="c where"><span class="lab2">どこで扱われるか</span>これは手続きを定める法律の改正で、憲法の中身を変える発議ではない。中身の改正には別途、改正原案の発議（各院で総議員の3分の2）と国民投票が必要で、現在は発議されていない。<a href="#src" class="ref">[19]</a></div>
+      </div>
+      <div class="row">
+        <div class="c"><span class="lab2">よく挙がる声</span><span class="topic">外国勢力によるSNS世論操作・干渉</span></div>
+        <div class="c mid"><span class="badge2 b-out">射程外</span></div>
+        <div class="c where"><span class="lab2">どこで扱われるか</span>国民投票運動に固有の規律はなく、附則第4条の「宿題」（広告・資金・ネット適正利用）に関連する論点。なお公職選挙向けには別途、SNS偽情報対策の検討が進んでいる（国民投票とは別の枠組み）。</div>
+      </div>
+    </div>
+
+    <p style="font-size:12.5px;color:var(--muted);margin-top:8px;">射程外のうち、広告・資金・ネットの3つは附則第4条の「宿題」として残っているものです。その経緯と各会派の立場は⑦にまとめています。</p>
+  </section>
+
+  <!-- 参加 -->
+  <section id="sanka">
+    <div class="shead"><span class="num" style="background:var(--slate)">◇</span><h2 class="serif">意見を伝えたい場合の経路（任意）</h2></div>
+    <p class="lead">読んだうえで意見を伝えたい人のための参照です。賛成・反対・保留のいずれでも経路は同じで、<b>伝えないことも同じく正当な選択</b>です。呼びかけではありません。</p>
+    <div class="issue">
+      <div class="lab">この法案に固有の事情</div>
+      <p>この案は<b>議員立法</b>のため、府省が行う意見公募（パブリックコメント）の対象ではありません。現実的な経路は、議員の紹介による請願、各党・各議員の公式窓口、（開かれた場合の）公聴会での意見陳述などに限られます。審議日程は<a href="https://www.shugiintv.go.jp/jp/" target="_blank" rel="noopener">審議中継</a>で確認できます。</p>
+    </div>
+    <p style="font-size:13px;color:var(--muted);">請願・会派窓口・公聴会など、法案を問わず共通の仕組みは <a href="sanka.html">参加の経路</a> にまとめています。窓口は制度的なもので、効果が保証されるものではありません。</p>
+  </section>
+
+  <!-- sources -->
+  <section id="src" class="sources">
+    <div class="shead"><span class="num" style="background:var(--ochre)">◇</span><h2 class="serif">出典（一次情報）</h2></div>
+    <ol class="srclist">
+      <li>衆議院 議案情報（第221回国会 議案一覧）— <a href="https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/menu.htm" target="_blank" rel="noopener">shugiin.go.jp</a></li>
+      <li>衆議院 第221回国会 提出法律案一覧 — <a href="https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/housei/html/h-shuhou221.html" target="_blank" rel="noopener">shugiin.go.jp</a></li>
+      <li>衆議院 憲法審査会 第7号 会議録（令和8年5月28日）— <a href="https://www.shugiin.go.jp/internet/itdb_kaigiroku.nsf/html/kaigiroku/025022120260528007.htm" target="_blank" rel="noopener">shugiin.go.jp</a></li>
+      <li>自由民主党 憲法改正実現本部「国民投票法改正案を提出」（2026/6/5）— <a href="https://www.jimin.jp/constitution/news/2026/26060501.html" target="_blank" rel="noopener">jimin.jp</a></li>
+      <li>国民民主党「議員立法『国民投票法改正法案』を提出」（2026/6/5）— <a href="https://new-kokumin.jp/news/diet/20260605_1" target="_blank" rel="noopener">new-kokumin.jp</a></li>
+      <li>政府広報オンライン「『国民投票法』って何だろう？」— <a href="https://www.gov-online.go.jp/article/200802/entry-8881.html" target="_blank" rel="noopener">gov-online.go.jp</a></li>
+      <li>立憲民主党「ネット・放送CMの規制を導入すべき」（2025/4/30）— <a href="https://cdp-japan.jp/news/20250430_9173" target="_blank" rel="noopener">cdp-japan.jp</a></li>
+      <li>衆議院法制局・憲法審査会事務局「国民投票法①（放送CM・ネットCM）に関する資料」（令和7年4月3日, PDF）— <a href="https://www.shugiin.go.jp/internet/itdb_kenpou.nsf/html/kenpou/2170403_1housei_kenshin-siryou.pdf/$File/2170403_1housei_kenshin-siryou.pdf" target="_blank" rel="noopener">shugiin.go.jp</a></li>
+      <li>衆憲資第100号「『国民投票運動のための広告放送』等に関する資料」（令和4年4月, PDF）— <a href="https://www.shugiin.go.jp/internet/itdb_kenpou.nsf/html/kenpou/shukenshi100.pdf/$File/shukenshi100.pdf" target="_blank" rel="noopener">shugiin.go.jp</a></li>
+      <li>立憲民主党「国民投票法改正案を修正可決」（2021/5/6, 附則修正の説明）— <a href="https://cdp-japan.jp/news/20210506_1305" target="_blank" rel="noopener">cdp-japan.jp</a></li>
+      <li>審議入りの合意は2026年6月10日時点の報道による。確定情報は衆議院 議案情報・会議録を参照。</li>
+      <li>衆議院 第198回国会 政治倫理・公選法改正特別委員会 会議録（令和元年4月10日）— 投票立会人を「選挙権を有する者」に拡大した趣旨説明 — <a href="https://www.shugiin.go.jp/internet/itdb_kaigiroku.nsf/html/kaigiroku/007119820190410003.htm" target="_blank" rel="noopener">shugiin.go.jp</a></li>
+      <li>内閣府 地方分権改革 解決事例09「投票管理者及び投票立会人の選任要件の緩和」（令和元年法律第1号の効果・実例）— <a href="https://www.cao.go.jp/bunken-suishin/jirei/2022/kaiketsu09.html" target="_blank" rel="noopener">cao.go.jp</a></li>
+      <li>総務省「公職選挙法施行令の一部を改正する政令（案）等の概要」（令和元年5月）— 期日直前に開票区を設けた場合の開票立会人の取扱い — <a href="https://www.soumu.go.jp/main_content/000619053.pdf" target="_blank" rel="noopener">soumu.go.jp</a></li>
+      <li>e-Gov 法令検索「日本国憲法の改正手続に関する法律」「公職選挙法」（条文）— <a href="https://laws.e-gov.go.jp/law/419AC1000000051" target="_blank" rel="noopener">laws.e-gov.go.jp</a></li>
+      <li>衆議院インターネット審議中継（第221回国会の会期・審議中継）— <a href="https://www.shugiintv.go.jp/jp/" target="_blank" rel="noopener">shugiintv.go.jp</a></li>
+      <li>国会会議録検索システム（質疑の全文）— <a href="https://kokkai.ndl.go.jp/" target="_blank" rel="noopener">kokkai.ndl.go.jp</a></li>
+      <li>衆議院憲法審査会「概要」（審査会の手続・議決要件）— <a href="https://www.shugiin.go.jp/internet/itdb_kenpou.nsf/html/kenpou/gaiyo.htm" target="_blank" rel="noopener">shugiin.go.jp</a></li>
+      <li>総務省「国民投票制度についての紹介（国会での手続）」（憲法改正の発議要件）— <a href="https://www.soumu.go.jp/senkyo/kokumin_touhyou/kokkai.html" target="_blank" rel="noopener">soumu.go.jp</a></li>
+      <li>衆議院憲法審査会事務局「衆憲資第59号『国民投票制度』に関する基礎的資料」（過半数・最低投票率の論点, PDF）— <a href="https://www.shugiin.go.jp/internet/itdb_kenpou.nsf/html/kenpou/chosa/shukenshi059.pdf/$File/shukenshi059.pdf" target="_blank" rel="noopener">shugiin.go.jp</a></li>
+      <li>総務省「インターネット上の違法・有害情報への対応（情報流通プラットフォーム対処法）」— <a href="https://www.soumu.go.jp/main_sosiki/joho_tsusin/d_syohi/ihoyugai.html" target="_blank" rel="noopener">soumu.go.jp</a></li>
+    </ol>
+  </section>
+
+  <footer>
+    <p class="mono">PROTOTYPE — 法案カルテ試作 ／ 国民投票法改正案 ／ 第221回国会</p>
+    <p>本ページは「重要法案を一次情報ベースで中立に整理する」という構想を1法案で形にした試作です。記載は作成時点（2026年6月10日）の要約であり、審議の進行により内容は変わります。正確・最新の情報は必ず上記の一次資料でご確認ください。</p>
+    <p style="margin-top:10px;"><a href="index.html">← トップ（法案一覧）</a>　／　<a href="genkai.html">このサイトの限界と方針</a></p>
+  </footer>
+
+</main>
+
+<script>
+  // 本文中の [n] を、元サイトへ直接飛ぶ外部リンクに変換する
+  var REF = {
+    1:"https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/menu.htm",
+    2:"https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/housei/html/h-shuhou221.html",
+    3:"https://www.shugiin.go.jp/internet/itdb_kaigiroku.nsf/html/kaigiroku/025022120260528007.htm",
+    4:"https://www.jimin.jp/constitution/news/2026/26060501.html",
+    5:"https://new-kokumin.jp/news/diet/20260605_1",
+    6:"https://www.gov-online.go.jp/article/200802/entry-8881.html",
+    7:"https://cdp-japan.jp/news/20250430_9173",
+    8:"https://www.shugiin.go.jp/internet/itdb_kenpou.nsf/html/kenpou/2170403_1housei_kenshin-siryou.pdf/$File/2170403_1housei_kenshin-siryou.pdf",
+    9:"https://www.shugiin.go.jp/internet/itdb_kenpou.nsf/html/kenpou/shukenshi100.pdf/$File/shukenshi100.pdf",
+    10:"https://cdp-japan.jp/news/20210506_1305",
+    11:"https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/menu.htm",
+    12:"https://www.shugiin.go.jp/internet/itdb_kaigiroku.nsf/html/kaigiroku/007119820190410003.htm",
+    13:"https://www.cao.go.jp/bunken-suishin/jirei/2022/kaiketsu09.html",
+    14:"https://www.soumu.go.jp/main_content/000619053.pdf",
+    15:"https://laws.e-gov.go.jp/law/419AC1000000051",
+    16:"https://www.shugiintv.go.jp/jp/",
+    17:"https://kokkai.ndl.go.jp/",
+    18:"https://www.shugiin.go.jp/internet/itdb_kenpou.nsf/html/kenpou/gaiyo.htm",
+    19:"https://www.soumu.go.jp/senkyo/kokumin_touhyou/kokkai.html",
+    20:"https://www.shugiin.go.jp/internet/itdb_kenpou.nsf/html/kenpou/chosa/shukenshi059.pdf/$File/shukenshi059.pdf",
+    21:"https://www.soumu.go.jp/main_sosiki/joho_tsusin/d_syohi/ihoyugai.html"
+  };
+  document.querySelectorAll('a.ref').forEach(function(a){
+    var nums = a.textContent.match(/\d+/g) || [];
+    if(!nums.length) return;
+    var frag = document.createDocumentFragment();
+    nums.forEach(function(n){
+      var url = REF[n];
+      var el = document.createElement('a');
+      el.className = 'ref';
+      el.textContent = '[' + n + ']';
+      if(url){ el.href = url; el.target = '_blank'; el.rel = 'noopener'; el.title = '出典を別タブで開く'; }
+      else { el.href = '#src'; }
+      frag.appendChild(el);
+    });
+    a.replaceWith(frag);
+  });
+</script>
+</body>
+</html>

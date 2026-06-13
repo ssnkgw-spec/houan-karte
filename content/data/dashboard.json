@@ -1,0 +1,78 @@
+{
+  "updatedAt": "2026-06-12T13:45:53.200Z",
+  "session": {
+    "number": 221,
+    "type": "特別会",
+    "opensOn": "2026-02-18",
+    "endsOn": "2026-07-17",
+    "note": "2月8日の第51回衆院選を受けて召集され、高市内閣のもとで審議が続いています。"
+  },
+  "cabinetBills": {
+    "submitted": 63,
+    "passed": 35,
+    "asOf": "2026-06-12",
+    "sourceUrl": "https://github.com/smartnews-smri/house-of-representatives",
+    "sourceName": "スマートニュース 国会議案DB（衆議院 議案情報より）"
+  },
+  "seats": [
+    {
+      "house": "shugiin",
+      "total": 465,
+      "title": "衆議院の会派構成（第51回衆院選 確定議席・465）",
+      "caption": "自民党が単独で3分の2（310）を超える316議席。法案の通りやすさを左右する前提です。",
+      "markers": [
+        {
+          "label": "過半数 233",
+          "seats": 233
+        },
+        {
+          "label": "3分の2 310",
+          "seats": 310
+        }
+      ],
+      "groups": [
+        {
+          "name": "自民",
+          "seats": 316,
+          "color": "#28406E"
+        },
+        {
+          "name": "中道改革連合",
+          "seats": 49,
+          "color": "#6E7BA6"
+        },
+        {
+          "name": "維新",
+          "seats": 36,
+          "color": "#8FA36B"
+        },
+        {
+          "name": "国民民主",
+          "seats": 28,
+          "color": "#C8A24C"
+        },
+        {
+          "name": "参政",
+          "seats": 15,
+          "color": "#B5743A"
+        },
+        {
+          "name": "チームみらい",
+          "seats": 11,
+          "color": "#6FA0A8"
+        },
+        {
+          "name": "共産",
+          "seats": 4,
+          "color": "#9A5B5B"
+        },
+        {
+          "name": "その他",
+          "seats": 6,
+          "color": "#B9B3A6"
+        }
+      ],
+      "footnote": "確定議席は第51回衆院選（2026/2/8）の結果。現在の会派別内訳は [衆議院 会派別所属議員数](https://www.shugiin.go.jp/internet/itdb_annai.nsf/html/statics/shiryo/kaiha_m.htm) で確認できます。"
+    }
+  ]
+}

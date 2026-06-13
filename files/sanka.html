@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>参加の経路｜法案カルテ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@600;700&family=Noto+Sans+JP:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBFAF6; --panel:#FFFFFF; --ink:#191A1C; --muted:#5C5E64;
+    --line:#E4E0D6; --line-soft:#EFECE4;
+    --indigo:#28406E; --indigo-soft:#EAEEF6; --indigo-line:#C3CFE4;
+    --ochre:#8F6310; --ochre-soft:#F7EFDC; --ochre-line:#E4D2A8;
+    --slate:#525C68; --slate-soft:#EEF0F2; --slate-line:#D7DBE0;
+    --maxw:820px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Noto Sans JP",system-ui,sans-serif; font-size:16px; line-height:1.85;
+    -webkit-font-smoothing:antialiased; font-feature-settings:"palt" 1;}
+  .serif{font-family:"Noto Serif JP",serif;}
+  .mono{font-family:"Roboto Mono",monospace;}
+  a{color:var(--indigo); text-underline-offset:2px;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 22px;}
+  .protobar{background:var(--ink); color:#EDEBE4; font-size:12.5px; padding:9px 0;}
+  .protobar .wrap{display:flex; gap:10px; align-items:baseline; flex-wrap:wrap;}
+  .protobar .tag{font-family:"Roboto Mono",monospace; font-size:11px; font-weight:500;
+    background:#EDEBE4; color:var(--ink); padding:1px 7px; border-radius:2px;}
+  .protobar a{color:#EDEBE4;}
+
+  header.mast{padding:44px 0 4px;}
+  .eyebrow{font-family:"Roboto Mono",monospace; font-size:12px; letter-spacing:.16em;
+    color:var(--indigo); text-transform:uppercase; margin:0 0 12px;}
+  h1{font-family:"Noto Serif JP",serif; font-weight:700; font-size:clamp(25px,5vw,36px);
+    line-height:1.35; margin:0 0 12px;}
+  .sub{font-size:15px; color:var(--muted); margin:0 0 6px;}
+
+  .frame{border:1px solid var(--slate-line); background:var(--panel); border-radius:3px;
+    padding:16px 18px; margin:22px 0 6px;}
+  .frame .ft{font-weight:700; font-size:14.5px; margin-bottom:8px;}
+  .do{list-style:none; padding:0; margin:0;}
+  .do li{position:relative; padding:6px 0 6px 24px; font-size:13.5px; line-height:1.7;}
+  .do li::before{content:"\2713"; position:absolute; left:2px; top:6px; color:var(--indigo); font-weight:700;}
+
+  section{padding:30px 0 4px;}
+  .shead{display:flex; align-items:baseline; gap:12px; margin-bottom:8px;}
+  .shead .num{font-family:"Roboto Mono",monospace; font-size:13px; font-weight:500; color:#fff;
+    background:var(--slate); width:28px; height:28px; flex:0 0 28px; display:flex;
+    align-items:center; justify-content:center; border-radius:3px; transform:translateY(2px);}
+  h2{font-family:"Noto Serif JP",serif; font-weight:600; font-size:21px; margin:0; line-height:1.4;}
+  .lead{color:var(--muted); font-size:14.5px; margin:2px 0 16px;}
+  p{margin:0 0 14px;}
+
+  .ch{border:1px solid var(--line); border-radius:3px; background:var(--panel); padding:16px 18px; margin:0 0 12px;}
+  .ch .tag{font-family:"Roboto Mono",monospace; font-size:11px; letter-spacing:.05em; color:var(--indigo); display:inline-block; margin-bottom:5px;}
+  .ch h3{font-size:16px; margin:0 0 7px; font-weight:700;}
+  .ch p{font-size:13.5px; margin:0 0 8px; color:#33353a; line-height:1.75;}
+  .ch p:last-child{margin:0;}
+  .ch .lim{font-size:12.5px; color:var(--ochre); background:var(--ochre-soft);
+    border:1px solid var(--ochre-line); border-radius:3px; padding:7px 11px;}
+  .ch .lim b{color:var(--ochre);}
+  .ch .links{margin-top:9px; font-size:12.5px;}
+
+  .back{font-size:13px; margin:24px 0 0;}
+  footer{padding:30px 0 60px; font-size:12.5px; color:var(--muted); line-height:1.7; margin-top:24px;
+    border-top:1px solid var(--line);}
+</style>
+</head>
+<body>
+
+<div class="protobar"><div class="wrap"><span class="tag">試作 / PROTOTYPE</span><span><a href="index.html">← トップ（法案一覧）へ</a></span></div></div>
+
+<header class="mast">
+  <div class="wrap">
+    <p class="eyebrow">法案カルテ ／ Participation</p>
+    <h1 class="serif">参加の経路</h1>
+    <p class="sub">読んだうえで意見を伝えたい人のための、公的な経路の参照です。法案を問わず共通の仕組みをまとめています。</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="frame">
+    <div class="ft">このページの立場</div>
+    <ul class="do">
+      <li>これは<b>呼びかけではなく参照</b>です。意見を伝えることを勧めているわけではありません。</li>
+      <li>賛成・反対・保留、<b>どの意見でも経路は同じ</b>です。方向を持ちません。</li>
+      <li>意見を<b>伝えないことも、同じく正当な選択</b>です。</li>
+      <li>ここで示すのは<b>制度的な窓口</b>で、個人を攻撃する手段ではありません。</li>
+      <li>経路があること＝結果が出ること、ではありません。<b>効果は保証されません</b>。</li>
+    </ul>
+  </div>
+
+  <section>
+    <div class="shead"><span class="num">A</span><h2 class="serif">請願（せいがん）</h2></div>
+    <p class="lead">国会に対して意見・要望を正式に届ける、憲法上の権利（憲法16条）。</p>
+    <div class="ch">
+      <span class="tag">CHANNEL A</span>
+      <h3>議員の紹介を得て、議院に請願書を提出する</h3>
+      <p>誰でも提出できますが、国会への請願には<b>紹介議員が必要</b>です（国会法79条）。提出された請願は委員会で審査され、採択・不採択が決まります。賛成の請願も反対の請願も、同じ手続きです。</p>
+      <div class="lim"><b>限界</b>　紹介議員を見つける必要があり、採択されるとは限りません。提出が結果に直結するものではありません。</div>
+      <p class="links">手続きの案内：<a href="https://www.shugiin.go.jp/" target="_blank" rel="noopener">衆議院</a>／<a href="https://www.sangiin.go.jp/" target="_blank" rel="noopener">参議院</a></p>
+    </div>
+  </section>
+
+  <section>
+    <div class="shead"><span class="num">B</span><h2 class="serif">各党・各議員への意見</h2></div>
+    <p class="lead">政党・会派や、選挙区の議員に、公式の窓口を通じて意見を伝える。</p>
+    <div class="ch">
+      <span class="tag">CHANNEL B</span>
+      <h3>公式の問い合わせ窓口から伝える</h3>
+      <p>多くの政党・議員は、公式サイトに意見の問い合わせフォームや連絡先を設けています。自分の選挙区の議員に伝えるのが基本的な経路です。どの立場の意見でも同様に受け付けられます。</p>
+      <div class="lim"><b>限界</b>　返信や反映は保証されません。窓口は<b>公式・制度的なものに限り</b>、個人への攻撃や私的連絡先の利用は避けてください。</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="shead"><span class="num">C</span><h2 class="serif">公聴会・参考人</h2></div>
+    <p class="lead">重要な案件で、委員会が一般や専門家から意見を聴く場。</p>
+    <div class="ch">
+      <span class="tag">CHANNEL C</span>
+      <h3>公述人の公募に応じて意見を述べる</h3>
+      <p>重要な案件では、委員会が公聴会を開くことがあります。中央公聴会では、一般から意見を述べる人（公述人）を<b>公募</b>することがあり、市民が直接意見を述べられる数少ない公式の機会です。日程や公募は各議院・委員会の告知で確認します。</p>
+      <div class="lim"><b>限界</b>　開催されるかは案件次第で、公募の有無・人数も限られます。必ず述べられるわけではありません。</div>
+      <p class="links">告知：<a href="https://www.shugiin.go.jp/" target="_blank" rel="noopener">衆議院</a>／<a href="https://www.sangiin.go.jp/" target="_blank" rel="noopener">参議院</a></p>
+    </div>
+  </section>
+
+  <section>
+    <div class="shead"><span class="num">D</span><h2 class="serif">パブリックコメント（意見公募手続）</h2></div>
+    <p class="lead">行政手続法に基づき、府省が規則を定める際に意見を募る制度。</p>
+    <div class="ch">
+      <span class="tag">CHANNEL D</span>
+      <h3>多くの「法案」には、これは使えない</h3>
+      <p>パブリックコメントは、府省が<b>政令・省令など</b>を定める段階で意見を募る制度で、原則として<b>国会で審議中の法律案そのものや、議員立法には適用されません</b>。「この法案にパブコメは？」の答えは、しばしば「無い（あったとしても関連する政省令や事前の段階）」になります。この誤解はとても多いので、各カルテで法案ごとに有無を示します。</p>
+      <p class="links">制度・募集中の案件：<a href="https://public-comment.e-gov.go.jp/" target="_blank" rel="noopener">e-Gov パブリック・コメント</a></p>
+    </div>
+  </section>
+
+  <section>
+    <div class="shead"><span class="num">E</span><h2 class="serif">地方議会を通じた意見書（補足）</h2></div>
+    <div class="ch">
+      <span class="tag">CHANNEL E</span>
+      <h3>住民の請願・陳情から、地方議会が国へ意見書を出す</h3>
+      <p>住民が地方議会に請願・陳情し、地方議会が国に「意見書」を提出する、という間接的な経路もあります。直接ではありませんが、地域からの意思表示の一つの形です。</p>
+    </div>
+  </section>
+
+  <p style="font-size:13.5px;color:var(--muted);margin-top:18px;">なお、各法案ページに参加経路を載せること自体は、賛否の推奨ではありませんが「情報を得たうえでの参加は正当な選択肢だ」という穏やかな前提を含みます。その扱いは <a href="genkai.html">このサイトの限界</a> に明記しています。</p>
+
+  <p class="back"><a href="index.html">← トップ（法案一覧）へ戻る</a></p>
+
+</main>
+
+<footer><div class="wrap"><p class="mono">法案カルテ ／ 参加の経路 ／ PROTOTYPE</p><p>手続きの詳細・最新の募集状況は、必ずリンク先の各機関のページでご確認ください。</p></div></footer>
+</body>
+</html>

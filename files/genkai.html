@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>このサイトの限界と方針｜法案カルテ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@600;700&family=Noto+Sans+JP:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBFAF6; --panel:#FFFFFF; --ink:#191A1C; --muted:#5C5E64;
+    --line:#E4E0D6; --line-soft:#EFECE4;
+    --indigo:#28406E; --indigo-soft:#EAEEF6; --indigo-line:#C3CFE4;
+    --ochre:#8F6310; --ochre-soft:#F7EFDC; --ochre-line:#E4D2A8;
+    --slate:#525C68; --slate-soft:#EEF0F2; --slate-line:#D7DBE0;
+    --maxw:820px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Noto Sans JP",system-ui,sans-serif; font-size:16px; line-height:1.85;
+    -webkit-font-smoothing:antialiased; font-feature-settings:"palt" 1;}
+  .serif{font-family:"Noto Serif JP",serif;}
+  .mono{font-family:"Roboto Mono",monospace;}
+  a{color:var(--indigo); text-underline-offset:2px;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 22px;}
+  .protobar{background:var(--ink); color:#EDEBE4; font-size:12.5px; padding:9px 0;}
+  .protobar .wrap{display:flex; gap:10px; align-items:baseline; flex-wrap:wrap;}
+  .protobar .tag{font-family:"Roboto Mono",monospace; font-size:11px; font-weight:500;
+    background:#EDEBE4; color:var(--ink); padding:1px 7px; border-radius:2px;}
+  .protobar a{color:#EDEBE4;}
+
+  header.mast{padding:44px 0 4px;}
+  .eyebrow{font-family:"Roboto Mono",monospace; font-size:12px; letter-spacing:.16em;
+    color:var(--indigo); text-transform:uppercase; margin:0 0 12px;}
+  h1{font-family:"Noto Serif JP",serif; font-weight:700; font-size:clamp(25px,5vw,36px);
+    line-height:1.35; margin:0 0 12px;}
+  .sub{font-size:15px; color:var(--muted); margin:0 0 6px;}
+  .back{font-size:13px; margin:20px 0 0;}
+
+  section{padding:34px 0 4px; scroll-margin-top:20px;}
+  .shead{display:flex; align-items:baseline; gap:12px; margin-bottom:8px;}
+  .shead .num{font-family:"Roboto Mono",monospace; font-size:13px; font-weight:500; color:#fff;
+    background:var(--indigo); width:28px; height:28px; flex:0 0 28px; display:flex;
+    align-items:center; justify-content:center; border-radius:3px; transform:translateY(2px);}
+  h2{font-family:"Noto Serif JP",serif; font-weight:600; font-size:21px; margin:0; line-height:1.4;}
+  p{margin:0 0 14px;}
+  .lead{color:var(--muted); font-size:14.5px; margin:2px 0 16px;}
+
+  .principles{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:8px 0 4px;}
+  .principles .p{border:1px solid var(--line); border-top:3px solid var(--indigo); border-radius:3px;
+    background:var(--panel); padding:15px 16px;}
+  .principles .pt{font-weight:700; font-size:14.5px; margin-bottom:5px;}
+  .principles .pd{font-size:13px; color:var(--muted); line-height:1.7;}
+
+  .lim{border:1px solid var(--line); border-radius:3px; background:var(--panel);
+    padding:15px 17px; margin:0 0 12px; display:flex; gap:14px;}
+  .lim .n{font-family:"Roboto Mono",monospace; font-size:13px; font-weight:700; color:var(--ochre);
+    background:var(--ochre-soft); border:1px solid var(--ochre-line); border-radius:3px;
+    width:30px; height:30px; flex:0 0 30px; display:flex; align-items:center; justify-content:center;}
+  .lim h3{font-size:15px; margin:0 0 5px; font-weight:700;}
+  .lim p{font-size:13.5px; margin:0; color:#33353a; line-height:1.75;}
+
+  .panel{border:1px solid var(--line); border-left:3px solid var(--indigo); background:var(--indigo-soft);
+    border-radius:0 3px 3px 0; padding:14px 17px; margin:6px 0 14px; font-size:14px; line-height:1.8;}
+  .donot{list-style:none; padding:0; margin:6px 0;}
+  .donot li{position:relative; padding:7px 0 7px 26px; font-size:14px; border-bottom:1px solid var(--line-soft);}
+  .donot li::before{content:"\00D7"; position:absolute; left:4px; top:7px; color:var(--ochre);
+    font-weight:700; font-family:"Roboto Mono",monospace;}
+  .do{list-style:none; padding:0; margin:6px 0;}
+  .do li{position:relative; padding:7px 0 7px 26px; font-size:14px; border-bottom:1px solid var(--line-soft);}
+  .do li::before{content:"\2713"; position:absolute; left:4px; top:7px; color:var(--indigo); font-weight:700;}
+
+  footer{padding:34px 0 60px; font-size:12.5px; color:var(--muted); line-height:1.7; margin-top:24px;
+    border-top:1px solid var(--line);}
+  @media(max-width:620px){ .principles{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+
+<div class="protobar"><div class="wrap"><span class="tag">試作 / PROTOTYPE</span><span><a href="index.html">← トップ（法案一覧）へ</a></span></div></div>
+
+<header class="mast">
+  <div class="wrap">
+    <p class="eyebrow">法案カルテ ／ About &amp; Limits</p>
+    <h1 class="serif">このサイトの方針と、中立性の限界</h1>
+    <p class="sub">どの法案ページにも共通する考え方と、私たちが越えられない限界を、先にはっきり書いておきます。</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section>
+    <div class="shead"><span class="num">◇</span><h2 class="serif">何をするサイトか</h2></div>
+    <p class="lead">重要な法案について、ニュースの論調ではなく、国会・各党・省庁の一次情報だけを材料に、いま何がどう変わろうとしているのかを中立に整理します。読んだ人が自分で判断できる状態にすることが目的で、結論を勧めることはしません。</p>
+    <div class="principles">
+      <div class="p"><div class="pt">一次情報だけ</div><div class="pd">国会の議案・会議録、各党の発信、省庁資料を材料にします。報道は原則として材料にしません。</div></div>
+      <div class="p"><div class="pt">所在を示す</div><div class="pd">「正しいのはどちらか」ではなく「何がどこで、どう違うか」を示します。賛否の判断は委ねます。</div></div>
+      <div class="p"><div class="pt">すべてに出典</div><div class="pd">記述には出典番号を付け、元の一次資料へ直接たどれるようにします。要約は出発点で、原典が正です。</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="shead"><span class="num">!</span><h2 class="serif">中立性の限界（いちばん大事なこと）</h2></div>
+    <p class="lead">「事実だけを中立に」と掲げても、完全な中立は構造的に不可能です。どこに判断が入りうるかを、隠さずに挙げます。読むときの留保にしてください。</p>
+
+    <div class="lim"><div class="n">1</div><div><h3>「課題」「論点」の枠組みの選び方</h3><p>何を課題として立て、どの論点を前面に出すか——その切り分け自体に視点が入ります。私たちは、自前で課題を作るより、国会の審査会で実際に語られた論点をなぞる方を優先しますが、それでも選択は残ります。</p></div></div>
+
+    <div class="lim"><div class="n">2</div><div><h3>「対案」としてどの立場を載せるか</h3><p>どの会派・どの主張を取り上げ、どれを省くか。独立した法案として出ていない主張（附則修正の要求や委員会発言）をどう扱うかにも判断が入ります。できるだけ発信元のまま、賛否の重みづけをせずに並べます。</p></div></div>
+
+    <div class="lim"><div class="n">3</div><div><h3>「よくある声」の選定（実測ではない）</h3><p>SNSでよく挙がる声を扱うページでは、どの声を載せるかを私たちが選んでいます。「よく挙がる」を測定したわけではありません。選定基準を「審査会で実際に言及された論点＋公開された意見」に寄せて透明化しますが、編集は残ります。</p></div></div>
+
+    <div class="lim"><div class="n">4</div><div><h3>「射程外＝心配ない」と読ませない</h3><p>ある懸念が「この法案の射程外」だと書くと、つい「だから問題ない」と読めてしまいます。実際には、未措置の宿題・別制度・制度設計上の論点として残るものがあります。射程の表では、その区別を必ず添えます。</p></div></div>
+
+    <div class="lim"><div class="n">5</div><div><h3>要約は原文の劣化コピー</h3><p>分かりやすく言い換えるほど、条文や答弁のニュアンスは落ちます。平易な要約はあくまで入口で、正確さは一次資料が担保します。重要な判断をするときは、必ずリンク先の原典に当たってください。</p></div></div>
+  </section>
+
+  <section>
+    <div class="shead"><span class="num">＝</span><h2 class="serif">事実と意見の線引き</h2></div>
+    <div class="panel">
+      地の文（法案の中身・手続きの状況・現行法の内容）は、検証できる<b>事実</b>として書きます。賛否にあたる<b>見解</b>は必ず「どの会派・どの主体がそう述べたか」を明示し、私たちの評価を混ぜません。両者が見分けられるよう、意見には発信元のラベルを付けます。
+    </div>
+  </section>
+
+  <section>
+    <div class="shead"><span class="num">▤</span><h2 class="serif">出典のポリシー</h2></div>
+    <ul class="do">
+      <li>国会（議案情報・会議録・審査会資料）、各党の公式発信、省庁の資料を一次情報として優先します。</li>
+      <li>報道は原則として材料にしません。速報的な事実（審議入りの合意など）を補助的に使う場合は、その旨を明記し、確定情報は国会の一次資料で確認するよう促します。</li>
+      <li>各記述には出典番号を付け、本文中の番号から元のページへ直接遷移できるようにします。</li>
+      <li>弁護士会声明や論評など立場のある発信を引く場合は、一次情報そのものと区別して扱います。</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="shead"><span class="num">−</span><h2 class="serif">やらないこと</h2></div>
+    <ul class="donot">
+      <li>賛成・反対の推奨や、「こう投票すべき」という誘導はしません。</li>
+      <li>法案や政党の採点・スコア化・ランキングはしません。</li>
+      <li>成立する／しないの勝敗予測はしません（手続きの段取りは事実として示します）。</li>
+      <li>個別の法的助言はしません。世論調査でもありません。</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="shead"><span class="num">→</span><h2 class="serif">「参加の経路」の扱い</h2></div>
+    <p>各法案ページには、意見を伝えたい人のために公的な参加経路（請願・会派窓口・公聴会など）を参照として載せることがあります。そこでも賛成・反対のどちらも勧めず、文面の用意や送信件数の表示はしません。ただし、<b>「情報を得たうえでの参加は正当な選択肢だ」という穏やかな前提</b>は採っています。これは賛否の推奨とは別物ですが、完全に価値中立ではないため、ここに明記します。意見を伝えないこともまた、同じく正当な選択です。</p>
+    <p style="font-size:13.5px;"><a href="sanka.html">→ 参加の経路（共通の仕組み）を見る</a></p>
+  </section>
+
+  <section>
+    <div class="shead"><span class="num">⟳</span><h2 class="serif">更新と、誤りの扱い</h2></div>
+    <p>法案は審議の中で修正・継続審議・廃案と動きます。各ページには記載の「時点」を明記し、内容が変わりうることを前提にしています。誤りが見つかれば訂正し、いつ何を直したかを残す方針です。最新・正確な情報は、必ずリンク先の一次資料で確認してください。</p>
+  </section>
+
+  <section>
+    <div class="shead"><span class="num">✦</span><h2 class="serif">それでも残る限界</h2></div>
+    <p>ここまで対策を挙げましたが、<b>完全な中立は達成できません</b>。何を取り上げ、どう要約し、いつの時点で切り取るか——そのすべてに人の判断が入ります。私たちにできるのは、判断が入る場所を隠さず示し、必ず一次資料へ戻れるようにすることだけです。このページ自体が、その限界の宣言です。</p>
+  </section>
+
+  <p class="back"><a href="index.html">← トップ（法案一覧）へ戻る</a></p>
+
+</main>
+
+<footer><div class="wrap"><p class="mono">法案カルテ ／ 方針と限界 ／ PROTOTYPE</p><p>これは「重要法案を一次情報ベースで中立に整理する」構想の試作です。</p></div></footer>
+</body>
+</html>
