@@ -9,6 +9,7 @@
     "typecheck": "tsc --noEmit",
     "lint:neutrality": "node --import tsx scripts/lint-neutrality.ts",
     "fetch:dashboard": "node --import tsx scripts/fetch-dashboard.ts",
+    "triage:corrections": "node --import tsx scripts/triage-corrections.ts",
     "prebuild": "node --import tsx scripts/lint-neutrality.ts"
   },
   "dependencies": {

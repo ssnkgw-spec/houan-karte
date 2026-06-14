@@ -65,6 +65,8 @@ export default function RootLayout({
               <Link href="/bills/">法案一覧</Link>
               <Link href="/about/limits/">このサイトの方針と限界</Link>
               <Link href="/participate/">参加の経路</Link>
+              <Link href="/about/corrections/">訂正・連絡</Link>
+              <Link href="/about/changelog/">更新履歴</Link>
             </nav>
           </div>
         </footer>

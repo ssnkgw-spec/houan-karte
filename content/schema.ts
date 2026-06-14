@@ -292,6 +292,23 @@ export const BillStatusAuto = z.record(
 );
 export type BillStatusAuto = z.infer<typeof BillStatusAuto>;
 
+/* ---------- カルテ未反映マーカー（scripts/detect-status-changes.ts が維持） ---------- */
+/**
+ * 「議案DBの審議状況は進んだが、カルテ本文がまだ追従していない」隙間の機械的マーカー。
+ * 読者向けバナー（進展あり・本文未反映）の単一ソース。
+ * bill.statusAsOf >= changedAt になった（＝人間が本文を反映した）entry は自動で削除される。
+ */
+export const PendingRefresh = z.record(
+  z.string(),
+  z.object({
+    dbStatus: Text, // 変化後の議案DB審議状況
+    prevStatus: z.string().optional(), // 変化前（初出時はなし）
+    changedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/), // 審議状況が変化した日（JST）
+    keikaUrl: z.url().optional(),
+  })
+);
+export type PendingRefresh = z.infer<typeof PendingRefresh>;
+
 /* ---------- 今国会の法律案 全件リスト（scripts/fetch-dashboard.ts が更新） ---------- */
 /** /bills/ の内訳。すべて議案DB由来の機械的事実（L1）。法案名は著作権対象外 */
 const LedgerBill = z.object({
@@ -314,3 +331,18 @@ export const CabinetBillsList = z.object({
   member: BillsLedger, // 議員立法（衆法＋参法）。参法は衆院到達分のみ
 });
 export type CabinetBillsList = z.infer<typeof CabinetBillsList>;
+
+/* ---------- 更新履歴（訂正・補足・お知らせ） ---------- */
+/** フッターの「更新履歴を残します」の約束を満たす。修正・補足の記録に使う */
+export const Changelog = z.array(
+  z.object({
+    date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+    kind: z.enum(["修正", "補足", "新規", "お知らせ"]),
+    billId: z.string().optional(), // 該当カルテ（あればリンク）
+    title: Text,
+    summary: Text,
+    sourceUrl: z.url().optional(), // 根拠の一次情報
+    issueUrl: z.url().optional(), // 元になった報告（GitHub Issue）
+  })
+);
+export type Changelog = z.infer<typeof Changelog>;

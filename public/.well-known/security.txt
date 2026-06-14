@@ -1,0 +1,7 @@
+# 法案カルテ（Bill Dossier）セキュリティ報告
+# 脆弱性など機微な問題は、公開イシューではなく下記から非公開でご連絡ください。
+Contact: https://github.com/ssnkgw-spec/houan-karte/security/advisories/new
+Contact: https://houan-karte.vercel.app/about/corrections/
+Expires: 2027-06-13T00:00:00.000Z
+Preferred-Languages: ja, en
+Canonical: https://houan-karte.vercel.app/.well-known/security.txt

@@ -1,0 +1,7 @@
+# 空欄イシューを禁止し、全投稿を構造化テンプレ経由に強制する
+# （自由記述の苦情・罵詈雑言イシューを封じるための肝）
+blank_issues_enabled: false
+contact_links:
+  - name: セキュリティ上の問題の報告
+    url: https://github.com/ssnkgw-spec/houan-karte/security/advisories/new
+    about: 脆弱性など機微な問題は、公開イシューではなくセキュリティ勧告から非公開で報告してください。

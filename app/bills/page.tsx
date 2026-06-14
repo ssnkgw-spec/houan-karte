@@ -4,6 +4,7 @@ import { bills } from "@/content/bills";
 import cabinetRaw from "@/content/data/cabinet-bills.json";
 import { CabinetBillsList } from "@/content/schema";
 import { formatYmdJa } from "@/lib/session-clock";
+import { getStaleNotice } from "@/lib/pending-refresh";
 
 export const metadata: Metadata = {
   title: "法案一覧",
@@ -61,7 +62,16 @@ function LedgerGroups({
                   {showKind && b.kind ? `${b.kind} ${b.no}` : b.no}
                 </span>
                 <div className="bmain">
-                  <span className="btitle">{b.title}</span>
+                  <span className="btitle">
+                    {b.title}
+                    {b.karteId &&
+                      getStaleNotice(
+                        b.karteId,
+                        bills.find((x) => x.id === b.karteId)?.statusAsOf ?? ""
+                      ) && (
+                        <span className="stale-chip">進展あり・反映待ち</span>
+                      )}
+                  </span>
                   {b.promulgated && (
                     <span className="bmeta mono">公布 {b.promulgated}</span>
                   )}
@@ -122,6 +132,9 @@ export default function BillsIndex() {
               <div className="meta">
                 <span className="badge b-live">{b.card.badge}</span>
                 <span className="kind">{b.card.kind}</span>
+                {getStaleNotice(b.id, b.statusAsOf) && (
+                  <span className="stale-chip">進展あり・反映待ち</span>
+                )}
               </div>
               <h3>{b.card.title}</h3>
               <p className="nick">{b.card.nick}</p>

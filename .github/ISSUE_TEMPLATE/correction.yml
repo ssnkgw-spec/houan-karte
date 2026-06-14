@@ -1,0 +1,63 @@
+name: 訂正・誤りの報告
+description: カルテの記述の誤り・出典との不一致を、一次情報の引用つきで報告します
+title: "[訂正] "
+labels: ["correction"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        この窓口は「説明責任の窓口」です。**①該当箇所の引用／②一次情報のURLと原文引用／③修正案** の3点が必要です。
+        個人攻撃・出典のない主張・報道のみを根拠とする報告は受け付けません。
+        正当な形式の報告でも、確認の結果「修正しない（理由つき）」となることがあります。
+  - type: dropdown
+    id: target
+    attributes:
+      label: 対象カルテ
+      description: どのページについての報告ですか。
+      options:
+        - 国民投票法改正案 (kokumin-touhyou-kaisei)
+        - 政治資金規正法改正 (seijishikin)
+        - 防災庁設置法案 (bousai)
+        - スパイ防止法案 (spy)
+        - その他・トップページなど
+    validations:
+      required: true
+  - type: textarea
+    id: q1
+    attributes:
+      label: ① 該当箇所（カルテ本文の正確な引用）
+      description: カルテのどの記述が誤っているか、本文をそのまま引用してください。引用が本文に見つからない場合は自動でお返しします。
+      placeholder: 例）「◯◯は△△である」と書かれているが、これは誤り。
+    validations:
+      required: true
+  - type: input
+    id: q2url
+    attributes:
+      label: ② 正しい情報がある一次情報のURL
+      description: 衆参・国会会議録・e-Gov法令・内閣法制局・各府省（go.jp）・地方自治体（lg.jp）・議案DB（github.com/smartnews-smri）など、本サイトが一次情報とするサイトに限ります。
+      placeholder: https://...go.jp/...
+    validations:
+      required: true
+  - type: textarea
+    id: q2quote
+    attributes:
+      label: ② その一次情報の該当箇所（原文の引用）
+      description: そのURLのどこに正しい情報があるか、原文を引用してください。
+    validations:
+      required: true
+  - type: textarea
+    id: q3
+    attributes:
+      label: ③ どう修正すべきか（具体的に）
+      description: ②をふまえ、どう書き換えるべきかを具体的に。
+    validations:
+      required: true
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: 確認
+      options:
+        - label: 上記②は、本サイトが一次情報とする公的サイト等からの引用です。
+          required: true
+        - label: 個人攻撃・出典のない主張ではないこと、正当な報告でも修正されない場合があることを理解しました。
+          required: true

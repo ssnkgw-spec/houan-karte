@@ -12,6 +12,7 @@ on:
 
 permissions:
   contents: write
+  issues: write # 審議状況の変化を karte-refresh Issue に通知するため
 
 jobs:
   update:
@@ -31,6 +32,13 @@ jobs:
 
       - name: 中立リント（コンテンツ整合の機械検査）
         run: npm run lint:neutrality
+
+      # 旧値（git HEAD のコミット済み bills-status.json）と比較するため必ず commit の前に走らせる。
+      # 審議状況が変化したカルテを pending-refresh.json に記録し、karte-refresh Issue に通知する（LLM不使用）。
+      - name: 審議状況の変化を検知して karte-refresh Issue に通知
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node --import tsx scripts/detect-status-changes.ts
 
       - name: 差分があればコミット（毎日 updatedAt が更新される）
         run: |

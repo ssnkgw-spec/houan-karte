@@ -3,6 +3,7 @@ import { bills, getBill } from "@/content/bills";
 import { KarteBlock } from "@/components/KarteBlocks";
 import { RichText } from "@/components/RichText";
 import { formatYmdJa } from "@/lib/session-clock";
+import { getStaleNotice } from "@/lib/pending-refresh";
 import billsStatusAuto from "@/content/data/bills-status.json";
 import type { BillStatusAuto, Section } from "@/content/schema";
 import Link from "next/link";
@@ -34,6 +35,7 @@ export default async function BillPage({
 }) {
   const bill = getBill((await params).id);
   const auto = (billsStatusAuto as BillStatusAuto)[bill.id];
+  const stale = getStaleNotice(bill.id, bill.statusAsOf);
   const rt = (text: string) => <RichText text={text} sources={bill.sources} />;
 
   const renderSection = (key: (typeof SECTION_KEYS)[number], i: number) => {
@@ -80,6 +82,21 @@ export default async function BillPage({
                 </span>
               </div>
             </div>
+            {stale && (
+              <p className="stale-note" role="status">
+                <b>審議に進展があり、本文はまだ反映されていません。</b>
+                議案DBでは「{stale.dbStatus}」（{formatYmdJa(stale.changedAt)}{" "}
+                観測）。本文は {formatYmdJa(bill.statusAsOf)} 時点の内容です。最新は
+                {stale.keikaUrl ? (
+                  <a href={stale.keikaUrl} target="_blank" rel="noopener noreferrer">
+                    経過情報
+                  </a>
+                ) : (
+                  "議案DB"
+                )}
+                でご確認ください。
+              </p>
+            )}
             {auto && (
               <p className="autostatus">
                 <span className="mono">議案DB照合（自動更新）</span>：

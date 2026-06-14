@@ -1,0 +1,30 @@
+# 訂正報告イシューの自動チェック（AI不使用・追加シークレット不要）
+# correction ラベル付き（＝報告フォーム経由）のイシューだけを対象に、
+# ①②の構造・②URLのドメイン・①引用のカルテ本文への実在を機械的に検証する。
+name: correction-precheck
+
+on:
+  issues:
+    types: [opened, edited]
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  precheck:
+    if: contains(join(github.event.issue.labels.*.name, ','), 'correction')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: 構造・ドメイン・引用の自動チェック
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: node --import tsx scripts/correction-precheck.ts

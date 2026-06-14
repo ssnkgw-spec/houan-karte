@@ -7,12 +7,13 @@ import {
   formatYmdJa,
   getSessionClock,
 } from "@/lib/session-clock";
+import { getStaleNotice } from "@/lib/pending-refresh";
 
 export default function Home() {
   const clock = getSessionClock();
   const cb = dashboard.cabinetBills;
   const law = cb.lawTotal;
-  const passedPct = (law.passed / law.submitted) * 100;
+  const passedPct = law.submitted > 0 ? (law.passed / law.submitted) * 100 : 0;
 
   return (
     <div className="wrap-lg">
@@ -270,6 +271,9 @@ export default function Home() {
               <div className="meta">
                 <span className="badge b-live">{b.card.badge}</span>
                 <span className="kind">{b.card.kind}</span>
+                {getStaleNotice(b.id, b.statusAsOf) && (
+                  <span className="stale-chip">進展あり・反映待ち</span>
+                )}
               </div>
               <h3>{b.card.title}</h3>
               <p className="nick">{b.card.nick}</p>

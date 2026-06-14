@@ -171,6 +171,13 @@ h1.title{font-family:var(--font-serif),serif; font-weight:700;
   padding:2px 9px; border-radius:2px;}
 .autostatus{font-size:12px; color:var(--muted); margin:10px 0 0; line-height:1.6;}
 .autostatus .mono{font-size:11px;}
+/* 進展あり・本文未反映の隙間表示（ochre） */
+.stale-note{font-size:13px; color:var(--ochre); line-height:1.7; margin:10px 0 0;
+  background:var(--ochre-soft); border:1px solid var(--ochre-line); border-radius:3px; padding:9px 12px;}
+.stale-note b{color:var(--ochre);}
+.stale-note a{color:var(--ochre); font-weight:600;}
+.stale-chip{font-size:11px; font-weight:700; color:var(--ochre); white-space:nowrap;
+  background:var(--ochre-soft); border:1px solid var(--ochre-line); border-radius:20px; padding:1px 8px; margin-left:6px;}
 .srclabel{font-size:12px; color:var(--muted); margin:14px 0 8px; font-family:var(--font-mono),monospace; letter-spacing:.06em;}
 .srcrow{display:flex; flex-wrap:wrap; gap:8px; margin-top:4px;}
 .srcrow a{font-size:12.5px; text-decoration:none; color:var(--indigo);
@@ -385,6 +392,12 @@ ol.srclist a{word-break:break-all;}
   border:1px solid var(--ochre-line); border-radius:3px; padding:7px 11px;}
 .ch .lim2 b{color:var(--ochre);}
 .ch .links{margin-top:9px; font-size:12.5px;}
+
+/* ---- corrections: 報告フォームへの誘導ボタン ---- */
+.cta{display:inline-block; font-weight:700; font-size:14.5px; text-decoration:none;
+  color:#fff; background:var(--indigo); border:1px solid var(--indigo);
+  padding:11px 20px; border-radius:4px; margin:4px 0;}
+.cta:hover{background:#1f3358;}
 
 /* ---- bills index: 内閣提出法案リスト ---- */
 .bgroup{margin:0;}
