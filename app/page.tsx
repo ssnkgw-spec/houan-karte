@@ -13,6 +13,8 @@ export default function Home() {
   const clock = getSessionClock();
   const cb = dashboard.cabinetBills;
   const law = cb.lawTotal;
+  const passedBills = bills.filter((b) => b.card.badge === "成立");
+  const activeBills = bills.filter((b) => b.card.badge !== "成立");
   const passedPct = law.submitted > 0 ? (law.passed / law.submitted) * 100 : 0;
 
   return (
@@ -266,14 +268,37 @@ export default function Home() {
           回国会で審議中の法案です。カードを開くと「カルテ」が読めます。
         </p>
         <div className="grid">
-          {bills.map((b) => (
+          {activeBills.map((b) => (
             <Link className="billcard" href={`/bills/${b.id}/`} key={b.id}>
               <div className="meta">
-                <span className={`badge ${b.card.badge === "成立" ? "b-done" : "b-live"}`}>{b.card.badge}</span>
+                <span className="badge b-live">{b.card.badge}</span>
                 <span className="kind">{b.card.kind}</span>
                 {getStaleNotice(b.id, b.statusAsOf) && (
                   <span className="stale-chip">進展あり・反映待ち</span>
                 )}
+              </div>
+              <h3>{b.card.title}</h3>
+              <p className="nick">{b.card.nick}</p>
+              <p className="desc">{b.card.desc}</p>
+              <div className="foot">
+                <span>{b.card.foot}</span>
+                <span className="go">カルテを見る →</span>
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        <p className="seclabel">Passed — 成立した法案</p>
+        <h2 className="serif">この国会で成立した法案</h2>
+        <p className="h2sub">
+          第{clock.number}回国会でカルテを作成した法案のうち、すでに成立・公布されたものです。
+        </p>
+        <div className="grid">
+          {passedBills.map((b) => (
+            <Link className="billcard" href={`/bills/${b.id}/`} key={b.id}>
+              <div className="meta">
+                <span className="badge b-done">{b.card.badge}</span>
+                <span className="kind">{b.card.kind}</span>
               </div>
               <h3>{b.card.title}</h3>
               <p className="nick">{b.card.nick}</p>
