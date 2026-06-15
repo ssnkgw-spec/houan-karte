@@ -371,6 +371,12 @@ ol.srclist a{word-break:break-all;}
 .lim p{font-size:13.5px; margin:0; color:#33353a; line-height:1.75;}
 .panel{border:1px solid var(--line); border-left:3px solid var(--indigo); background:var(--indigo-soft);
   border-radius:0 3px 3px 0; padding:14px 17px; margin:6px 0 14px; font-size:14px; line-height:1.8;}
+.faq{margin:6px 0;}
+.faq .faq-item{border:1px solid var(--line); border-radius:3px; background:var(--panel); padding:14px 17px; margin:0 0 10px;}
+.faq dt{position:relative; font-weight:700; font-size:15px; padding-left:24px; margin-bottom:7px;}
+.faq dt::before{content:"Q"; position:absolute; left:0; top:0; font-family:var(--font-mono),monospace; font-weight:700; color:var(--indigo);}
+.faq dd{position:relative; margin:0; padding-left:24px; font-size:13.5px; color:#33353a; line-height:1.8;}
+.faq dd::before{content:"A"; position:absolute; left:0; top:0; font-family:var(--font-mono),monospace; font-weight:700; color:var(--ochre);}
 .donot{list-style:none; padding:0; margin:6px 0;}
 .donot li{position:relative; padding:7px 0 7px 26px; font-size:14px; border-bottom:1px solid var(--line-soft);}
 .donot li::before{content:"\00D7"; position:absolute; left:4px; top:7px; color:var(--ochre);

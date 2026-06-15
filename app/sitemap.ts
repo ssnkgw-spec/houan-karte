@@ -13,6 +13,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "daily" as const,
       priority: 0.9,
     })),
+    { url: `${SITE_URL}/about/`, changeFrequency: "monthly" as const, priority: 0.7 },
+    { url: `${SITE_URL}/about/how-laws-pass/`, changeFrequency: "monthly" as const, priority: 0.6 },
     { url: `${SITE_URL}/about/limits/`, changeFrequency: "monthly" as const, priority: 0.5 },
     { url: `${SITE_URL}/participate/`, changeFrequency: "monthly" as const, priority: 0.5 },
     { url: `${SITE_URL}/about/corrections/`, changeFrequency: "monthly" as const, priority: 0.5 },

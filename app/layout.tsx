@@ -48,6 +48,7 @@ export default function RootLayout({
             <span className="tag">試作 / PROTOTYPE</span>
             <nav aria-label="サイト共通">
               <Link href="/bills/">法案一覧</Link>
+              <Link href="/about/">法案カルテとは</Link>
               <Link href="/participate/">参加の経路</Link>
               <Link href="/about/limits/">方針と限界</Link>
             </nav>
@@ -63,6 +64,8 @@ export default function RootLayout({
             <nav aria-label="フッター">
               <Link href="/">トップ</Link>
               <Link href="/bills/">法案一覧</Link>
+              <Link href="/about/">法案カルテとは</Link>
+              <Link href="/about/how-laws-pass/">国会で法案が成立するまで</Link>
               <Link href="/about/limits/">このサイトの方針と限界</Link>
               <Link href="/participate/">参加の経路</Link>
               <Link href="/about/corrections/">訂正・連絡</Link>
