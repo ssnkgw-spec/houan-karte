@@ -2,8 +2,11 @@ import type { Metadata } from "next";
 import { bills, getBill } from "@/content/bills";
 import { KarteBlock } from "@/components/KarteBlocks";
 import { RichText } from "@/components/RichText";
+import { JsonLd } from "@/components/JsonLd";
 import { formatYmdJa } from "@/lib/session-clock";
 import { getStaleNotice } from "@/lib/pending-refresh";
+import { toPlainText } from "@/lib/plain-text";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 import billsStatusAuto from "@/content/data/bills-status.json";
 import type { BillStatusAuto, Section } from "@/content/schema";
 import Link from "next/link";
@@ -21,6 +24,7 @@ export async function generateMetadata({
   return {
     title: bill.card.title,
     description: bill.card.desc,
+    alternates: { canonical: `/bills/${bill.id}/` },
     openGraph: { title: bill.card.title, description: bill.card.desc },
   };
 }
@@ -37,6 +41,40 @@ export default async function BillPage({
   const auto = (billsStatusAuto as BillStatusAuto)[bill.id];
   const stale = getStaleNotice(bill.id, bill.statusAsOf);
   const rt = (text: string) => <RichText text={text} sources={bill.sources} />;
+
+  // ⑧「よくある声と射程」の表を FAQPage 構造化データに流用（GEO 対策）
+  const scopeBlock = bill.sections.s8.blocks.find(
+    (b): b is Extract<typeof b, { type: "scope" }> => b.type === "scope"
+  );
+  const url = `${SITE_URL}/bills/${bill.id}/`;
+  const articleLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: bill.card.title,
+    description: bill.card.desc,
+    inLanguage: "ja",
+    isAccessibleForFree: true,
+    datePublished: bill.statusAsOf,
+    dateModified: auto?.asOf ?? bill.statusAsOf,
+    author: { "@type": "Organization", name: SITE_NAME },
+    publisher: { "@type": "Organization", name: SITE_NAME },
+    mainEntityOfPage: url,
+  };
+  const faqLd =
+    scopeBlock && scopeBlock.rows.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: scopeBlock.rows.map((r) => ({
+            "@type": "Question",
+            name: toPlainText(r.topic),
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: toPlainText(r.where),
+            },
+          })),
+        }
+      : null;
 
   const renderSection = (key: (typeof SECTION_KEYS)[number], i: number) => {
     const sec: Section = bill.sections[key];
@@ -56,6 +94,9 @@ export default async function BillPage({
 
   return (
     <>
+      <JsonLd data={articleLd} />
+      {faqLd && <JsonLd data={faqLd} />}
+
       <header className="mast">
         <div className="wrap">
           <p className="eyebrow">法案カルテ ／ Bill Dossier</p>
