@@ -172,7 +172,8 @@
         "title": "国家情報会議設置法案",
         "status": "成立",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE1FCA.htm",
-        "promulgated": "令和 8年 6月 3日"
+        "promulgated": "令和 8年 6月 3日",
+        "karteId": "intel-council"
       },
       {
         "no": 25,
@@ -337,7 +338,8 @@
         "no": 50,
         "title": "予備自衛官等の職務の円滑な遂行を図るための国家公務員及び地方公務員の兼業の特例に関する法律案",
         "status": "成立",
-        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2602.htm"
+        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2602.htm",
+        "karteId": "reservist"
       },
       {
         "no": 51,

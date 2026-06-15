@@ -130,7 +130,7 @@ export default function BillsIndex() {
           {bills.map((b) => (
             <Link className="billcard" href={`/bills/${b.id}/`} key={b.id}>
               <div className="meta">
-                <span className="badge b-live">{b.card.badge}</span>
+                <span className={`badge ${b.card.badge === "成立" ? "b-done" : "b-live"}`}>{b.card.badge}</span>
                 <span className="kind">{b.card.kind}</span>
                 {getStaleNotice(b.id, b.statusAsOf) && (
                   <span className="stale-chip">進展あり・反映待ち</span>

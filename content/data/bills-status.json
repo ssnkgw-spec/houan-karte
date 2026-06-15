@@ -1,4 +1,14 @@
 {
+  "intel-council": {
+    "status": "成立",
+    "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE1FCA.htm",
+    "asOf": "2026-06-14"
+  },
+  "reservist": {
+    "status": "成立",
+    "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2602.htm",
+    "asOf": "2026-06-14"
+  },
   "kokumin-touhyou-kaisei": {
     "status": "衆議院で審議中",
     "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE28DE.htm",
