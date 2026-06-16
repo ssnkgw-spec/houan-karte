@@ -16,3 +16,4 @@ next-env.d.ts
 content/bills/*.draft.ts
 review-report*.md
 素材-*.md
+preview-*.html

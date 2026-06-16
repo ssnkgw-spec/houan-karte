@@ -353,6 +353,10 @@ ol.srclist a{word-break:break-all;}
 
 .sectionnote{font-size:12.5px; color:var(--muted); margin-top:6px;}
 .closingnote{font-size:13px; color:var(--muted); line-height:1.7; padding-top:18px;}
+/* 逐語スニペット（出典原文の引用テキスト・transparency 機能） */
+.snip{display:block; margin-top:5px; padding-left:8px; border-left:2px solid var(--line);
+  font-size:11.5px; color:var(--muted); font-style:italic; line-height:1.5;}
+.snip q{quotes:"「" "」"; font-style:normal;}
 
 /* ---- about/limits (genkai) ---- */
 .sub{font-size:15px; color:var(--muted); margin:0 0 6px;}

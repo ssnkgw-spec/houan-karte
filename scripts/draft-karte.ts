@@ -11,6 +11,12 @@
  * AI 呼び出しは claude -p（Claude Code CLIの非対話モード）を使用。
  * サブスクリプション課金で動作するため Anthropic API キーは不要。
  * 公開判断は必ず人間ゲート（§6-3 の4項目チェック）を通すこと。
+ *
+ * ⚠️ NOTE: claude -p はセッション内からの入れ子実行ではハングする場合がある。
+ *    その場合は Claude セッション内で直接下書きを生成し、以下で検証する:
+ *
+ *    npm run lint:draft <bill-id>        … スキーマ・出典・中立リント
+ *    npm run preview:draft <bill-id>     … HTML プレビュー生成（ブラウザで開く）
  */
 import { execFileSync } from "node:child_process";
 import { readFileSync, writeFileSync } from "node:fs";
@@ -18,9 +24,9 @@ import { join } from "node:path";
 
 function callClaude(system: string, user: string): string {
   const prompt = `${system}\n\n---\n\n${user}`;
-  return execFileSync("claude", ["-p", prompt, "--no-color"], {
+  return execFileSync("claude", ["-p", prompt], {
     encoding: "utf8",
-    timeout: 300_000, // 下書きは長文なので5分
+    timeout: 900_000, // 下書きは長文なので最大15分
     maxBuffer: 32 * 1024 * 1024,
   });
 }
@@ -28,11 +34,14 @@ function callClaude(system: string, user: string): string {
 const DRAFT_SYSTEM = `あなたは「法案カルテ」の下書き担当。重要な国会法案を一次資料だけから中立に整理する。
 厳守事項:
 - 与えられた素材テキストに書かれていないことは一切書かない（推測・一般知識による補完の禁止）
-- すべての事実文に、素材中の根拠箇所の逐語スニペット（30字程度）を {snippet: "..."} として併記する
+- すべての事実ブロックに snippet フィールドを付ける（素材の逐語スニペット30字程度）
+  例: { type: "paragraph", text: "…{1}", snippet: "素材の逐語テキスト" }
+  oldnew は oldSnippet / newSnippet、timeline・log の各 item にも snippet を付ける
+  scope の各 row にも snippet を付ける
 - 賛否にあたる見解は必ず「どの会派・主体が述べたか」を明示。可能な限り逐語引用にする
 - 推奨・誘導表現（〜すべき、望ましい等）を運営の地の文に書かない
 - 立場ブロックは各立場の分量を均等にする
-出力: content/bills/bousai.ts と同じ構成のTypeScriptデータ（8セクション）。各claimの直後にコメントで snippet を残す。`;
+出力: content/bills/bousai.ts と同じ構成のTypeScriptデータ（8セクション）。`;
 
 const CHECK_SYSTEM = `あなたは敵対的チェッカー。下書きの各記述について、素材テキストとの含意関係を独立に検証する。
 出力はフラグのMarkdownリストのみ:

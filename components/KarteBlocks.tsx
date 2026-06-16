@@ -2,6 +2,16 @@ import type { Block, SourceRef } from "@/content/schema";
 import { RichText } from "./RichText";
 import { getSessionClock } from "@/lib/session-clock";
 
+function Snippet({ text }: { text?: string }) {
+  if (!text) return null;
+  return (
+    <span className="snip">
+      <span aria-hidden="true">▷ </span>
+      <q>{text}</q>
+    </span>
+  );
+}
+
 /** カルテのセクション本文ブロックを描画する（全て静的・サーバーコンポーネント） */
 export function KarteBlock({
   block,
@@ -14,7 +24,12 @@ export function KarteBlock({
 
   switch (block.type) {
     case "paragraph":
-      return <p>{rt(block.text)}</p>;
+      return (
+        <>
+          <p>{rt(block.text)}</p>
+          <Snippet text={block.snippet} />
+        </>
+      );
 
     case "timeline":
       return (
@@ -22,7 +37,10 @@ export function KarteBlock({
           {block.items.map((it, i) => (
             <li key={i} className={it.open ? "open" : undefined}>
               <span className="yr">{it.year}</span>
-              <span className="ev">{rt(it.text)}</span>
+              <span className="ev">
+                {rt(it.text)}
+                <Snippet text={it.snippet} />
+              </span>
             </li>
           ))}
         </ul>
@@ -34,6 +52,7 @@ export function KarteBlock({
           <div className="lab">{block.label}</div>
           {block.title && <h3>{block.title}</h3>}
           <p>{rt(block.text)}</p>
+          <Snippet text={block.snippet} />
         </div>
       );
 
@@ -46,6 +65,7 @@ export function KarteBlock({
           </div>
           <div className="body">
             <p>{rt(block.text)}</p>
+            <Snippet text={block.snippet} />
           </div>
         </div>
       );
@@ -66,6 +86,7 @@ export function KarteBlock({
             <div className="on on-old">
               <div className="lab">{block.oldLabel}</div>
               <p>{rt(block.oldText)}</p>
+              <Snippet text={block.oldSnippet} />
             </div>
             <div className="arrow" aria-hidden="true">
               →
@@ -73,6 +94,7 @@ export function KarteBlock({
             <div className="on on-new">
               <div className="lab">{block.newLabel}</div>
               <p>{rt(block.newText)}</p>
+              <Snippet text={block.newSnippet} />
             </div>
           </div>
           {block.impacts && (
@@ -143,6 +165,7 @@ export function KarteBlock({
               <div className="c where">
                 <span className="lab2">{block.whereLabel}</span>
                 {rt(row.where)}
+                <Snippet text={row.snippet} />
               </div>
             </div>
           ))}
@@ -210,6 +233,7 @@ export function KarteBlock({
           {block.paragraphs.map((p, i) => (
             <p key={i}>{rt(p)}</p>
           ))}
+          <Snippet text={block.snippet} />
         </div>
       );
 
@@ -223,7 +247,10 @@ export function KarteBlock({
             <li key={i} className={it.future ? "future" : undefined}>
               <span className="d">{it.date}</span>
               <span className={`badge b-${it.tone}`}>{it.badge}</span>
-              <span className="ev">{rt(it.text)}</span>
+              <span className="ev">
+                {rt(it.text)}
+                <Snippet text={it.snippet} />
+              </span>
             </li>
           ))}
         </ul>

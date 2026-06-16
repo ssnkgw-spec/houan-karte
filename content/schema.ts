@@ -33,6 +33,8 @@ const Paragraph = z.object({
   type: z.literal("paragraph"),
   text: Text,
   lane: Lane.default("L2"),
+  /** 出典ページ内の逐語スニペット（30字程度）。下書きレビュー用 */
+  snippet: z.string().optional(),
 });
 
 /** ①などの沿革タイムライン */
@@ -43,6 +45,7 @@ const Timeline = z.object({
       year: Text, // 例: "2001年" "2026年3月"
       text: Text,
       open: z.boolean().optional(), // 現在進行中の項目
+      snippet: z.string().optional(),
     })
   ),
 });
@@ -54,6 +57,7 @@ const Issue = z.object({
   title: z.string().optional(),
   text: Text,
   lane: Lane.default("L3"),
+  snippet: z.string().optional(),
 });
 
 /** ④などの立場ブロック（発信元ラベル必須・L3） */
@@ -64,6 +68,7 @@ const Position = z.object({
   tone: z.enum(["for", "add"]), // 表示色のみ（for=indigo / add=ochre）。優劣ではない
   text: Text,
   lane: z.literal("L3").default("L3"),
+  snippet: z.string().optional(),
 });
 
 /** ③の「今→改正後」対比アイテム */
@@ -74,8 +79,10 @@ const OldNew = z.object({
   scene: z.object({ label: Text, text: Text }).optional(), // 「こういう場面」「ねらい」
   oldLabel: Text.default("今（現行）"),
   oldText: Text,
+  oldSnippet: z.string().optional(),
   newLabel: Text.default("改正後"),
   newText: Text,
+  newSnippet: z.string().optional(),
   impacts: z
     .array(z.object({ label: Text, text: Text }))
     .max(3)
@@ -107,6 +114,7 @@ const ScopeTable = z.object({
       badgeTone: z.enum(["in", "out"]),
       where: Text, // 射程外の行は留保（残る論点）を必ず含める → lint対象
       highlight: z.boolean().optional(),
+      snippet: z.string().optional(),
     })
   ),
 });
@@ -129,6 +137,7 @@ const NoteBox = z.object({
   type: z.literal("notebox"),
   title: Text,
   paragraphs: z.array(Text),
+  snippet: z.string().optional(),
 });
 
 /** 強調コールアウト（indigo） */
@@ -147,6 +156,7 @@ const Log = z.object({
       tone: z.enum(["done", "next", "plan"]),
       text: Text,
       future: z.boolean().optional(),
+      snippet: z.string().optional(),
     })
   ),
 });
