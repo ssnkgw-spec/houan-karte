@@ -1,10 +1,10 @@
 {
-  "asOf": "2026-06-15",
+  "asOf": "2026-06-16",
   "session": 221,
   "cabinet": {
     "counts": {
-      "成立": 36,
-      "参議院で審議中": 19,
+      "成立": 40,
+      "参議院で審議中": 15,
       "衆議院で審議中": 8
     },
     "bills": [
@@ -185,7 +185,7 @@
       {
         "no": 26,
         "title": "産業技術力強化法の一部を改正する法律案",
-        "status": "参議院で審議中",
+        "status": "成立",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE1FF2.htm"
       },
       {
@@ -238,7 +238,7 @@
       {
         "no": 34,
         "title": "郵便法及び民間事業者による信書の送達に関する法律の一部を改正する法律案",
-        "status": "参議院で審議中",
+        "status": "成立",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE219E.htm"
       },
       {
@@ -394,13 +394,13 @@
       {
         "no": 59,
         "title": "廃棄物の処理及び清掃に関する法律等の一部を改正する法律案",
-        "status": "参議院で審議中",
+        "status": "成立",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE27B2.htm"
       },
       {
         "no": 60,
         "title": "ポリ塩化ビフェニル廃棄物の適正な処理の推進に関する特別措置法及び中間貯蔵・環境安全事業株式会社法の一部を改正する法律案",
-        "status": "参議院で審議中",
+        "status": "成立",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE27C6.htm"
       },
       {
@@ -425,7 +425,7 @@
   },
   "member": {
     "counts": {
-      "衆議院で審議中": 8,
+      "衆議院で審議中": 9,
       "本院議了": 1,
       "成立": 4,
       "参議院で審議中": 8
@@ -527,6 +527,13 @@
         "status": "衆議院で審議中",
         "kind": "衆法",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE28F6.htm"
+      },
+      {
+        "no": 14,
+        "title": "政治資金規正法の一部を改正する法律案",
+        "status": "衆議院で審議中",
+        "kind": "衆法",
+        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE293A.htm"
       },
       {
         "no": 1,
