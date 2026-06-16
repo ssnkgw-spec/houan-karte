@@ -1,5 +1,5 @@
 {
-  "asOf": "2026-06-16",
+  "asOf": "2026-06-17",
   "session": 221,
   "cabinet": {
     "counts": {
@@ -365,7 +365,8 @@
         "no": 54,
         "title": "個人情報の保護に関する法律等の一部を改正する法律案",
         "status": "参議院で審議中",
-        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE26F2.htm"
+        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE26F2.htm",
+        "karteId": "kojin-joho"
       },
       {
         "no": 55,
