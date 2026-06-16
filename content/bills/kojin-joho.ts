@@ -4,6 +4,7 @@ import type { Bill } from "../schema";
 // 一次資料: 素材-kojin-joho.md（収集 2026-06-15）
 const kojinJoho: Bill = {
   id: "kojin-joho",
+  session: 221,
   title: "個人情報保護法等改正案",
   subtitle:
     "3年ごと見直しに基づく大改正。課徴金の新設・顔特徴データの規制強化と、統計（AI開発を含む）目的での同意不要化が同居する政府案",

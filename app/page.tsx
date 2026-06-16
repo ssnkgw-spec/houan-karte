@@ -6,15 +6,23 @@ import {
   formatDateTimeJa,
   formatYmdJa,
   getSessionClock,
+  getSessionState,
 } from "@/lib/session-clock";
 import { getStaleNotice } from "@/lib/pending-refresh";
+import { badgeTone } from "@/lib/status";
 
 export default function Home() {
   const clock = getSessionClock();
+  const state = getSessionState();
+  const isRecess = state.phase === "recess";
   const cb = dashboard.cabinetBills;
   const law = cb.lawTotal;
-  const passedBills = bills.filter((b) => b.card.badge === "成立");
-  const activeBills = bills.filter((b) => b.card.badge !== "成立");
+  // 最新国会（current）を主役に。過去国会の法案はアーカイブとして別扱い。
+  const current = dashboard.session.current;
+  const currentBills = bills.filter((b) => b.session === current);
+  const archivedBills = bills.filter((b) => b.session !== current);
+  const passedBills = currentBills.filter((b) => b.card.badge === "成立");
+  const activeBills = currentBills.filter((b) => b.card.badge !== "成立");
   const passedPct = law.submitted > 0 ? (law.passed / law.submitted) * 100 : 0;
 
   return (
@@ -23,9 +31,19 @@ export default function Home() {
         <div className="wrap">
           <p className="eyebrow">法案カルテ ／ Bill Dossier</p>
           <h1 className="serif">
-            いま国会で
-            <br />
-            何が変わろうとしているか
+            {isRecess ? (
+              <>
+                第{clock.number}回国会で
+                <br />
+                何が決まったか
+              </>
+            ) : (
+              <>
+                いま国会で
+                <br />
+                何が変わろうとしているか
+              </>
+            )}
           </h1>
           <p className="tagline">
             重要な法案を、ニュースの論調ではなく、国会・各党・省庁の
@@ -43,32 +61,62 @@ export default function Home() {
       <main className="wrap">
         <p className="seclabel">Overview — 今国会の全体像</p>
         <h2 className="serif">
-          第{clock.number}回国会（{clock.type}）のいま
+          第{clock.number}回国会（{clock.type}）の{isRecess ? "結果" : "いま"}
         </h2>
         <p className="h2sub">
           会期は{formatYmdJa(clock.opensOn)}〜{formatYmdJa(clock.endsOn)}。
-          {dashboard.session.note}
+          {isRecess && state.summary ? state.summary : clock.note}
         </p>
 
         <div className="dash">
           <div className="tile">
             <div className="tl">会期 ／ SESSION</div>
-            <div className="big">
-              残り約{clock.remainingDays}
-              <small> 日</small>
-            </div>
-            <div className="sbar">
-              <div className="fill" style={{ width: `${clock.progressPct}%` }} />
-              <div className="now" style={{ left: `${clock.progressPct}%` }} />
-            </div>
-            <div className="legendrow">
-              <span>開会 {clock.opensLabel.slice(5)}</span>
-              <span>今 {clock.todayLabel}</span>
-              <span>会期末 {clock.endsLabel.slice(5)}</span>
-            </div>
-            <div className="cap">
-              会期内に成立しない法案は、原則として廃案になります。
-            </div>
+            {isRecess ? (
+              <>
+                <div className="big">
+                  閉会
+                  <small> ／ {clock.endsLabel.slice(5)}</small>
+                </div>
+                <div className="sbar">
+                  <div className="fill" style={{ width: "100%" }} />
+                </div>
+                <div className="legendrow">
+                  <span>開会 {clock.opensLabel.slice(5)}</span>
+                  <span>会期末 {clock.endsLabel.slice(5)}</span>
+                </div>
+                <div className="cap">
+                  第{clock.number}回国会（{clock.type}）は{state.endsLabelFull}
+                  に閉会しました。
+                  {state.daysToNext !== null &&
+                    `次の国会まで約${state.daysToNext}日です。`}
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="big">
+                  残り約{clock.remainingDays}
+                  <small> 日</small>
+                </div>
+                <div className="sbar">
+                  <div
+                    className="fill"
+                    style={{ width: `${clock.progressPct}%` }}
+                  />
+                  <div
+                    className="now"
+                    style={{ left: `${clock.progressPct}%` }}
+                  />
+                </div>
+                <div className="legendrow">
+                  <span>開会 {clock.opensLabel.slice(5)}</span>
+                  <span>今 {clock.todayLabel}</span>
+                  <span>会期末 {clock.endsLabel.slice(5)}</span>
+                </div>
+                <div className="cap">
+                  会期内に成立しない法案は、原則として廃案になります。
+                </div>
+              </>
+            )}
           </div>
           <div className="tile">
             <div className="tl">法律案 ／ BILLS</div>
@@ -259,34 +307,53 @@ export default function Home() {
           </div>
         </div>
 
-        <p className="seclabel" id="bills">
-          Now in session — 審議中の法案
-        </p>
-        <h2 className="serif">いま審議されている法案</h2>
-        <p className="h2sub">
-          関心が高く、いずれも第{clock.number}
-          回国会で審議中の法案です。カードを開くと「カルテ」が読めます。
-        </p>
-        <div className="grid">
-          {activeBills.map((b) => (
-            <Link className="billcard" href={`/bills/${b.id}/`} key={b.id}>
-              <div className="meta">
-                <span className="badge b-live">{b.card.badge}</span>
-                <span className="kind">{b.card.kind}</span>
-                {getStaleNotice(b.id, b.statusAsOf) && (
-                  <span className="stale-chip">進展あり・反映待ち</span>
-                )}
-              </div>
-              <h3>{b.card.title}</h3>
-              <p className="nick">{b.card.nick}</p>
-              <p className="desc">{b.card.desc}</p>
-              <div className="foot">
-                <span>{b.card.foot}</span>
-                <span className="go">カルテを見る →</span>
-              </div>
-            </Link>
-          ))}
-        </div>
+        {activeBills.length > 0 && (
+          <>
+            <p className="seclabel" id="bills">
+              {isRecess
+                ? "Not enacted — 成立しなかった法案"
+                : "Now in session — 審議中の法案"}
+            </p>
+            <h2 className="serif">
+              {isRecess ? "成立に至らなかった法案" : "いま審議されている法案"}
+            </h2>
+            <p className="h2sub">
+              {isRecess ? (
+                <>
+                  第{clock.number}
+                  回国会で審議されたが、会期内に成立しなかった法案です（廃案・継続審査など）。カードを開くと「カルテ」が読めます。
+                </>
+              ) : (
+                <>
+                  関心が高く、いずれも第{clock.number}
+                  回国会で審議中の法案です。カードを開くと「カルテ」が読めます。
+                </>
+              )}
+            </p>
+            <div className="grid">
+              {activeBills.map((b) => (
+                <Link className="billcard" href={`/bills/${b.id}/`} key={b.id}>
+                  <div className="meta">
+                    <span className={`badge ${badgeTone(b.card.badge)}`}>
+                      {b.card.badge}
+                    </span>
+                    <span className="kind">{b.card.kind}</span>
+                    {getStaleNotice(b.id, b.statusAsOf) && (
+                      <span className="stale-chip">進展あり・反映待ち</span>
+                    )}
+                  </div>
+                  <h3>{b.card.title}</h3>
+                  <p className="nick">{b.card.nick}</p>
+                  <p className="desc">{b.card.desc}</p>
+                  <div className="foot">
+                    <span>{b.card.foot}</span>
+                    <span className="go">カルテを見る →</span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </>
+        )}
 
         <p className="seclabel">Passed — 成立した法案</p>
         <h2 className="serif">この国会で成立した法案</h2>
@@ -310,6 +377,35 @@ export default function Home() {
             </Link>
           ))}
         </div>
+
+        {archivedBills.length > 0 && (
+          <>
+            <p className="seclabel">Archive — 過去の国会</p>
+            <h2 className="serif">これまでの国会のカルテ</h2>
+            <p className="h2sub">
+              過去の国会で取り上げた法案のカルテです。記載は各ページ明記の時点のものです。
+            </p>
+            <div className="grid">
+              {archivedBills.map((b) => (
+                <Link className="billcard" href={`/bills/${b.id}/`} key={b.id}>
+                  <div className="meta">
+                    <span className={`badge ${badgeTone(b.card.badge)}`}>
+                      {b.card.badge}
+                    </span>
+                    <span className="kind">第{b.session}回国会</span>
+                  </div>
+                  <h3>{b.card.title}</h3>
+                  <p className="nick">{b.card.nick}</p>
+                  <p className="desc">{b.card.desc}</p>
+                  <div className="foot">
+                    <span>{b.card.foot}</span>
+                    <span className="go">カルテを見る →</span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </>
+        )}
 
         <p className="seclabel">Where to look — 一次情報のありか</p>
         <h2 className="serif">どこに何があるか</h2>

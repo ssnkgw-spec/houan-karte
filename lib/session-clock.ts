@@ -32,8 +32,67 @@ function parseYmd(s: string): Date {
   return new Date(Date.UTC(y, m - 1, d));
 }
 
+/** 会期エントリ（dashboard.json の sessions[]）。nextOpensOn/summary は閉会後に追記される任意項目 */
+type SessionEntry = {
+  number: number;
+  type: string;
+  opensOn: string;
+  endsOn: string;
+  note: string;
+  nextOpensOn?: string;
+  summary?: string;
+};
+
+/** dashboard.session.sessions から current（主役）の会期エントリを返す */
+function currentSession(): SessionEntry {
+  const { current, sessions } = dashboard.session;
+  const found = (sessions as SessionEntry[]).find((s) => s.number === current);
+  if (!found) {
+    throw new Error(
+      `dashboard.session.current=${current} に対応する会期エントリが sessions に無い`
+    );
+  }
+  return found;
+}
+
+export type SessionPhase = "in_session" | "recess";
+
+export type SessionState = {
+  phase: SessionPhase; // 会期中 / 閉会中
+  endsLabelFull: string; // 例: "2026年7月17日"
+  daysToNext: number | null; // 次国会召集までの残日数（nextOpensOn があり閉会中のときのみ）
+  summary: string | null; // 閉会後の結果総括（あれば）
+};
+
+/**
+ * 会期の状態（会期中/閉会中）をビルド時の「今日」で判定する。
+ * 純静的サイトでも毎日のビルドで today が進むため、endsOn 到達で自動的に recess になる。
+ */
+export function getSessionState(): SessionState {
+  const s = currentSession();
+  const end = parseYmd(s.endsOn);
+  const today = jstToday();
+  const phase: SessionPhase = today.getTime() <= end.getTime() ? "in_session" : "recess";
+
+  let daysToNext: number | null = null;
+  if (phase === "recess" && s.nextOpensOn) {
+    const next = parseYmd(s.nextOpensOn);
+    daysToNext = Math.max(
+      0,
+      Math.round((next.getTime() - today.getTime()) / DAY_MS)
+    );
+  }
+
+  return {
+    phase,
+    endsLabelFull: formatYmdJa(s.endsOn),
+    daysToNext,
+    summary: s.summary ?? null,
+  };
+}
+
 export function getSessionClock(): SessionClock {
-  const s = dashboard.session;
+  const s = currentSession();
   const open = parseYmd(s.opensOn);
   const end = parseYmd(s.endsOn);
   const today = jstToday();

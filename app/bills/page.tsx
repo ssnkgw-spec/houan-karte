@@ -5,6 +5,7 @@ import cabinetRaw from "@/content/data/cabinet-bills.json";
 import { CabinetBillsList } from "@/content/schema";
 import { formatYmdJa } from "@/lib/session-clock";
 import { getStaleNotice } from "@/lib/pending-refresh";
+import { STATUS_ORDER, STATUS_TONE, badgeTone } from "@/lib/status";
 
 export const metadata: Metadata = {
   title: "法案一覧",
@@ -13,16 +14,6 @@ export const metadata: Metadata = {
 };
 
 type Ledger = CabinetBillsList["cabinet"];
-
-// 状況の表示順（これ以外の状況は後ろに回す）
-const STATUS_ORDER = ["成立", "本院議了", "参議院で審議中", "衆議院で審議中"];
-// 状況バッジの色（live=審議中・indigo / done=成立・slate）
-const STATUS_TONE: Record<string, "live" | "done"> = {
-  成立: "done",
-  本院議了: "live",
-  参議院で審議中: "live",
-  衆議院で審議中: "live",
-};
 
 function groupByStatus(ledger: Ledger) {
   const ordered = [
@@ -130,7 +121,7 @@ export default function BillsIndex() {
           {bills.map((b) => (
             <Link className="billcard" href={`/bills/${b.id}/`} key={b.id}>
               <div className="meta">
-                <span className={`badge ${b.card.badge === "成立" ? "b-done" : "b-live"}`}>{b.card.badge}</span>
+                <span className={`badge ${badgeTone(b.card.badge)}`}>{b.card.badge}</span>
                 <span className="kind">{b.card.kind}</span>
                 {getStaleNotice(b.id, b.statusAsOf) && (
                   <span className="stale-chip">進展あり・反映待ち</span>

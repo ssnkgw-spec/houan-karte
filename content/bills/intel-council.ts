@@ -4,6 +4,7 @@ import type { Bill } from "../schema";
 // 一次資料: 素材-intel-council.md（収集 2026-06-14）
 const intelCouncil: Bill = {
   id: "intel-council",
+  session: 221,
   title: "国家情報会議設置法案",
   subtitle:
     "内閣に「国家情報会議」を新設し、事務局として「国家情報局」を置く法律。内閣情報調査室を発展的に解消し、政府の情報機構を再編します。2026年6月3日に成立・公布されました。",
@@ -390,6 +391,38 @@ const intelCouncil: Bill = {
 
   closingNote:
     "情報機構と安全保障に関わるため、特に出典の原典に当たることをおすすめします。",
+
+  enforcement: {
+    promulgatedOn: "2026-06-03", // 法律第28号として公布{1,3}
+    note: "施行期日は本則・附則の定めによります。事務局となる国家情報局の体制整備が今後の焦点です。",
+    sourceIds: [1, 5],
+  },
+
+  votes: [
+    {
+      house: "参議院",
+      stage: "本会議",
+      date: "2026-05-27",
+      total: 245,
+      yea: 187,
+      nay: 58,
+      byGroup: [
+        { group: "自民", stance: "賛成" },
+        { group: "国民民主", stance: "賛成" },
+        { group: "公明", stance: "賛成" },
+        { group: "維新", stance: "賛成" },
+        { group: "参政", stance: "賛成" },
+        { group: "日本保守", stance: "賛成" },
+        { group: "立憲民主", stance: "反対" },
+        { group: "共産", stance: "反対" },
+        { group: "れいわ", stance: "反対" },
+        { group: "社民", stance: "反対" },
+        { group: "沖縄の風", stance: "反対" },
+      ],
+      note: "本文・出典に名前の挙がった主な会派です。賛成にはこのほかの会派も含まれます。全会派の投票結果は出典の参議院 投票結果でご確認ください。",
+      sourceIds: [4],
+    },
+  ],
 
   sources: [
     {

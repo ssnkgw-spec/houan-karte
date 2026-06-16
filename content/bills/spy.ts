@@ -3,6 +3,7 @@ import type { Bill } from "../schema";
 // インテリジェンス態勢整備推進法案（files/spy.html からの移植・2026-06-10時点の記載）
 const spy: Bill = {
   id: "spy",
+  session: 221,
   title: "インテリジェンス態勢整備推進法案",
   subtitle:
     `通称「スパイ防止法案」——ただし“スパイ防止法”は複数の案をまとめて指す呼び名で、このページは国民民主党が提出した特定の案を扱います`,

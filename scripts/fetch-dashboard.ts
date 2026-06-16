@@ -30,7 +30,7 @@ async function main() {
   const dashboard = DashboardData.parse(
     JSON.parse(readFileSync(dashboardPath, "utf8"))
   );
-  const session = String(dashboard.session.number);
+  const session = String(dashboard.session.current);
 
   // GIAN_JSON_PATH を指定するとローカルファイルから読む（ネットワーク制限環境でのテスト用）
   let raw: string[][];
@@ -125,7 +125,7 @@ async function main() {
 
   const cabinetBills = CabinetBillsList.parse({
     asOf: jstTodayYmd(),
-    session: dashboard.session.number,
+    session: dashboard.session.current,
     cabinet: { counts: tallyCounts(kakuho), bills: cabinetList },
     member: {
       counts: tallyCounts([...shuho, ...sanpo]),

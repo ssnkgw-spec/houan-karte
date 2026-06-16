@@ -4,6 +4,7 @@ import type { Bill } from "../schema";
 // 一次資料: 素材-reservist.md（収集 2026-06-14）
 const reservist: Bill = {
   id: "reservist",
+  session: 221,
   title: "予備自衛官等兼業特例法案",
   subtitle:
     "正式名称は「予備自衛官等の職務の円滑な遂行を図るための国家公務員及び地方公務員の兼業の特例に関する法律案」。国家・地方公務員が予備自衛官等を兼ねやすくする特例を定める法律で、2026年6月10日に成立しました。",

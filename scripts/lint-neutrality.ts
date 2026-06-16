@@ -63,6 +63,11 @@ for (const bill of bills) {
   bill.registry.forEach((r, i) => texts.push([`registry[${i}]`, r.v, "fact"]));
   texts.push(["participation", bill.participation.text, "editorial"]);
   if (bill.closingNote) texts.push(["closingNote", bill.closingNote, "editorial"]);
+  if (bill.enforcement?.note)
+    texts.push(["enforcement.note", bill.enforcement.note, "fact"]);
+  bill.votes?.forEach((v, i) => {
+    if (v.note) texts.push([`votes[${i}].note`, v.note, "fact"]);
+  });
 
   for (const [key, sec] of Object.entries(bill.sections)) {
     if (sec.lead) texts.push([`${key}.lead`, sec.lead, "editorial"]);
@@ -135,6 +140,18 @@ for (const bill of bills) {
   ]) {
     for (const id of ids) {
       if (!sourceIds.has(id)) err(`clock: 出典 {${id}} が出典一覧にない`);
+    }
+  }
+  // votes / enforcement の sourceIds 束縛（ERROR）
+  const structuredRefs: Array<[string, number[]]> = [];
+  if (bill.enforcement)
+    structuredRefs.push(["enforcement", bill.enforcement.sourceIds]);
+  bill.votes?.forEach((v, i) =>
+    structuredRefs.push([`votes[${i}]`, v.sourceIds])
+  );
+  for (const [at, ids] of structuredRefs) {
+    for (const id of ids) {
+      if (!sourceIds.has(id)) err(`${at}: 出典 {${id}} が出典一覧にない`);
     }
   }
 

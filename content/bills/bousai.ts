@@ -3,6 +3,7 @@ import type { Bill } from "../schema";
 // 防災庁設置法案（files/bousai.html からの移植・2026-06-10時点の記載）
 const bousai: Bill = {
   id: "bousai",
+  session: 221,
   title: "防災庁設置法案",
   subtitle:
     "災害対応の「司令塔」となる新組織を、内閣の下に新設する政府案（関連2法案）",

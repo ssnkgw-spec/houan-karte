@@ -3,6 +3,7 @@ import type { Bill } from "../schema";
 // 国民投票法改正案（files/kokumin-touhyou-kaisei.html からの移植・2026-06-10時点の記載）
 const kokuminTouhyouKaisei: Bill = {
   id: "kokumin-touhyou-kaisei",
+  session: 221,
   title: "日本国憲法の改正手続に関する法律の一部を改正する法律案",
   subtitle: "通称「国民投票法」改正案（投票環境に関する外形的事項の整備）",
 

@@ -23,3 +23,20 @@
 - 国家情報会議設置法案（閣法 No.24・令和8/6/3成立・公布）のカルテ1本目を書く → `/gather-sources` → `draft-karte.ts` → 人間ゲート
 - `/security-audit` を実行してから正式公開
 - `NEXT_PUBLIC_SITE_URL` を Vercel Production に登録（sitemap 用）
+
+---
+
+## 2026-06-16
+
+### やったこと
+- OGP 画像を実装（`app/opengraph-image.tsx` サイト全体・`app/bills/[id]/opengraph-image.tsx` 各法案個別）
+- `lib/woff-to-sfnt.ts`：satori 用の woff→sfnt(TTF) 変換ユーティリティを実装
+- 個人情報保護法等改正案のカルテを追加（`content/bills/kojin-joho.ts`）
+- snippet 出典機能：各ブロックに `snippet` フィールドを追加し、カルテ画面に逐語引用を表示
+- `lint:draft` / `preview:draft` スクリプト追加でドラフトワークフローを整備
+
+### 気づき・メモ
+- satori（Next.js `ImageResponse` の内部）は同名・同 weight のフォントエントリがあってもフォールバックしない。複数の woff サブセットを使うには各サブセットに別名（`NSJ0`〜`NSJ29`）をつけ、`fontFamily` を CSS フォールバックチェーンにする必要がある
+- woff2 は satori 非対応（`Unsupported OpenType signature wOF2`）→ `.woff` を使用
+- woff も ArrayBuffer でそのまま渡せない → zlib で展開して sfnt バイナリに変換してから渡す
+- fontsource の 19 サブセットでは法案タイトル・サブタイトルに含まれる漢字が不足。スクリプトで必要サブセットを分析して 30 サブセットに拡張した

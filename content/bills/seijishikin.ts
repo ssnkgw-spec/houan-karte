@@ -3,6 +3,7 @@ import type { Bill } from "../schema";
 // 政治資金規正法改正案・企業団体献金（files/seijishikin.html からの移植・2026-06-10時点の記載）
 const seijishikin: Bill = {
   id: "seijishikin",
+  session: 221,
   title: "政治資金規正法の一部を改正する法律案（企業・団体献金の扱い）",
   subtitle: "通称「企業・団体献金」をどうするか——立場の異なる複数案が審議中",
 

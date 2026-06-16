@@ -441,6 +441,46 @@ ol.srclist a{word-break:break-all;}
 .breakdown span{color:var(--muted);}
 .breakdown b{font-family:var(--font-mono),monospace; font-weight:700; color:var(--ink); white-space:nowrap;}
 
+/* ---- 採決の結果（VotesPanel・POC） ---- */
+.votespanel{margin:14px 0 0;}
+.vote{border:1px solid var(--line); border-radius:6px; background:var(--panel); padding:16px 18px; margin-bottom:14px;}
+.vote:last-child{margin-bottom:0;}
+.vhead{display:flex; justify-content:space-between; align-items:baseline; gap:10px; margin-bottom:12px;}
+.vwhere{font-weight:700; color:var(--ink);}
+.vdate{font-size:12.5px; color:var(--muted);}
+.vbar{height:12px; border-radius:6px; overflow:hidden; display:flex; background:var(--line-soft);}
+.vbar i{display:block; height:100%;}
+.vbar i.y{background:var(--indigo); opacity:.85;}
+.vbar i.n{background:var(--ochre); opacity:.85;}
+.vlegend{display:flex; gap:16px; flex-wrap:wrap; font-size:13px; color:var(--muted); margin:8px 0 0;}
+.vlegend b{color:var(--ink); font-family:var(--font-mono),monospace;}
+.vlegend .sw{display:inline-block; width:10px; height:10px; border-radius:2px; vertical-align:middle; margin-right:2px;}
+.vlegend .sw.y{background:var(--indigo);}
+.vlegend .sw.n{background:var(--ochre);}
+.vlegend .vtot{margin-left:auto;}
+.vgroups{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:14px;}
+.vcl{font-size:12px; color:var(--muted); margin-bottom:7px; letter-spacing:.02em;}
+.vchips{display:flex; flex-wrap:wrap; gap:6px;}
+.vchip{font-size:12.5px; padding:3px 9px; border-radius:14px; border:1px solid;}
+.vchip.y{color:var(--indigo); background:var(--indigo-soft); border-color:var(--indigo-line);}
+.vchip.n{color:var(--ochre); background:var(--ochre-soft); border-color:var(--ochre-line);}
+.vother{font-size:12.5px; color:var(--muted); margin:12px 0 0;}
+.vnote{font-size:12.5px; color:var(--muted); line-height:1.6; margin:12px 0 0;}
+.vsrc{font-size:12.5px; color:var(--muted); margin:8px 0 0;}
+
+/* ---- 施行スケジュール（EnforcementSchedule） ---- */
+.enfsched{margin:14px 0 0;}
+.enf{display:grid; grid-template-columns:auto 1fr; gap:16px; align-items:start;
+  border:1px solid var(--line); border-radius:6px; background:var(--panel); padding:14px 18px; margin-bottom:12px;}
+.enf:last-child{margin-bottom:0;}
+.enfdates{display:flex; align-items:center; gap:8px; font-size:13px; white-space:nowrap;}
+.enfd{display:flex; flex-direction:column; gap:1px;}
+.enfd .el{font-size:10.5px; color:var(--muted); letter-spacing:.04em;}
+.enfarrow{color:var(--muted);}
+.enfmain b, .enfmain a{font-weight:700;}
+.enfnote{font-size:12.5px; color:var(--muted); line-height:1.6; margin:5px 0 0;}
+.enf .muted{color:var(--muted);}
+
 /* ---- responsive ---- */
 @media(max-width:560px){
   .brow{grid-template-columns:24px 1fr; row-gap:6px;}

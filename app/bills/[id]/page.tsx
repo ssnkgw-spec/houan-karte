@@ -3,6 +3,8 @@ import { bills, getBill } from "@/content/bills";
 import { KarteBlock } from "@/components/KarteBlocks";
 import { RichText } from "@/components/RichText";
 import { JsonLd } from "@/components/JsonLd";
+import { VotesPanel } from "@/components/VotesPanel";
+import { EnforcementSchedule } from "@/components/EnforcementSchedule";
 import { formatYmdJa } from "@/lib/session-clock";
 import { getStaleNotice } from "@/lib/pending-refresh";
 import { toPlainText } from "@/lib/plain-text";
@@ -187,6 +189,33 @@ export default async function BillPage({
 
       <main className="wrap">
         {SECTION_KEYS.map((key, i) => renderSection(key, i))}
+
+        {bill.votes && bill.votes.length > 0 && (
+          <section id="votes">
+            <div className="shead">
+              <span className="num alt">◇</span>
+              <h2 className="serif">採決の結果（会派別）</h2>
+            </div>
+            <p className="lead">
+              どの会派が賛成・反対したかの記録です。事実の整理であり、
+              賛否のどちらかを勧めるものではありません。
+            </p>
+            <VotesPanel votes={bill.votes} sources={bill.sources} />
+          </section>
+        )}
+
+        {bill.enforcement && (
+          <section id="enforcement">
+            <div className="shead">
+              <span className="num alt">◇</span>
+              <h2 className="serif">施行スケジュール</h2>
+            </div>
+            <p className="lead">
+              「成立」と「施行（実際に効力が出ること）」は別です。いつから変わるかの記録です。
+            </p>
+            <EnforcementSchedule bills={[bill]} />
+          </section>
+        )}
 
         <section id="sanka">
           <div className="shead">

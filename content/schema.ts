@@ -200,6 +200,8 @@ export const Bill = z.object({
   title: Text, // 正式名称ベースの見出し
   subtitle: Text,
   nickname: z.string().optional(),
+  /** 国会回次（第◯回国会）。トップの会期別表示・過去国会アーカイブの紐づけソース */
+  session: z.number().int(),
 
   /** トップのカード表示用 */
   card: z.object({
@@ -243,6 +245,44 @@ export const Bill = z.object({
   /** 末尾の読者への一言（任意） */
   closingNote: z.string().optional(),
 
+  /**
+   * 施行スケジュール（成立カルテのみ・任意）。
+   * 公布日は議案DBにあるが施行日は無いため、e-Gov附則/官報を一次情報に人手入力（L1）。
+   */
+  enforcement: z
+    .object({
+      promulgatedOn: z.string().regex(/^\d{4}-\d{2}-\d{2}$/), // 公布日
+      enforcedOn: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(), // 施行日（未定なら省略）
+      note: z.string().optional(), // 例: "一部は公布後1年以内の政令で定める日"
+      sourceIds: z.array(z.number().int()),
+    })
+    .optional(),
+
+  /**
+   * 採決結果（会派別の賛否・事実のみ／POC）。「寄与・貢献」など評価語は持たない。
+   * byGroup は本文・出典に名前の挙がった会派の事実列挙。全会派網羅でない場合は note に明記。
+   */
+  votes: z
+    .array(
+      z.object({
+        house: z.enum(["衆議院", "参議院"]),
+        stage: Text, // 例: "本会議" "委員会"
+        date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+        total: z.number().int().optional(), // 投票総数
+        yea: z.number().int().optional(), // 賛成
+        nay: z.number().int().optional(), // 反対
+        byGroup: z.array(
+          z.object({
+            group: Text, // 会派名
+            stance: z.enum(["賛成", "反対", "棄権", "欠席", "退席"]),
+          })
+        ),
+        note: z.string().optional(), // 例: "本文記載の主な会派。全会派の投票は出典で確認"
+        sourceIds: z.array(z.number().int()),
+      })
+    )
+    .optional(),
+
   sources: z.array(SourceRef).min(1),
 });
 export type Bill = z.infer<typeof Bill>;
@@ -251,12 +291,23 @@ export type Bill = z.infer<typeof Bill>;
 
 export const DashboardData = z.object({
   updatedAt: z.string(), // ISO 8601。画面に常時表示（pre-mortemシナリオ2対策）
+  /**
+   * 会期情報。current = 主役にする国会回次。sessions = 回次ごとの履歴（過去国会アーカイブ用）。
+   * 閉会→次国会の切替は sessions に新エントリ追加＋current 更新の人手運用（年数回・低頻度）。
+   */
   session: z.object({
-    number: z.number().int(),
-    type: Text, // 例: "特別会"
-    opensOn: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
-    endsOn: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
-    note: Text,
+    current: z.number().int(),
+    sessions: z.array(
+      z.object({
+        number: z.number().int(),
+        type: Text, // 例: "特別会"
+        opensOn: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+        endsOn: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+        note: Text,
+        nextOpensOn: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(), // 次国会の召集予定日（判明後）
+        summary: z.string().optional(), // 閉会後の結果総括（成立/廃案/継続審査）
+      })
+    ),
   }),
   cabinetBills: z.object({
     submitted: z.number().int(), // 閣法 提出
