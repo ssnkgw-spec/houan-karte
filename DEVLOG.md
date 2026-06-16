@@ -40,3 +40,30 @@
 - woff2 は satori 非対応（`Unsupported OpenType signature wOF2`）→ `.woff` を使用
 - woff も ArrayBuffer でそのまま渡せない → zlib で展開して sfnt バイナリに変換してから渡す
 - fontsource の 19 サブセットでは法案タイトル・サブタイトルに含まれる漢字が不足。スクリプトで必要サブセットを分析して 30 サブセットに拡張した
+
+---
+
+## 2026-06-16
+
+### やったこと
+- 会期ライフサイクル対応（Phase 1〜5）を実装・コミット（`d708fa0`）
+  - `Bill.session` フィールド追加・全7法案に `session: 221` 付与
+  - `dashboard.json` の session を履歴配列（`current` + `sessions[]`）に拡張
+  - `lib/session-clock.ts` に `getSessionState()` / `SessionPhase` 追加（phase 判定）
+  - `lib/status.ts` 新規作成（badge → tone マッピング集約）
+  - `app/page.tsx` を phase 別トップ表示に改修（会期中 / 閉会中で主役差し替え）
+  - `components/VotesPanel.tsx`・`components/EnforcementSchedule.tsx` 新規作成
+  - intel-council に `votes`・`enforcement` データ追加
+  - `scripts/lint-neutrality.ts` に enforcement / votes の sourceIds 束縛検査追加
+- 採決パネルの配色変更：反対を slate（青灰）→ ochre（琥珀）に変更（視認性改善）
+- Preview MCP でトップ・カルテ詳細・VotesPanel・EnforcementSchedule の表示を確認
+
+### 気づき・メモ
+- Preview MCP の `preview_screenshot` はスクロール位置を保持しない。`scrollIntoView` 後に撮っても常にページ先頭が写る。回避策：確認したいセクション以外を `display:none` にしてから撮影する
+- `gh` 認証トークンが期限切れ。サンドボックスのネットワーク制限とも重なり push は手動で実施
+
+### 次にやりたいこと
+- `gh auth login` で再認証し `git push origin main`
+- 他の成立法案（reservist など）に `enforcement` / `votes` データを追加
+- 閉会時の recess モード表示を実際の会期終了後（2026-07-17 以降）に確認
+- 利用規約・アーキテクチャドキュメントの整備

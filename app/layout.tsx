@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
+import { SiteSearch } from "@/components/SiteSearch";
 
 // フォントは @fontsource で完全セルフホスト（ビルド時・実行時とも外部リクエスト0）
 import "@fontsource/noto-sans-jp/400.css";
@@ -52,6 +53,7 @@ export default function RootLayout({
               <Link href="/participate/">参加の経路</Link>
               <Link href="/about/limits/">方針と限界</Link>
             </nav>
+            <SiteSearch />
           </div>
         </header>
         <div id="main">{children}</div>

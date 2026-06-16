@@ -3,8 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predev": "node --import tsx scripts/build-search-index.ts",
     "dev": "next dev",
     "build": "next build",
+    "search:index": "node --import tsx scripts/build-search-index.ts",
     "start": "next start",
     "typecheck": "tsc --noEmit",
     "lint:neutrality": "node --import tsx scripts/lint-neutrality.ts",
@@ -12,7 +14,7 @@
     "preview:draft": "node --import tsx scripts/preview-draft.ts",
     "fetch:dashboard": "node --import tsx scripts/fetch-dashboard.ts",
     "triage:corrections": "node --import tsx scripts/triage-corrections.ts",
-    "prebuild": "node --import tsx scripts/lint-neutrality.ts"
+    "prebuild": "node --import tsx scripts/lint-neutrality.ts && node --import tsx scripts/build-search-index.ts"
   },
   "dependencies": {
     "@fontsource/noto-sans-jp": "^5.2.9",
