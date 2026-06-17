@@ -1,11 +1,11 @@
 {
-  "asOf": "2026-06-17",
+  "asOf": "2026-06-18",
   "session": 221,
   "cabinet": {
     "counts": {
       "成立": 40,
-      "参議院で審議中": 15,
-      "衆議院で審議中": 8
+      "参議院で審議中": 17,
+      "衆議院で審議中": 6
     },
     "bills": [
       {
@@ -389,7 +389,7 @@
       {
         "no": 58,
         "title": "ヒトゲノム編集胚等の取扱いの規制に関する法律案",
-        "status": "衆議院で審議中",
+        "status": "参議院で審議中",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE279E.htm"
       },
       {
@@ -407,7 +407,7 @@
       {
         "no": 61,
         "title": "刑事訴訟法の一部を改正する法律案",
-        "status": "衆議院で審議中",
+        "status": "参議院で審議中",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2822.htm"
       },
       {
@@ -426,10 +426,11 @@
   },
   "member": {
     "counts": {
-      "衆議院で審議中": 9,
-      "本院議了": 1,
+      "衆議院で審議中": 10,
+      "本院議了": 2,
       "成立": 4,
-      "参議院で審議中": 8
+      "参議院で審議中": 9,
+      "撤回": 1
     },
     "bills": [
       {
@@ -495,7 +496,7 @@
       {
         "no": 9,
         "title": "刑事訴訟法の一部を改正する法律案",
-        "status": "衆議院で審議中",
+        "status": "本院議了",
         "kind": "衆法",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2846.htm"
       },
@@ -525,7 +526,7 @@
       {
         "no": 13,
         "title": "郵政民営化法等の一部を改正する法律案",
-        "status": "衆議院で審議中",
+        "status": "参議院で審議中",
         "kind": "衆法",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE28F6.htm"
       },
@@ -535,6 +536,34 @@
         "status": "衆議院で審議中",
         "kind": "衆法",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE293A.htm"
+      },
+      {
+        "no": 15,
+        "title": "国立国会図書館法及び国立国会図書館法の規定により行政各部門に置かれる支部図書館及びその職員に関する法律の一部を改正する法律案",
+        "status": "参議院で審議中",
+        "kind": "衆法",
+        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE293E.htm"
+      },
+      {
+        "no": 16,
+        "title": "自動車税及び軽自動車税の税率の上乗せに係る特例の廃止に関する法律案",
+        "status": "衆議院で審議中",
+        "kind": "衆法",
+        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE295A.htm"
+      },
+      {
+        "no": 17,
+        "title": "自動車重量税率の上乗せに係る特例の廃止に関する法律案",
+        "status": "衆議院で審議中",
+        "kind": "衆法",
+        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE296E.htm"
+      },
+      {
+        "no": 18,
+        "title": "国旗の損壊等の処罰に関する法律案",
+        "status": "衆議院で審議中",
+        "kind": "衆法",
+        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE29A2.htm"
       },
       {
         "no": 1,
@@ -581,7 +610,7 @@
       {
         "no": 7,
         "title": "刑法の一部を改正する法律案",
-        "status": "参議院で審議中",
+        "status": "撤回",
         "kind": "参法",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2562.htm"
       },
