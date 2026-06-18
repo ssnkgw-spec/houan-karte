@@ -1,10 +1,10 @@
 {
-  "asOf": "2026-06-18",
+  "asOf": "2026-06-19",
   "session": 221,
   "cabinet": {
     "counts": {
-      "成立": 40,
-      "参議院で審議中": 17,
+      "成立": 44,
+      "参議院で審議中": 13,
       "衆議院で審議中": 6
     },
     "bills": [
@@ -213,12 +213,13 @@
         "no": 30,
         "title": "経済施策を一体的に講ずることによる安全保障の確保の推進に関する法律及び株式会社国際協力銀行法の一部を改正する法律案",
         "status": "成立",
-        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE20F6.htm"
+        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE20F6.htm",
+        "promulgated": "令和 8年 6月17日"
       },
       {
         "no": 31,
         "title": "重要施設の周辺地域の上空における小型無人機等の飛行の禁止に関する法律の一部を改正する法律案",
-        "status": "参議院で審議中",
+        "status": "成立",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2162.htm"
       },
       {
@@ -277,7 +278,8 @@
         "no": 40,
         "title": "人工衛星等の打上げ及び人工衛星の管理に関する法律等の一部を改正する法律案",
         "status": "成立",
-        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE238A.htm"
+        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE238A.htm",
+        "promulgated": "令和 8年 6月17日"
       },
       {
         "no": 41,
@@ -294,13 +296,13 @@
       {
         "no": 43,
         "title": "民法等の一部を改正する法律案",
-        "status": "参議院で審議中",
+        "status": "成立",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2576.htm"
       },
       {
         "no": 44,
         "title": "民法等の一部を改正する法律の施行に伴う関係法律の整備等に関する法律案",
-        "status": "参議院で審議中",
+        "status": "成立",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE258A.htm"
       },
       {
@@ -339,6 +341,7 @@
         "title": "予備自衛官等の職務の円滑な遂行を図るための国家公務員及び地方公務員の兼業の特例に関する法律案",
         "status": "成立",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2602.htm",
+        "promulgated": "令和 8年 6月17日",
         "karteId": "reservist"
       },
       {
@@ -372,7 +375,8 @@
         "no": 55,
         "title": "学校教育法等の一部を改正する法律案",
         "status": "成立",
-        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2706.htm"
+        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2706.htm",
+        "promulgated": "令和 8年 6月17日"
       },
       {
         "no": 56,
@@ -413,7 +417,7 @@
       {
         "no": 62,
         "title": "著作権法の一部を改正する法律案",
-        "status": "参議院で審議中",
+        "status": "成立",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2836.htm"
       },
       {
