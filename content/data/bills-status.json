@@ -2,31 +2,31 @@
   "intel-council": {
     "status": "成立",
     "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE1FCA.htm",
-    "asOf": "2026-06-21"
+    "asOf": "2026-06-22"
   },
   "reservist": {
     "status": "成立",
     "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2602.htm",
-    "asOf": "2026-06-21"
+    "asOf": "2026-06-22"
   },
   "kokumin-touhyou-kaisei": {
     "status": "衆議院で審議中",
     "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE28DE.htm",
-    "asOf": "2026-06-21"
+    "asOf": "2026-06-22"
   },
   "kojin-joho": {
     "status": "参議院で審議中",
     "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE26F2.htm",
-    "asOf": "2026-06-21"
+    "asOf": "2026-06-22"
   },
   "bousai": {
     "status": "参議院で審議中",
     "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE1612.htm",
-    "asOf": "2026-06-21"
+    "asOf": "2026-06-22"
   },
   "spy": {
     "status": "本院議了",
     "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE1E7E.htm",
-    "asOf": "2026-06-21"
+    "asOf": "2026-06-22"
   }
 }
