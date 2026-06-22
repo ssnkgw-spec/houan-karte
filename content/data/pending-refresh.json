@@ -1,1 +1,8 @@
-{}
+{
+  "kokumin-touhyou-kaisei": {
+    "dbStatus": "参議院で審議中",
+    "prevStatus": "衆議院で審議中",
+    "changedAt": "2026-06-23",
+    "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE28DE.htm"
+  }
+}
