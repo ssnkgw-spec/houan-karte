@@ -1,5 +1,5 @@
 {
-  "asOf": "2026-06-25",
+  "asOf": "2026-06-26",
   "session": 221,
   "cabinet": {
     "counts": {
@@ -221,7 +221,8 @@
         "no": 31,
         "title": "重要施設の周辺地域の上空における小型無人機等の飛行の禁止に関する法律の一部を改正する法律案",
         "status": "成立",
-        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2162.htm"
+        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2162.htm",
+        "promulgated": "令和 8年 6月24日"
       },
       {
         "no": 32,
@@ -299,13 +300,15 @@
         "no": 43,
         "title": "民法等の一部を改正する法律案",
         "status": "成立",
-        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2576.htm"
+        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2576.htm",
+        "promulgated": "令和 8年 6月24日"
       },
       {
         "no": 44,
         "title": "民法等の一部を改正する法律の施行に伴う関係法律の整備等に関する法律案",
         "status": "成立",
-        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE258A.htm"
+        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE258A.htm",
+        "promulgated": "令和 8年 6月24日"
       },
       {
         "no": 45,
@@ -422,7 +425,8 @@
         "no": 62,
         "title": "著作権法の一部を改正する法律案",
         "status": "成立",
-        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2836.htm"
+        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2836.htm",
+        "promulgated": "令和 8年 6月24日"
       },
       {
         "no": 63,
@@ -434,7 +438,7 @@
   },
   "member": {
     "counts": {
-      "衆議院で審議中": 12,
+      "衆議院で審議中": 19,
       "本院議了": 2,
       "成立": 6,
       "参議院で審議中": 9,
@@ -593,6 +597,55 @@
         "status": "衆議院で審議中",
         "kind": "衆法",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE29E2.htm"
+      },
+      {
+        "no": 22,
+        "title": "有人国境離島地域の保全及び特定有人国境離島地域に係る地域社会の維持に関する特別措置法の一部を改正する法律案",
+        "status": "衆議院で審議中",
+        "kind": "衆法",
+        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2A26.htm"
+      },
+      {
+        "no": 23,
+        "title": "高等学校の定時制教育及び通信教育振興法の一部を改正する法律案",
+        "status": "衆議院で審議中",
+        "kind": "衆法",
+        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2A2A.htm"
+      },
+      {
+        "no": 24,
+        "title": "特別市の設置に係る制度の整備の推進に関する法律案",
+        "status": "衆議院で審議中",
+        "kind": "衆法",
+        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2A92.htm"
+      },
+      {
+        "no": 25,
+        "title": "大都市地域における特別区の設置に関する法律の一部を改正する法律案",
+        "status": "衆議院で審議中",
+        "kind": "衆法",
+        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2AA6.htm"
+      },
+      {
+        "no": 26,
+        "title": "公職選挙法及び特定電気通信による情報の流通によって発生する権利侵害等への対処に関する法律の一部を改正する法律案",
+        "status": "衆議院で審議中",
+        "kind": "衆法",
+        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2AAA.htm"
+      },
+      {
+        "no": 27,
+        "title": "国家社会機能継続性確保施策及び副首都の整備に係る施策の推進に関する法律案",
+        "status": "衆議院で審議中",
+        "kind": "衆法",
+        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2ACE.htm"
+      },
+      {
+        "no": 28,
+        "title": "衆議院議員の選挙制度改革及び定数削減に関する法律案",
+        "status": "衆議院で審議中",
+        "kind": "衆法",
+        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2AE2.htm"
       },
       {
         "no": 1,
