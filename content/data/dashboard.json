@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-28T22:33:08.695Z",
+  "updatedAt": "2026-06-29T22:34:25.995Z",
   "session": {
     "current": 221,
     "sessions": [
@@ -14,16 +14,16 @@
   },
   "cabinetBills": {
     "submitted": 63,
-    "passed": 46,
+    "passed": 47,
     "member": {
-      "submitted": 38,
+      "submitted": 39,
       "passed": 6
     },
     "lawTotal": {
-      "submitted": 101,
-      "passed": 52
+      "submitted": 102,
+      "passed": 53
     },
-    "asOf": "2026-06-29",
+    "asOf": "2026-06-30",
     "sourceUrl": "https://github.com/smartnews-smri/house-of-representatives",
     "sourceName": "スマートニュース 国会議案DB（衆議院 議案情報より）"
   },

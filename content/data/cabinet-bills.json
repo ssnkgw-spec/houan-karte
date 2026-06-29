@@ -1,10 +1,10 @@
 {
-  "asOf": "2026-06-29",
+  "asOf": "2026-06-30",
   "session": 221,
   "cabinet": {
     "counts": {
-      "成立": 46,
-      "参議院で審議中": 16,
+      "成立": 47,
+      "参議院で審議中": 15,
       "衆議院で審議中": 1
     },
     "bills": [
@@ -129,7 +129,7 @@
       {
         "no": 18,
         "title": "防衛省設置法等の一部を改正する法律案",
-        "status": "参議院で審議中",
+        "status": "成立",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE1E66.htm"
       },
       {
@@ -439,10 +439,10 @@
   },
   "member": {
     "counts": {
-      "衆議院で審議中": 17,
+      "衆議院で審議中": 16,
       "本院議了": 2,
       "成立": 6,
-      "参議院で審議中": 12,
+      "参議院で審議中": 14,
       "撤回": 1
     },
     "bills": [
@@ -632,7 +632,7 @@
       {
         "no": 26,
         "title": "公職選挙法及び特定電気通信による情報の流通によって発生する権利侵害等への対処に関する法律の一部を改正する法律案",
-        "status": "衆議院で審議中",
+        "status": "参議院で審議中",
         "kind": "衆法",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2AAA.htm"
       },
@@ -719,6 +719,13 @@
         "status": "参議院で審議中",
         "kind": "参法",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2A42.htm"
+      },
+      {
+        "no": 11,
+        "title": "主要農作物の優良な品種を確保するための公的新品種育成の促進等に関する法律案",
+        "status": "参議院で審議中",
+        "kind": "参法",
+        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2A6E.htm"
       }
     ]
   }
