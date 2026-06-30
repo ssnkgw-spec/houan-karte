@@ -7,7 +7,7 @@
  * 目的: 人間ゲート（§6-3）でのレビューを可能にする
  */
 
-import { writeFileSync, existsSync, readFileSync } from "node:fs";
+import { writeFileSync, existsSync, readFileSync, mkdirSync } from "node:fs";
 import { join } from "node:path";
 import { pathToFileURL } from "node:url";
 import type { Bill, SourceRef } from "../content/schema.ts";
@@ -19,7 +19,7 @@ if (!billId) {
 }
 
 const draftPath = join(process.cwd(), "content", "bills", `${billId}.draft.ts`);
-const reportPath = join(process.cwd(), `review-report-${billId}.md`);
+const reportPath = join(process.cwd(), "work", `review-report-${billId}.md`);
 
 if (!existsSync(draftPath)) {
   console.error(`ファイルが見つかりません: ${draftPath}`);
@@ -458,7 +458,8 @@ async function main() {
     : null;
 
   const html = buildHtml(bill, reportMd);
-  const outPath = `preview-${billId}.html`;
+  mkdirSync(join(process.cwd(), "work"), { recursive: true });
+  const outPath = join(process.cwd(), "work", `preview-${billId}.html`);
   writeFileSync(outPath, html, "utf8");
   console.log(`出力: ${outPath}`);
   console.log(`  open ${outPath}`);

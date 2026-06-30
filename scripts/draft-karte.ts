@@ -19,7 +19,7 @@
  *    npm run preview:draft <bill-id>     … HTML プレビュー生成（ブラウザで開く）
  */
 import { execFileSync } from "node:child_process";
-import { readFileSync, writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { join } from "node:path";
 
 function callClaude(system: string, user: string): string {
@@ -75,8 +75,9 @@ function main() {
     `## 素材（一次資料テキスト）\n${material}\n\n## 検証対象の下書き\n${draft}`
   );
 
+  mkdirSync("work", { recursive: true });
   const draftPath = join("content", "bills", `${billId}.draft.ts`);
-  const reportPath = `review-report-${billId}.md`;
+  const reportPath = join("work", `review-report-${billId}.md`);
   writeFileSync(draftPath, draft);
   writeFileSync(
     reportPath,
