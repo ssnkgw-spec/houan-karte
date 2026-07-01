@@ -1,5 +1,7 @@
 import { Bill } from "../schema";
 import bousai from "./bousai";
+import chosakukenKaisei from "./chosakuken-kaisei";
+import genomeHaitai from "./genome-haitai";
 import intelCouncil from "./intel-council";
 import kojinJoho from "./kojin-joho";
 import kokuminTouhyouKaisei from "./kokumin-touhyou-kaisei";
@@ -9,6 +11,8 @@ import spy from "./spy";
 
 /** トップのカード表示順 */
 export const bills: Bill[] = [
+  Bill.parse(genomeHaitai),
+  Bill.parse(chosakukenKaisei),
   Bill.parse(intelCouncil),
   Bill.parse(reservist),
   Bill.parse(kokuminTouhyouKaisei),

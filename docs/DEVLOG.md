@@ -67,3 +67,25 @@
 - 他の成立法案（reservist など）に `enforcement` / `votes` データを追加
 - 閉会時の recess モード表示を実際の会期終了後（2026-07-17 以降）に確認
 - 利用規約・アーキテクチャドキュメントの整備
+
+---
+
+## 2026-06-16
+
+### やったこと
+- `/code-review` でサイト内検索実装を7角度・並列レビュー（finder 7本 + verifier 6本）
+- 発見した6件の問題を修正・コミット（`027f2da`）:
+  1. `router.push('#hash')` がスクロールしない → `window.location.href` / `scrollIntoView` に変更
+  2. IME 変換確定 Enter で誤ナビゲート → `!e.nativeEvent.isComposing` ガード追加で解決済み
+  3. NFKC のみ一致した全角文字で `<mark>` が空になる → `normHay` でスニペット位置を取るよう修正
+  4. `<button role="option">` が不正 ARIA → `<div role="option" tabIndex={0}>` に変更
+  5. hits 空のとき ArrowDown で `active` が -1 に → `Math.max(0, hits.length - 1)` でクランプ
+  6. `MAX_HITS` 定数が未使用（結果無制限） → `.slice(0, MAX_HITS)` を適用
+- Vercel デプロイ完了
+
+### 気づき・メモ
+- `.claude/launch.json` が `npx serve out` で静的ファイルを配信しているため HMR は効かない。コード変更後の動作確認には `npm run build` が必要
+- Next.js App Router の `router.push('/path/#hash')` はハッシュスクロールを行わない。静的サイトでは `window.location.href` でブラウザネイティブ遷移するのが確実
+
+### 次にやりたいこと
+- 他の成立法案（reservist 等）に `enforcement` / `votes` データを追加
