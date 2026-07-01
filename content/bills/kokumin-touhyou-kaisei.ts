@@ -8,7 +8,7 @@ const kokuminTouhyouKaisei: Bill = {
   subtitle: "通称「国民投票法」改正案（投票環境に関する外形的事項の整備）",
 
   card: {
-    badge: "6/11 審議入り",
+    badge: "参院 審議中",
     kind: "議員立法・衆法",
     title: "国民投票法改正案",
     nick: "日本国憲法の改正手続に関する法律の一部改正",
@@ -26,8 +26,8 @@ const kokuminTouhyouKaisei: Bill = {
       v: "自由民主党・日本維新の会・国民民主党・参政党{4,5}",
     },
   ],
-  status: "6月11日に審議入りで与野党合意（6/10時点）{11}",
-  statusAsOf: "2026-06-10",
+  status: "参議院 憲法審査会で審議中（衆院可決：6月19日、参院付託：6月23日）{22}",
+  statusAsOf: "2026-07-01",
   gianTitle: "日本国憲法の改正手続に関する法律の一部を改正する法律案",
 
   quickLinks: [
@@ -53,7 +53,7 @@ const kokuminTouhyouKaisei: Bill = {
     "法案の中身・手続の状況は事実として記し、賛否にあたる見解はすべて「どの会派・主体がそう述べたか」を明示して並べます。本文は一次資料を要約したもので、各記述には末尾の出典番号からたどれます。評価や結論はこのページでは行いません。",
 
   topNote:
-    "法案を一次情報ベースで中立に整理するページの試作です。記載は2026年6月10日時点の情報を要約したものです。",
+    "法案を一次情報ベースで中立に整理するページの試作です。記載は2026年7月1日時点の情報を要約したものです。",
 
   sections: {
     s1: {
@@ -304,12 +304,12 @@ const kokuminTouhyouKaisei: Bill = {
         { type: "clock", sourceIds: [16] },
         {
           type: "steps",
-          lead: "成立までに残る段階（現在地＝衆院 憲法審査会での審議入り）{18}",
+          lead: "成立までに残る段階（現在地＝参院 憲法審査会での審議）{18}",
           items: [
-            { label: "衆院 審査会\n趣旨説明・質疑", current: true },
+            { label: "衆院 審査会\n趣旨説明・質疑" },
             { label: "審査会\n採決" },
             { label: "衆院\n本会議" },
-            { label: "参院\n審査会・本会議" },
+            { label: "参院\n審査会・本会議", current: true },
             { label: "成立" },
           ],
         },
@@ -352,17 +352,34 @@ const kokuminTouhyouKaisei: Bill = {
             },
             {
               date: "2026/6/11",
-              badge: "予定",
-              tone: "next",
-              future: true,
-              text: "衆院 憲法審査会で審議入り（趣旨説明・質疑）。中身は[審議中継](https://www.shugiintv.go.jp/jp/)・[会議録](https://kokkai.ndl.go.jp/)で確認できる。",
+              badge: "済",
+              tone: "done",
+              text: "衆院 憲法審査会で審議入り（趣旨説明・質疑）。会議録は[国会会議録検索システム](https://kokkai.ndl.go.jp/)で確認できる。",
+            },
+            {
+              date: "2026/6/18",
+              badge: "済",
+              tone: "done",
+              text: "衆院 憲法審査会で採決——可決。{22}",
+            },
+            {
+              date: "2026/6/19",
+              badge: "済",
+              tone: "done",
+              text: "衆院 本会議で採決——可決（起立採決・多数）。同日、参院へ送付。{22}",
+            },
+            {
+              date: "2026/6/23",
+              badge: "済",
+              tone: "done",
+              text: "参院 憲法審査会に付託。{22}",
             },
             {
               date: "以降",
               badge: "これから",
               tone: "plan",
               future: true,
-              text: "審査会での採決 → 衆院本会議 → 参院へ、と進む見込み。",
+              text: "参院 憲法審査会での採決 → 参院本会議 → 成立、と進む見込み。会期末は7月17日。",
             },
           ],
         },
@@ -593,6 +610,12 @@ const kokuminTouhyouKaisei: Bill = {
       title:
         "総務省「インターネット上の違法・有害情報への対応（情報流通プラットフォーム対処法）」",
       url: "https://www.soumu.go.jp/main_sosiki/joho_tsusin/d_syohi/ihoyugai.html",
+    },
+    {
+      id: 22,
+      title:
+        "参議院「日本国憲法の改正手続に関する法律の一部を改正する法律案」審議経過（第221回国会 衆法第11号）",
+      url: "https://www.sangiin.go.jp/japanese/joho1/kousei/gian/221/meisai/m221090221011.htm",
     },
   ],
 };
