@@ -17,14 +17,16 @@
  *   8. HTML アンカー #s1–#s8, #sources が全て存在
  *
  * 全通過後: work/preview-{id}.html をブラウザで開く（人間が見るのはこのHTMLのみ）
+ * 承認後: .draft.ts → .ts に確定 / content/bills/index.ts を更新 / git commit & push まで一括
  * 5回失敗: 残課題を出力して exit 1
  *
  * 品質基準: content/bills/kojin-joho.ts と同等の構造を目標とする。
  */
 
 import { execFileSync, execSync, spawnSync } from "node:child_process";
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync, existsSync, renameSync } from "node:fs";
 import { join } from "node:path";
+import { createInterface } from "node:readline";
 
 const MAX_ATTEMPTS = 5;
 
@@ -138,6 +140,73 @@ ${issueList}
   console.log("  → .draft.ts を更新しました");
 }
 
+/** kebab-case → camelCase（index.ts の import 変数名に使用） */
+function toCamelCase(id: string): string {
+  return id.replace(/-([a-z])/g, (_, c: string) => c.toUpperCase());
+}
+
+/** 承認確認 → .draft.ts 確定 → index.ts 更新 → git commit & push */
+async function confirmAndCommit(billId: string): Promise<void> {
+  const rl = createInterface({ input: process.stdin, output: process.stdout });
+  const answer = await new Promise<string>((resolve) => {
+    rl.question("\n承認してpushしますか？ [y/N]: ", resolve);
+  });
+  rl.close();
+
+  if (!answer.toLowerCase().startsWith("y")) {
+    console.log("\nスキップしました。手動で確定する場合:");
+    console.log(`  mv content/bills/${billId}.draft.ts content/bills/${billId}.ts`);
+    console.log("  # content/bills/index.ts に import と bills 配列エントリを追加");
+    console.log("  git add content/bills/ && git commit && git push");
+    return;
+  }
+
+  // 1. .draft.ts → .ts にリネーム
+  const draftPath = join("content", "bills", `${billId}.draft.ts`);
+  const finalPath = join("content", "bills", `${billId}.ts`);
+  renameSync(draftPath, finalPath);
+  console.log(`\n  ✓ ${finalPath} に確定`);
+
+  // 法案タイトルをコミットメッセージ用に取得（正規表現で title フィールドを抽出）
+  const src = readFileSync(finalPath, "utf8");
+  const titleMatch = src.match(/title:\s*["']([^"']+)["']/);
+  const title = titleMatch?.[1] ?? billId;
+
+  // 2. content/bills/index.ts を更新
+  const indexPath = join("content", "bills", "index.ts");
+  let idx = readFileSync(indexPath, "utf8");
+  const camelId = toCamelCase(billId);
+
+  // 最後の import 行の直後に新しい import を挿入
+  idx = idx.replace(
+    /(import \S+ from "\.\/\S+";)\n(\n\/\*\*)/,
+    `$1\nimport ${camelId} from "./${billId}";\n$2`
+  );
+  // bills 配列の先頭に追加（審議中の新着を上に表示）
+  idx = idx.replace(
+    /(export const bills: Bill\[] = \[\n)/,
+    `$1  Bill.parse(${camelId}),\n`
+  );
+  writeFileSync(indexPath, idx, "utf8");
+  console.log(`  ✓ index.ts に ${camelId} を追加`);
+
+  // 3. git commit & push
+  execSync(`git add "${finalPath}" "${indexPath}"`, { stdio: "pipe" });
+  execSync(
+    `git commit -m "feat: ${title}のカルテ初版を追加\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>"`,
+    { stdio: "inherit" }
+  );
+  console.log("  ✓ コミット完了");
+
+  try {
+    execSync("git push origin main", { stdio: "inherit" });
+    console.log(`\n✓ push 完了！`);
+  } catch {
+    console.log("\n  push に失敗しました（認証エラーの可能性）。手動で実行してください:");
+    console.log("  git push origin main");
+  }
+}
+
 async function main() {
   const rawArgs = process.argv.slice(2);
   const flags = rawArgs.filter((a) => a.startsWith("--"));
@@ -192,6 +261,7 @@ async function main() {
       } catch {
         // open コマンドが使えない環境では無視
       }
+      await confirmAndCommit(billId);
       process.exit(0);
     }
 
