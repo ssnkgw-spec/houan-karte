@@ -1,10 +1,10 @@
 {
-  "asOf": "2026-07-01",
+  "asOf": "2026-07-02",
   "session": 221,
   "cabinet": {
     "counts": {
       "成立": 47,
-      "参議院で審議中": 15,
+      "参議院で審議中": 16,
       "衆議院で審議中": 1
     },
     "bills": [
@@ -400,7 +400,8 @@
         "no": 58,
         "title": "ヒトゲノム編集胚等の取扱いの規制に関する法律案",
         "status": "参議院で審議中",
-        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE279E.htm"
+        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE279E.htm",
+        "karteId": "genome-haitai"
       },
       {
         "no": 59,
@@ -427,22 +428,29 @@
         "title": "著作権法の一部を改正する法律案",
         "status": "成立",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2836.htm",
-        "promulgated": "令和 8年 6月24日"
+        "promulgated": "令和 8年 6月24日",
+        "karteId": "chosakuken-kaisei"
       },
       {
         "no": 63,
         "title": "予防接種法の一部を改正する法律案",
-        "status": "衆議院で審議中",
+        "status": "参議院で審議中",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE28F2.htm"
+      },
+      {
+        "no": 64,
+        "title": "皇室典範等の一部を改正する法律案",
+        "status": "衆議院で審議中",
+        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2B16.htm"
       }
     ]
   },
   "member": {
     "counts": {
-      "衆議院で審議中": 16,
+      "衆議院で審議中": 15,
       "本院議了": 2,
       "成立": 6,
-      "参議院で審議中": 14,
+      "参議院で審議中": 15,
       "撤回": 1
     },
     "bills": [
@@ -576,7 +584,7 @@
       {
         "no": 18,
         "title": "国旗の損壊等の処罰に関する法律案",
-        "status": "衆議院で審議中",
+        "status": "参議院で審議中",
         "kind": "衆法",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE29A2.htm"
       },
