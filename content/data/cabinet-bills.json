@@ -1,5 +1,5 @@
 {
-  "asOf": "2026-07-02",
+  "asOf": "2026-07-03",
   "session": 221,
   "cabinet": {
     "counts": {
@@ -294,7 +294,8 @@
         "no": 42,
         "title": "自動車の運転により人を死傷させる行為等の処罰に関する法律及び道路交通法の一部を改正する法律案",
         "status": "成立",
-        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE24AA.htm"
+        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE24AA.htm",
+        "promulgated": "令和 8年 7月 1日"
       },
       {
         "no": 43,
