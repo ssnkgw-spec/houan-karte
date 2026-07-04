@@ -1,5 +1,5 @@
 {
-  "asOf": "2026-07-03",
+  "asOf": "2026-07-04",
   "session": 221,
   "cabinet": {
     "counts": {
@@ -451,7 +451,7 @@
       "衆議院で審議中": 15,
       "本院議了": 2,
       "成立": 6,
-      "参議院で審議中": 15,
+      "参議院で審議中": 16,
       "撤回": 1
     },
     "bills": [
@@ -735,6 +735,13 @@
         "status": "参議院で審議中",
         "kind": "参法",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2A6E.htm"
+      },
+      {
+        "no": 12,
+        "title": "政治資金規正法の一部を改正する法律案",
+        "status": "参議院で審議中",
+        "kind": "参法",
+        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2B02.htm"
       }
     ]
   }
