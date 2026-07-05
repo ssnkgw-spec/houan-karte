@@ -1,6 +1,6 @@
 # 修正案自動生成ルーティン
 
-このファイルは Claude スケジュールトリガーが参照する実行手順です。
+このファイルは Claude スケジュールタスク `houan-karte-correction-draft`（毎朝 07:15 JST）が参照する実行手順の**単一の真実**です。スケジュールタスク側の SKILL.md はこのファイルへのポインタのみ。手順の変更はこのファイルだけを編集する。
 
 ## 目的
 
@@ -55,7 +55,7 @@ gh pr list --repo ssnkgw-spec/houan-karte --search "draft/correction" --state op
 修正する内容:
 - `status` フィールド: 新しい審議状況の文章（例: "参議院で可決・成立（YYYY年M月DD日）"）
 - `statusAsOf`: 今日の日付（`YYYY-MM-DD` 形式）
-- `sections.s5.blocks` の `log` ブロック: 新しい審議イベントを先頭に追記
+- `sections.s6.blocks` の `log` ブロック: 新しい審議イベントを先頭の items に追記（全カルテとも審議経過の log は s6「これまでの経緯」にある）
 
 修正後に以下を実行して検証する:
 ```bash
@@ -67,13 +67,36 @@ node --import tsx scripts/preview-draft.ts {billId}
 
 ### Step 5: PR を作成
 
+PR body には**変更サマリー表**と**人間ゲート4項目チェックリスト**を必ず含める（スマホでの確認を30秒で済ませるため）。
+
 ```bash
 git checkout -b draft/correction-YYYYMMDD-{billId}
 git add content/bills/{billId}.ts
 git commit -m "自動修正: {法案名} — {新ステータス}"
-gh pr create \
-  --title "自動修正: {法案名} — {新ステータス}" \
-  --body "## 変更内容\n- status: {旧} → {新}\n- statusAsOf: {旧日付} → {今日}\n- s5 log に新エントリ追記\n\n## Vercel Preview\nPR作成後、Vercel Botがコメントします。\n\n## 確認依頼\n内容を確認後、このPRをマージしてください。"
+gh pr create --title "自動修正: {法案名} — {新ステータス}" --body "{下のテンプレを埋めたもの}"
+git checkout main
+```
+
+PR body テンプレ:
+
+```markdown
+## 変更サマリー
+| 項目 | 旧 | 新 |
+|------|----|----|
+| status | {旧ステータス} | {新ステータス} |
+| statusAsOf | {旧日付} | {今日} |
+| s6 log | — | 「{追記したイベント文}」を先頭に追記 |
+
+根拠: [経過情報ページ]({keikaUrl})
+
+## 人間ゲート（マージ前に確認）
+- [ ] 新ステータス・日付が経過情報ページの記載と一致しているか
+- [ ] s6 log の追記文が機械的事実のみか（評価・誘導表現なし）
+- [ ] 変更が status / statusAsOf / s6 log の3点に限定されているか
+- [ ] Vercel Preview の表示が崩れていないか
+
+## Vercel Preview
+PR作成後、Vercel Botがコメントします。確認後、このPRをマージしてください。
 ```
 
 ### Step 6: ユーザーへの報告
