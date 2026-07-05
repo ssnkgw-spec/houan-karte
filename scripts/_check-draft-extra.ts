@@ -1,5 +1,5 @@
 /**
- * auto-create-karte.ts から子プロセスとして呼ばれる構造チェックヘルパー。
+ * カルテ下書きの構造チェックヘルパー。/create-karte スキルから Bash で呼ばれる。
  * モジュールキャッシュを避けるため別プロセスで実行する。
  *
  * 標準出力: JSON 形式の Issue 配列
@@ -64,10 +64,10 @@ async function main() {
     });
   }
 
-  // s5: log ブロックが必須
-  const logBlocks = bill.sections.s5?.blocks.filter((b) => b.type === "log") ?? [];
+  // s6: log ブロックが必須（審議経過の記録。公開済み全カルテが s6 に置いている）
+  const logBlocks = bill.sections.s6?.blocks.filter((b) => b.type === "log") ?? [];
   if (logBlocks.length === 0) {
-    issues.push({ id: "s5-log", message: "s5（会期と採決）に log ブロックがありません" });
+    issues.push({ id: "s6-log", message: "s6（これまでの経緯）に log ブロックがありません" });
   }
 
   // s8: scope ブロックが必須
