@@ -14,8 +14,9 @@
 import { execFileSync } from "node:child_process";
 import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { BillStatusAuto, PendingRefresh } from "../content/schema";
+import { BillStatusAuto, DashboardData, PendingRefresh } from "../content/schema";
 import { bills } from "../content/bills";
+import { upsertIssue } from "./gh-issue-lib";
 
 const DATA_DIR = join(import.meta.dirname, "..", "content", "data");
 const STATUS_PATH = join(DATA_DIR, "bills-status.json");
@@ -49,15 +50,39 @@ function readPending(): PendingRefresh {
   }
 }
 
-const ghOut = (args: string[]): string =>
-  execFileSync("gh", args, { encoding: "utf8" });
-const tryGh = (args: string[]) => {
-  try {
-    execFileSync("gh", args, { stdio: ["ignore", "inherit", "inherit"] });
-  } catch {
-    /* ラベル未存在などは無視 */
+/**
+ * 会期切替の検知（fetch-dashboard が書いた session.latestInDb と current を比較）。
+ * 検知したら運営者向け Issue を立てる。dashboard.json の更新自体は人手（年数回・低頻度）。
+ */
+function checkSessionChange(today: string) {
+  const dashboard = DashboardData.parse(
+    JSON.parse(readFileSync(join(DATA_DIR, "dashboard.json"), "utf8"))
+  );
+  const { current, latestInDb } = dashboard.session;
+  if (latestInDb === undefined || latestInDb <= current) return;
+
+  const title = `新しい国会回次を検知: 第${latestInDb}回`;
+  console.warn(`WARN: ${title}（current=${current}）`);
+  if (!process.env.GH_TOKEN) {
+    console.log("（GH_TOKEN 未設定のため会期切替 Issue はスキップ＝ローカルドライ）");
+    return;
   }
-};
+  upsertIssue(
+    title,
+    [
+      `議案DBに第${latestInDb}回国会の議案が出現しました（dashboard.json の current は第${current}回のまま）。`,
+      "統計・会期クロックが古い回次を指し続けるため、以下の人手更新が必要です:",
+      "",
+      "1. `content/data/dashboard.json` の `session.sessions[]` に第" + latestInDb + "回のエントリを追加（number / type / opensOn / endsOn / note）",
+      "2. 旧会期のエントリに `summary`（成立/廃案/継続審査の総括）と必要なら `nextOpensOn` を追記",
+      "3. `session.current` を " + latestInDb + " に更新",
+      "4. commit & push（daily-update が新回次で統計を取り直す）",
+      "",
+      `（自動生成: ${today}・LLM不使用）`,
+    ].join("\n"),
+    "karte-refresh"
+  );
+}
 
 interface Change {
   id: string;
@@ -69,6 +94,7 @@ interface Change {
 
 function main() {
   const today = jstTodayYmd();
+  checkSessionChange(today);
   const next = BillStatusAuto.parse(JSON.parse(readFileSync(STATUS_PATH, "utf8")));
   const prev = readPrevStatus();
   const pending = readPending();
@@ -134,7 +160,7 @@ function main() {
   }
 
   const body = [
-    "議案DBの審議状況が前回から変化しました。**カルテ本文（s5 採決 / s6 経緯 / 台帳の status・statusAsOf）** を対話セッションで一次資料に当たって更新し、人間ゲート §6-3 を通してください。",
+    "議案DBの審議状況が前回から変化しました。**カルテ本文（s5 採決の記述 / s6 経緯の log / 台帳の status・statusAsOf）** を対話セッションで一次資料に当たって更新し、人間ゲート §6-3 を通してください。",
     "",
     summary,
     "",
@@ -142,45 +168,7 @@ function main() {
     `（自動生成: ${today}・LLM不使用）`,
   ].join("\n");
 
-  // タイトル一致で既存の open issue を探す（ラベル未作成でも動くように）
-  let existing: number | undefined;
-  try {
-    const found = JSON.parse(
-      ghOut([
-        "issue",
-        "list",
-        "--state",
-        "open",
-        "--search",
-        `${ISSUE_TITLE} in:title`,
-        "--json",
-        "number,title",
-        "--limit",
-        "10",
-      ])
-    ) as Array<{ number: number; title: string }>;
-    existing = found.find((i) => i.title === ISSUE_TITLE)?.number;
-  } catch {
-    existing = undefined;
-  }
-
-  if (existing) {
-    execFileSync("gh", ["issue", "comment", String(existing), "--body", body], {
-      stdio: ["ignore", "inherit", "inherit"],
-    });
-    console.log(`既存 Issue #${existing} にコメントしました`);
-  } else {
-    const url = ghOut([
-      "issue",
-      "create",
-      "--title",
-      ISSUE_TITLE,
-      "--body",
-      body,
-    ]).trim();
-    tryGh(["issue", "edit", url, "--add-label", ISSUE_LABEL]);
-    console.log(`Issue を作成しました: ${url}`);
-  }
+  upsertIssue(ISSUE_TITLE, body, ISSUE_LABEL);
 }
 
 try {

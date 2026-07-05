@@ -297,6 +297,9 @@ export const DashboardData = z.object({
    */
   session: z.object({
     current: z.number().int(),
+    // 議案DBで観測した最大の掲載回次（fetch-dashboard が毎日更新）。
+    // current より大きくなったら detect-status-changes が会期切替の Issue を立てる。
+    latestInDb: z.number().int().optional(),
     sessions: z.array(
       z.object({
         number: z.number().int(),

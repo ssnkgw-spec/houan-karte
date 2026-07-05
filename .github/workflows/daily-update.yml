@@ -19,6 +19,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 15 # カルテ候補の週次提案が約7日前のスナップショットと比較するため
 
       - uses: actions/setup-node@v4
         with:
@@ -33,12 +35,23 @@ jobs:
       - name: 中立リント（コンテンツ整合の機械検査）
         run: npm run lint:neutrality
 
+      # データ起因のビルド破壊をコミット前に検知する（壊れたデータを main に入れない）
+      - name: 静的ビルド検証
+        run: npm run build
+
       # 旧値（git HEAD のコミット済み bills-status.json）と比較するため必ず commit の前に走らせる。
       # 審議状況が変化したカルテを pending-refresh.json に記録し、karte-refresh Issue に通知する（LLM不使用）。
+      # 会期切替（新しい掲載回次の出現）もここで検知して Issue を立てる。
       - name: 審議状況の変化を検知して karte-refresh Issue に通知
         env:
           GH_TOKEN: ${{ github.token }}
         run: node --import tsx scripts/detect-status-changes.ts
+
+      # 毎週月曜（JST）のみ実行。カルテ未作成×審議が動いた法案を「カルテ候補（週次）」Issue に列挙（LLM不使用）。
+      - name: カルテ候補の週次提案
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node --import tsx scripts/propose-karte-candidates.ts
 
       - name: 差分があればコミット（毎日 updatedAt が更新される）
         run: |

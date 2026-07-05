@@ -133,6 +133,17 @@ async function main() {
     },
   });
 
+  // --- 会期切替の検知材料: 議案DBで観測した最大の掲載回次 ---
+  const sessionNums = rows
+    .map((r) => Number(r[col["掲載回次"]]))
+    .filter(Number.isFinite);
+  dashboard.session.latestInDb = Math.max(...sessionNums);
+  if (dashboard.session.latestInDb > dashboard.session.current) {
+    console.warn(
+      `WARN: 議案DBに第${dashboard.session.latestInDb}回の議案が出現（current=${dashboard.session.current}）。会期切替が必要です`
+    );
+  }
+
   // --- 各カルテ法案の審議状況（議案件名の完全一致） ---
   const s221 = rows.filter((r) => r[col["掲載回次"]] === session);
   const statuses: BillStatusAuto = {};
