@@ -1,5 +1,5 @@
 {
-  "asOf": "2026-07-06",
+  "asOf": "2026-07-07",
   "session": 221,
   "cabinet": {
     "counts": {
@@ -130,7 +130,8 @@
         "no": 18,
         "title": "防衛省設置法等の一部を改正する法律案",
         "status": "成立",
-        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE1E66.htm"
+        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE1E66.htm",
+        "promulgated": "令和 8年 7月 3日"
       },
       {
         "no": 19,
