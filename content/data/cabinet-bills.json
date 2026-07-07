@@ -1,5 +1,5 @@
 {
-  "asOf": "2026-07-07",
+  "asOf": "2026-07-08",
   "session": 221,
   "cabinet": {
     "counts": {
@@ -452,7 +452,7 @@
       "衆議院で審議中": 15,
       "本院議了": 2,
       "成立": 6,
-      "参議院で審議中": 16,
+      "参議院で審議中": 17,
       "撤回": 1
     },
     "bills": [
@@ -743,6 +743,13 @@
         "status": "参議院で審議中",
         "kind": "参法",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2B02.htm"
+      },
+      {
+        "no": 13,
+        "title": "公職選挙法及び地方自治法の一部を改正する法律案",
+        "status": "参議院で審議中",
+        "kind": "参法",
+        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2B56.htm"
       }
     ]
   }
