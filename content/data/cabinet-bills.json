@@ -1,10 +1,10 @@
 {
-  "asOf": "2026-07-09",
+  "asOf": "2026-07-10",
   "session": 221,
   "cabinet": {
     "counts": {
-      "成立": 47,
-      "参議院で審議中": 16,
+      "成立": 48,
+      "参議院で審議中": 15,
       "衆議院で審議中": 1
     },
     "bills": [
@@ -334,7 +334,7 @@
       {
         "no": 48,
         "title": "主要食糧の需給及び価格の安定に関する法律の一部を改正する法律案",
-        "status": "参議院で審議中",
+        "status": "成立",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE25DA.htm"
       },
       {
@@ -451,8 +451,8 @@
     "counts": {
       "衆議院で審議中": 15,
       "本院議了": 2,
-      "成立": 6,
-      "参議院で審議中": 17,
+      "成立": 7,
+      "参議院で審議中": 16,
       "撤回": 1
     },
     "bills": [
@@ -614,7 +614,7 @@
       {
         "no": 22,
         "title": "有人国境離島地域の保全及び特定有人国境離島地域に係る地域社会の維持に関する特別措置法の一部を改正する法律案",
-        "status": "参議院で審議中",
+        "status": "成立",
         "kind": "衆法",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2A26.htm"
       },
