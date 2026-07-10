@@ -1,5 +1,5 @@
 {
-  "asOf": "2026-07-10",
+  "asOf": "2026-07-11",
   "session": 221,
   "cabinet": {
     "counts": {
@@ -452,7 +452,7 @@
       "衆議院で審議中": 15,
       "本院議了": 2,
       "成立": 7,
-      "参議院で審議中": 16,
+      "参議院で審議中": 17,
       "撤回": 1
     },
     "bills": [
@@ -750,6 +750,13 @@
         "status": "参議院で審議中",
         "kind": "参法",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2B56.htm"
+      },
+      {
+        "no": 14,
+        "title": "特別児童扶養手当等の支給に関する法律の一部を改正する法律案",
+        "status": "参議院で審議中",
+        "kind": "参法",
+        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2B72.htm"
       }
     ]
   }
