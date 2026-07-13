@@ -2,41 +2,41 @@
   "genome-haitai": {
     "status": "参議院で審議中",
     "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE279E.htm",
-    "asOf": "2026-07-13"
+    "asOf": "2026-07-14"
   },
   "chosakuken-kaisei": {
     "status": "成立",
     "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2836.htm",
-    "asOf": "2026-07-13"
+    "asOf": "2026-07-14"
   },
   "intel-council": {
     "status": "成立",
     "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE1FCA.htm",
-    "asOf": "2026-07-13"
+    "asOf": "2026-07-14"
   },
   "reservist": {
     "status": "成立",
     "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2602.htm",
-    "asOf": "2026-07-13"
+    "asOf": "2026-07-14"
   },
   "kokumin-touhyou-kaisei": {
     "status": "参議院で審議中",
     "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE28DE.htm",
-    "asOf": "2026-07-13"
+    "asOf": "2026-07-14"
   },
   "kojin-joho": {
-    "status": "参議院で審議中",
+    "status": "成立",
     "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE26F2.htm",
-    "asOf": "2026-07-13"
+    "asOf": "2026-07-14"
   },
   "bousai": {
     "status": "参議院で審議中",
     "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE1612.htm",
-    "asOf": "2026-07-13"
+    "asOf": "2026-07-14"
   },
   "spy": {
     "status": "本院議了",
     "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE1E7E.htm",
-    "asOf": "2026-07-13"
+    "asOf": "2026-07-14"
   }
 }

@@ -1,11 +1,10 @@
 {
-  "asOf": "2026-07-13",
+  "asOf": "2026-07-14",
   "session": 221,
   "cabinet": {
     "counts": {
-      "成立": 48,
-      "参議院で審議中": 15,
-      "衆議院で審議中": 1
+      "成立": 51,
+      "参議院で審議中": 13
     },
     "bills": [
       {
@@ -369,13 +368,13 @@
       {
         "no": 53,
         "title": "情報通信技術を活用した行政の推進等に関する法律及び情報処理の促進に関する法律の一部を改正する法律案",
-        "status": "参議院で審議中",
+        "status": "成立",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE26DE.htm"
       },
       {
         "no": 54,
         "title": "個人情報の保護に関する法律等の一部を改正する法律案",
-        "status": "参議院で審議中",
+        "status": "成立",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE26F2.htm",
         "karteId": "kojin-joho"
       },
@@ -389,7 +388,7 @@
       {
         "no": 56,
         "title": "労働者災害補償保険法等の一部を改正する法律案",
-        "status": "参議院で審議中",
+        "status": "成立",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE271A.htm"
       },
       {
@@ -442,17 +441,17 @@
       {
         "no": 64,
         "title": "皇室典範等の一部を改正する法律案",
-        "status": "衆議院で審議中",
+        "status": "参議院で審議中",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2B16.htm"
       }
     ]
   },
   "member": {
     "counts": {
-      "衆議院で審議中": 15,
+      "衆議院で審議中": 16,
       "本院議了": 2,
       "成立": 7,
-      "参議院で審議中": 17,
+      "参議院で審議中": 18,
       "撤回": 1
     },
     "bills": [
@@ -661,6 +660,13 @@
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2AE2.htm"
       },
       {
+        "no": 29,
+        "title": "医療的ケア児及びその家族に対する支援に関する法律の一部を改正する法律案",
+        "status": "衆議院で審議中",
+        "kind": "衆法",
+        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2BCA.htm"
+      },
+      {
         "no": 1,
         "title": "政党交付金の交付を受ける政党の組織及び管理運営の透明性及び公正性の向上を図るための制度の導入に関する法律案",
         "status": "参議院で審議中",
@@ -757,6 +763,13 @@
         "status": "参議院で審議中",
         "kind": "参法",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2B72.htm"
+      },
+      {
+        "no": 15,
+        "title": "特定空襲等被害者に対する一時金の支給等に関する法律案",
+        "status": "参議院で審議中",
+        "kind": "参法",
+        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2BC6.htm"
       }
     ]
   }
