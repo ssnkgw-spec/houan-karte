@@ -4,5 +4,11 @@
     "prevStatus": "参議院で審議中",
     "changedAt": "2026-07-14",
     "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE26F2.htm"
+  },
+  "bousai": {
+    "dbStatus": "成立",
+    "prevStatus": "参議院で審議中",
+    "changedAt": "2026-07-15",
+    "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE1612.htm"
   }
 }
