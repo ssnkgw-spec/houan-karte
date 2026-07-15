@@ -1,5 +1,5 @@
 {
-  "asOf": "2026-07-15",
+  "asOf": "2026-07-16",
   "session": 221,
   "cabinet": {
     "counts": {
@@ -448,10 +448,10 @@
   },
   "member": {
     "counts": {
-      "衆議院で審議中": 16,
+      "衆議院で審議中": 15,
       "本院議了": 2,
       "成立": 8,
-      "参議院で審議中": 18,
+      "参議院で審議中": 20,
       "撤回": 1
     },
     "bills": [
@@ -662,7 +662,7 @@
       {
         "no": 29,
         "title": "医療的ケア児及びその家族に対する支援に関する法律の一部を改正する法律案",
-        "status": "衆議院で審議中",
+        "status": "参議院で審議中",
         "kind": "衆法",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2BCA.htm"
       },
@@ -777,6 +777,13 @@
         "status": "参議院で審議中",
         "kind": "参法",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2B8A.htm"
+      },
+      {
+        "no": 17,
+        "title": "少額投資非課税制度における国債に係る所得に対する所得税の非課税に関する措置等に関する法律案",
+        "status": "参議院で審議中",
+        "kind": "参法",
+        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2BE2.htm"
       }
     ]
   }
