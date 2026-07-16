@@ -1,10 +1,10 @@
 {
-  "asOf": "2026-07-16",
+  "asOf": "2026-07-17",
   "session": 221,
   "cabinet": {
     "counts": {
-      "成立": 54,
-      "参議院で審議中": 10
+      "成立": 56,
+      "参議院で審議中": 8
     },
     "bills": [
       {
@@ -268,7 +268,7 @@
       {
         "no": 38,
         "title": "下水道法等の一部を改正する法律案",
-        "status": "参議院で審議中",
+        "status": "成立",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2362.htm"
       },
       {
@@ -334,7 +334,8 @@
         "no": 48,
         "title": "主要食糧の需給及び価格の安定に関する法律の一部を改正する法律案",
         "status": "成立",
-        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE25DA.htm"
+        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE25DA.htm",
+        "promulgated": "令和 8年 7月15日"
       },
       {
         "no": 49,
@@ -394,7 +395,7 @@
       {
         "no": 57,
         "title": "金融商品取引法及び資金決済に関する法律の一部を改正する法律案",
-        "status": "参議院で審議中",
+        "status": "成立",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE278A.htm"
       },
       {
@@ -448,9 +449,9 @@
   },
   "member": {
     "counts": {
-      "衆議院で審議中": 15,
-      "本院議了": 2,
-      "成立": 8,
+      "衆議院で審議中": 17,
+      "本院議了": 3,
+      "成立": 9,
       "参議院で審議中": 20,
       "撤回": 1
     },
@@ -615,12 +616,13 @@
         "title": "有人国境離島地域の保全及び特定有人国境離島地域に係る地域社会の維持に関する特別措置法の一部を改正する法律案",
         "status": "成立",
         "kind": "衆法",
-        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2A26.htm"
+        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2A26.htm",
+        "promulgated": "令和 8年 7月15日"
       },
       {
         "no": 23,
         "title": "高等学校の定時制教育及び通信教育振興法の一部を改正する法律案",
-        "status": "参議院で審議中",
+        "status": "成立",
         "kind": "衆法",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2A2A.htm"
       },
@@ -634,7 +636,7 @@
       {
         "no": 25,
         "title": "大都市地域における特別区の設置に関する法律の一部を改正する法律案",
-        "status": "衆議院で審議中",
+        "status": "本院議了",
         "kind": "衆法",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2AA6.htm"
       },
@@ -648,7 +650,7 @@
       {
         "no": 27,
         "title": "国家社会機能継続性確保施策及び副首都の整備に係る施策の推進に関する法律案",
-        "status": "衆議院で審議中",
+        "status": "参議院で審議中",
         "kind": "衆法",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2ACE.htm"
       },
@@ -665,6 +667,34 @@
         "status": "参議院で審議中",
         "kind": "衆法",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2BCA.htm"
+      },
+      {
+        "no": 30,
+        "title": "賃金上昇を上回る所得税の負担増加に対処するために所得税に関し講ずべき措置に関する法律案",
+        "status": "衆議院で審議中",
+        "kind": "衆法",
+        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2BEA.htm"
+      },
+      {
+        "no": 31,
+        "title": "賃金上昇を上回る個人住民税の負担増加等に対処するために個人住民税に関し講ずべき措置に関する法律案",
+        "status": "衆議院で審議中",
+        "kind": "衆法",
+        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2BEE.htm"
+      },
+      {
+        "no": 32,
+        "title": "受託中小企業振興法の一部を改正する法律案",
+        "status": "衆議院で審議中",
+        "kind": "衆法",
+        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2BF2.htm"
+      },
+      {
+        "no": 33,
+        "title": "ものづくり基盤技術振興基本法の一部を改正する法律案",
+        "status": "衆議院で審議中",
+        "kind": "衆法",
+        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2BF6.htm"
       },
       {
         "no": 1,
