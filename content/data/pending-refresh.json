@@ -1,4 +1,10 @@
 {
+  "genome-haitai": {
+    "dbStatus": "成立",
+    "prevStatus": "参議院で審議中",
+    "changedAt": "2026-07-22",
+    "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE279E.htm"
+  },
   "kojin-joho": {
     "dbStatus": "成立",
     "prevStatus": "参議院で審議中",

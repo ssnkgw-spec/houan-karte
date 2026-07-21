@@ -1,10 +1,10 @@
 {
-  "asOf": "2026-07-21",
+  "asOf": "2026-07-22",
   "session": 221,
   "cabinet": {
     "counts": {
-      "成立": 56,
-      "参議院で審議中": 8
+      "成立": 62,
+      "参議院で審議中": 2
     },
     "bills": [
       {
@@ -96,13 +96,15 @@
         "title": "防災庁設置法案",
         "status": "成立",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE1612.htm",
+        "promulgated": "令和 8年 7月17日",
         "karteId": "bousai"
       },
       {
         "no": 14,
         "title": "防災庁設置法の施行に伴う関係法律の整備等に関する法律案",
         "status": "成立",
-        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE1626.htm"
+        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE1626.htm",
+        "promulgated": "令和 8年 7月17日"
       },
       {
         "no": 15,
@@ -255,7 +257,7 @@
       {
         "no": 36,
         "title": "電気事業法の一部を改正する法律案",
-        "status": "参議院で審議中",
+        "status": "成立",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE21C6.htm"
       },
       {
@@ -288,7 +290,8 @@
         "no": 41,
         "title": "科学技術・イノベーション創出の活性化に関する法律の一部を改正する法律案",
         "status": "成立",
-        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2432.htm"
+        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2432.htm",
+        "promulgated": "令和 8年 7月17日"
       },
       {
         "no": 42,
@@ -321,13 +324,13 @@
       {
         "no": 46,
         "title": "重要品種の育成及びその種苗の生産の振興に関する法律案",
-        "status": "参議院で審議中",
+        "status": "成立",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE25B2.htm"
       },
       {
         "no": 47,
         "title": "種苗法の一部を改正する法律案",
-        "status": "参議院で審議中",
+        "status": "成立",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE25C6.htm"
       },
       {
@@ -370,13 +373,15 @@
         "no": 53,
         "title": "情報通信技術を活用した行政の推進等に関する法律及び情報処理の促進に関する法律の一部を改正する法律案",
         "status": "成立",
-        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE26DE.htm"
+        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE26DE.htm",
+        "promulgated": "令和 8年 7月17日"
       },
       {
         "no": 54,
         "title": "個人情報の保護に関する法律等の一部を改正する法律案",
         "status": "成立",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE26F2.htm",
+        "promulgated": "令和 8年 7月17日",
         "karteId": "kojin-joho"
       },
       {
@@ -390,7 +395,8 @@
         "no": 56,
         "title": "労働者災害補償保険法等の一部を改正する法律案",
         "status": "成立",
-        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE271A.htm"
+        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE271A.htm",
+        "promulgated": "令和 8年 7月17日"
       },
       {
         "no": 57,
@@ -401,7 +407,7 @@
       {
         "no": 58,
         "title": "ヒトゲノム編集胚等の取扱いの規制に関する法律案",
-        "status": "参議院で審議中",
+        "status": "成立",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE279E.htm",
         "karteId": "genome-haitai"
       },
@@ -422,7 +428,7 @@
       {
         "no": 61,
         "title": "刑事訴訟法の一部を改正する法律案",
-        "status": "参議院で審議中",
+        "status": "成立",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2822.htm"
       },
       {
@@ -442,7 +448,7 @@
       {
         "no": 64,
         "title": "皇室典範等の一部を改正する法律案",
-        "status": "参議院で審議中",
+        "status": "成立",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2B16.htm"
       }
     ]
@@ -451,8 +457,8 @@
     "counts": {
       "衆議院で審議中": 21,
       "本院議了": 3,
-      "成立": 9,
-      "参議院で審議中": 24,
+      "成立": 10,
+      "参議院で審議中": 23,
       "撤回": 1
     },
     "bills": [
@@ -586,7 +592,7 @@
       {
         "no": 18,
         "title": "国旗の損壊等の処罰に関する法律案",
-        "status": "参議院で審議中",
+        "status": "成立",
         "kind": "衆法",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE29A2.htm"
       },
@@ -645,7 +651,8 @@
         "title": "公職選挙法及び特定電気通信による情報の流通によって発生する権利侵害等への対処に関する法律の一部を改正する法律案",
         "status": "成立",
         "kind": "衆法",
-        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2AAA.htm"
+        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2AAA.htm",
+        "promulgated": "令和 8年 7月17日"
       },
       {
         "no": 27,
