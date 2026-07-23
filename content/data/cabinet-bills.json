@@ -1,5 +1,5 @@
 {
-  "asOf": "2026-07-23",
+  "asOf": "2026-07-24",
   "session": 221,
   "cabinet": {
     "counts": {
@@ -458,7 +458,7 @@
       "衆議院で審議中": 21,
       "本院議了": 3,
       "成立": 10,
-      "参議院で審議中": 23,
+      "参議院で審議中": 24,
       "撤回": 1
     },
     "bills": [
@@ -730,6 +730,13 @@
         "status": "衆議院で審議中",
         "kind": "衆法",
         "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2C92.htm"
+      },
+      {
+        "no": 38,
+        "title": "建築士法の一部を改正する法律案",
+        "status": "参議院で審議中",
+        "kind": "衆法",
+        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2CF6.htm"
       },
       {
         "no": 1,

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-22T22:31:00.608Z",
+  "updatedAt": "2026-07-23T22:28:44.674Z",
   "session": {
     "current": 221,
     "latestInDb": 221,
@@ -17,14 +17,14 @@
     "submitted": 64,
     "passed": 62,
     "member": {
-      "submitted": 58,
+      "submitted": 59,
       "passed": 10
     },
     "lawTotal": {
-      "submitted": 122,
+      "submitted": 123,
       "passed": 72
     },
-    "asOf": "2026-07-23",
+    "asOf": "2026-07-24",
     "sourceUrl": "https://github.com/smartnews-smri/house-of-representatives",
     "sourceName": "スマートニュース 国会議案DB（衆議院 議案情報より）"
   },
