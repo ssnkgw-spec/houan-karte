@@ -1,5 +1,5 @@
 {
-  "asOf": "2026-07-24",
+  "asOf": "2026-07-25",
   "session": 221,
   "cabinet": {
     "counts": {
@@ -271,7 +271,8 @@
         "no": 38,
         "title": "下水道法等の一部を改正する法律案",
         "status": "成立",
-        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2362.htm"
+        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2362.htm",
+        "promulgated": "令和 8年 7月23日"
       },
       {
         "no": 39,
@@ -402,7 +403,8 @@
         "no": 57,
         "title": "金融商品取引法及び資金決済に関する法律の一部を改正する法律案",
         "status": "成立",
-        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE278A.htm"
+        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE278A.htm",
+        "promulgated": "令和 8年 7月23日"
       },
       {
         "no": 58,
@@ -630,7 +632,8 @@
         "title": "高等学校の定時制教育及び通信教育振興法の一部を改正する法律案",
         "status": "成立",
         "kind": "衆法",
-        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2A2A.htm"
+        "keikaUrl": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2A2A.htm",
+        "promulgated": "令和 8年 7月23日"
       },
       {
         "no": 24,
